@@ -1,7 +1,7 @@
 <view class='msg-container'>
   <view class='msg'>
     <view class='msg-head'>
-      <image src='../../images/head-0.jpg'></image>
+      <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
     </view>
     <view class='msg-body'>
       <text class='user-name'>巧克莉与小可爱</text>
@@ -12,7 +12,7 @@
 
     <view class='msg'>
     <view class='msg-head'>
-      <image src='../../images/head-1.jpg'></image>
+      <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg'></image>
     </view>
     <view class='msg-body'>
       <text class='user-name'>小灰狼</text>
