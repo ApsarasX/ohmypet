@@ -1,2 +1,54 @@
-<!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<view class="search-bar">
+  <input type='text' placeholder='用户昵称/寄养屋名称/地址' placeholder-class='search-bar-placeholder'></input>
+</view>
+<view class='main-body'>
+  <view class='filter-bar'>
+    <view class='filter-position'>位置区域</view>
+    <view class='filter-sort'>推荐排序</view>
+    <view class='filter-condition'>筛选条件</view>
+  </view>
+
+  <view class='items-container'>
+    <view class='item'>
+      <view class='item-status'>可随时接单</view>
+      <view class='back-img'>
+        <image src='../../images/back-1.jpg' mode='apectFit'></image>
+      </view>
+      <view class='item-text-container'>
+        <view class='item-title'>
+          <text>巧克莉与小可爱</text>
+          <view class='item-detail'>评分 5.0</view>
+        </view> 
+        <view class='item-price'>
+        <text><text class='item-price-number'>¥40</text> 起 每晚 </text>
+        <view class='item-detail'>距我 7.32km </view>
+        </view>
+      </view>
+      <view class='item-head-icon'>
+        <text>信用认证</text>
+        <image src='../../images/head-0.jpg'></image>
+      </view>
+    </view>
+
+    <view class='item'>
+      <view class='item-status'>春节接单</view>
+      <view class='back-img'>
+        <image src='../../images/back-0.jpg' mode='apectFit'></image>
+      </view>
+      <view class='item-text-container'>
+        <view class='item-title'>
+          <text>有猫有家</text>
+          <view class='item-detail'>评分 5.0</view>
+        </view> 
+        <view class='item-price'>
+        <text><text class='item-price-number'>¥60</text> 起 每晚 </text>
+        <view class='item-detail'>距我 14.22km </view>
+        </view>
+      </view>
+      <view class='item-head-icon'>
+        <text>信用认证</text>
+        <image src='../../images/head-1.jpg'></image>
+      </view>
+    </view>
+  </view>
+</view>

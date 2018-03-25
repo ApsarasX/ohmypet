@@ -30,8 +30,8 @@
             {
                 "pagePath": "pages/profile/profile",
                 "text": "我的",
-                "iconPath": "images/chat-0.png",
-                "selectedIconPath": "images/chat-1.png"
+                "iconPath": "images/me-0.png",
+                "selectedIconPath": "images/me-1.png"
             }
         ]
     }
