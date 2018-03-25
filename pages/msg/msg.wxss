@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 10rpx 0;
 }
 .msg-head {
   height: 80rpx;
@@ -33,17 +34,17 @@
 }
 .user-name {
   width: 100%;
-  font-size: 28rpx;
+  font-size: 34rpx;
   color: #404040;
   font-weight: bold;
 }
 .msg-text {
-  font-size: 24rpx;
+  font-size: 28rpx;
   color: #404040;
   opacity: 0.5;
 }
 .msg-time {
-  font-size: 18rpx;
+  font-size: 22rpx;
   color: #404040;
   opacity: 0.5;
 }

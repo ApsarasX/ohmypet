@@ -13,26 +13,28 @@
   </view>
 
   <view class='items-container'>
-    <view class='item'>
-      <view class='item-status'>可随时接单</view>
-      <view class='back-img'>
-        <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
-      </view>
-      <view class='item-text-container'>
-        <view class='item-title'>
-          <text>巧克莉与小可爱</text>
-          <view class='item-detail'>评分 5.0</view>
-        </view> 
-        <view class='item-price'>
-        <text><text class='item-price-number'>¥40</text> 起 每晚 </text>
-        <view class='item-detail'>距我 7.32km </view>
+    <navigator open-type="navigateTo" url='../house/house?house_id=111'>
+      <view class='item'>
+        <view class='item-status'>可随时接单</view>
+        <view class='back-img'>
+          <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
+        </view>
+        <view class='item-text-container'>
+          <view class='item-title'>
+            <text>巧克莉与小可爱</text>
+            <view class='item-detail'>评分 5.0</view>
+          </view> 
+          <view class='item-price'>
+          <text><text class='item-price-number'>¥40</text> 起 每晚 </text>
+          <view class='item-detail'>距我 7.32km </view>
+          </view>
+        </view>
+        <view class='item-head-icon'>
+          <text>信用认证</text>
+          <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
         </view>
       </view>
-      <view class='item-head-icon'>
-        <text>信用认证</text>
-        <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
-      </view>
-    </view>
+    </navigator>
 
     <view class='item'>
       <view class='item-status'>春节接单</view>

@@ -1,0 +1,192 @@
+.banner-container {
+  height: 400rpx;
+  width: 750rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+.banner-container > image {
+  height: 100%;
+  width: 100%;
+}
+.house-info-container {
+  min-height: 980rpx;
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 150rpx;
+}
+.house-info {
+  min-height: 130rpx;
+  height: auto;
+  width: 750rpx;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  border-bottom: 1rpx solid #c4c2c2; 
+}
+.house-info:first-of-type {
+  position: relative;
+}
+.house-info:last-of-type {
+  border-bottom: none;
+}
+.tag,
+.score {
+  font-size: 22rpx;
+  color: #FA6650;
+  margin: 10rpx 20rpx;
+  display: inline-block;
+}
+.house-info-head-icon {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  right: 50rpx;
+  bottom: 30rpx;
+}
+.house-info-head-icon > image {
+  height: 100%;
+  width: 100%;
+}
+.house-info-title {
+  font-size: 34rpx;
+  color: #404040;
+  width: 100%;
+  margin: 20rpx 0 10rpx 0;
+  font-weight: bold;
+}
+.house-info-tag {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+.house-position {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20rpx;
+  margin-left: 0;
+}
+.house-position > image {
+  height: 28rpx;
+  width: 24rpx;
+}
+.house-position > text {
+  font-size: 24rpx;
+  color: #404040;
+  margin-left: 20rpx;
+}
+.house-info-price {
+  height: 60rpx;
+  width: 100%;
+}
+.house-info-price-group {
+  height: 60rpx;
+  width: 200rpx;
+  display: inline-block;
+}
+.house-info-price-group > text {
+  font-size: 18rpx;
+  color: #404040;
+  margin-right: 40rpx;
+}
+.house-info-price-group > view {
+  font-size: 34rpx;
+  color: #FA6650;
+  display: inline-block;
+}
+.house-info-promotion {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20rpx 0;
+}
+.house-info-promotion > view {
+  font-size: 22rpx;
+  color: #FA6650;
+  display: inline-block;
+  margin: 0 20rpx;
+}
+.house-info-animal-group {
+  width: 100%rpx;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+}
+.house-info-animal {
+  width: 100rpx;
+  height: 160rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.house-info-animal > image {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+}
+.house-info-animal-name {
+  width: 100%;
+  font-size: 18rpx;
+  color: #404040;
+  text-align: center;
+}
+.house-info-animal-type {
+  width: 100%;
+  font-size: 20rpx;
+  color: #FA6650;
+  text-align: center;
+}
+.house-info-tips {
+  height: 40rpx;
+  width: 100%;
+  font-size: 24rpx;
+  color: #404040;
+  margin: 20rpx 0;
+}
+.house-info-order {
+  font-size: 24rpx;
+  color: #FA6650;
+  margin: 10rpx 0;
+}
+.house-button-group {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 108rpx;
+  width: 750rpx;
+  background: white;
+  box-shadow: 0 -1px 0 0 rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.house-button-group > view {
+  height: 108rpx;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.house-info-msg-button > image {
+  height: 56rpx;
+  width: 56rpx;
+}
+.house-info-msg-button > text {
+  font-size: 24rpx;
+  color: #252E39;
+}
+.house-info-order-button {
+  background: rgba(250,102,80,0.70);
+}
+.house-info-order-button > text {
+  font-size: 24rpx;
+  color: #404040;
+}

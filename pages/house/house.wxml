@@ -1,0 +1,116 @@
+<view>
+  <view class='banner-container'>
+    <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'></image>
+  </view>
+
+  <view class='house-info-container'>
+
+    <view class='house-info'>
+      <view class='house-info-head-icon'>
+        <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
+      </view>
+      <view class='house-info-title'>
+         <text>巧克莉与小可爱</text><text class='score'>评分 5.0</text>
+      </view>
+      <view class='house-info-tag'>
+        <view class="tag">可随时接单</view>
+        <view class="tag">养宠经验 10年</view>
+      </view>
+    </view>
+    
+    <view class='house-info'>
+      <view class='house-info-title'>
+        <text>信用认证</text>
+      </view>
+      <view class='house-info-tag'>
+        <view class="tag">实名视频认证</view>
+        <view class="tag">信用保证金 ¥1000</view>
+        <view class="tag">芝麻信用分</view>
+        <view class="tag">疫苗证</view>
+      </view>
+    </view>
+
+    <view class='house-info'>
+      <view class='house-info-title'>
+        <text>寄养环境</text>
+      </view>
+      <view class='house-info-tag'>
+        <view class="tag">单元住宅</view>
+        <view class="tag">100平米以上</view>
+        <view class="tag">带阳台</view>
+        <view class="tag">封闭阳台</view>
+        <view class="tag">空调</view>
+        <view class="tag">电梯</view>
+        <view class="tag">小区花园</view>
+        <view class="tag">周边公园</view>
+        <view class="tag">交通便利</view>
+      </view>
+      <view class='house-position'>
+        <image src='../../images/position-icon.png'></image>
+        <text>陕西省西安市长安区兴隆社区</text>
+      </view>
+    </view>
+
+    <view class='house-info'>
+      <view class='house-info-title'>
+        <text>寄养价格</text>
+      </view>
+      <view class='house-info-price'>
+        <view class='house-info-price-group'>
+          <text>猫</text>
+          <view>¥40</view>
+        </view>
+        <view class='house-info-price-group'>
+          <text>小型犬</text>
+          <view>¥50</view>
+        </view>
+        <view class='house-info-price-group'>
+          <text>中型犬</text>
+          <view>¥60</view>
+        </view>
+      </view>
+
+      <view class='house-info-promotion'>
+        <view>新用户下单，立减20元</view>
+        <view>老顾客下单，每单立减10元</view>
+      </view>
+    </view>
+
+    <view class='house-info'>
+      <view class='house-info-title'>
+        <text>家中宠物</text>
+      </view>
+      <view class='house-info-animal-group'>
+        <view class='house-info-animal'>
+          <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58'></image>
+          <text class='house-info-animal-name'>小可爱</text>
+          <text class='house-info-animal-type'>英国短毛猫</text>
+        </view>
+      </view> 
+    </view>
+
+    <view class='house-info'>
+      <view class='house-info-title'>
+        <text>来自寄养屋主的Tips</text>
+      </view>
+      <view class='house-info-tips'>允许宠物上沙发，有专门的宠物活动区</view>
+    </view>
+
+    <view class='house-info'>
+      <view class='house-info-title'>
+        <text>寄养屋日历</text>
+      </view>
+      <text class='house-info-order'>查看预约情况</text>
+    </view>
+  </view>
+
+  <view class='house-button-group'>
+    <view class='house-info-msg-button'>
+      <image src='../../images/chat-1.png'></image>
+      <text>消息</text>
+    </view>
+    <view class='house-info-order-button'>
+      <text>立即预订</text>
+    </view>
+  </view>
+</view>

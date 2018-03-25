@@ -1,5 +1,4 @@
-<view>
-  <view class='head-container'>
+<view class='head-container'>
     <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg' mode='aspectFill'></image>
     <view class='head-group'>
       <view class='head-icon'>
@@ -51,5 +50,4 @@
         <text>更多</text>
       </view>
     </view>
-  </view>
 </view>

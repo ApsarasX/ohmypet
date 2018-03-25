@@ -1,0 +1,64 @@
+page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  width: 100%;
+}
+.logo {
+  height: 600rpx;
+  width: 600rpx;
+}
+.form-login {
+  width: 650rpx;
+}
+.form-login-placeholder {
+  font-size: 34rpx;
+  color: rgba(250,102,80,0.4);
+  text-align: center;
+}
+.form-text {
+  height: 100rpx;
+  margin: 20rpx;
+  /* border-bottom: 1px solid #c4c2c2; */
+  border: 2rpx solid #FA6650;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.form-button {
+  width: 280rpx;
+  height: 80rpx;
+  background: rgba(250,102,80,0.70);
+  border: 1px solid #FA6650;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  line-height: 100rpx;
+  display: inline-block;
+}
+checkbox .wx-checkbox-input{
+  height: 40rpx;
+  width: 40rpx;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  color: rgba(250,102,80,0.70);
+}
+.form-checkbox {
+  font-size: 28rpx;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 40rpx 40rpx 40rpx 0;
+}
+.form-button-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-button-group > input {
+  font-size: 34rpx;
+}
