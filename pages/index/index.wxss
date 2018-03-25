@@ -17,11 +17,11 @@ page {
 .search-bar > input {
   background: rgba(255,255,255,0.30);
   border-radius: 200rpx;
-  height: 60rpx;
+  height: 70rpx;
   width: 702rpx;
   text-align: center;
   font-size: 24rpx;
-  color: #FFFFFF
+  color: #FFFFFF;
 }
 .search-bar-placeholder {
   font-size: 24rpx;
@@ -48,7 +48,7 @@ page {
 .filter-sort,
 .filter-condition {
   font-size: 28rpx;
-  margin: 0 40rpx;
+  margin: 0 36rpx;
 }
 .filter-position::after,
 .filter-sort::after,
@@ -61,6 +61,25 @@ page {
   border-left: 6rpx solid transparent;
   border-bottom: 6rpx solid #000000;
   border-right: 6rpx solid #000000;
+}
+/* User Position */
+.user-position {
+  height: 60rpx;
+  width: 120rpx; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5rpx;
+  margin: 0 10rpx;
+}
+.user-position > image {
+  height: 28rpx;
+  width: 24rpx;
+  margin-right: 10rpx;
+}
+.user-position > text {
+  font-size: 24rpx;
+  color: #FA6650;
 }
 /* Items */
 .items-container {
@@ -93,8 +112,14 @@ page {
 .back-img {
   height: 314rpx;
   width: 654rpx;
-  border-radius: 5px;
+  border-radius: 10rpx;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.back-img > image {
+  width: 100%;
 }
 .item-text-container {
   height: 122rpx;

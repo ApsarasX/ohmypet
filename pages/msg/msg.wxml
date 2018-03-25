@@ -1,2 +1,24 @@
-<!--pages/msg/msg.wxml-->
-<text>pages/msg/msg.wxml</text>
+<view class='msg-container'>
+  <view class='msg'>
+    <view class='msg-head'>
+      <image src='../../images/head-0.jpg'></image>
+    </view>
+    <view class='msg-body'>
+      <text class='user-name'>巧克莉与小可爱</text>
+      <text class='msg-text'>可以，随时接单</text>
+      <text class='msg-time'>1分钟前</text>
+    </view>
+  </view>
+
+    <view class='msg'>
+    <view class='msg-head'>
+      <image src='../../images/head-1.jpg'></image>
+    </view>
+    <view class='msg-body'>
+      <text class='user-name'>小灰狼</text>
+      <text class='msg-text'>对不起，最近不接寄养哦</text>
+      <text class='msg-time'>1分钟前</text>
+    </view>
+  </view>
+
+</view>
