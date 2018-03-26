@@ -1,4 +1,4 @@
-<image src='../../images/logo.png' class='logo'></image>
+<image src='../../images/logo.png' class='logo' mode='aspectFit'></image>
 <form class='form-login'>
   <input type='text' placeholder='手机号' placeholder-class='form-login-placeholder' class='form-text'></input>
   <input type='text' placeholder='验证码' placeholder-class='form-login-placeholder' class='form-text'></input>

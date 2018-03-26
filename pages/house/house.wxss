@@ -167,9 +167,17 @@
   justify-content: space-between;
   align-items: center;
 }
-.house-button-group > view {
+.house-button-group > navigator {
   height: 108rpx;
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.house-info-msg-button {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -185,8 +193,13 @@
 }
 .house-info-order-button {
   background: rgba(250,102,80,0.70);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .house-info-order-button > text {
-  font-size: 24rpx;
+  font-size: 34rpx;
   color: #404040;
 }

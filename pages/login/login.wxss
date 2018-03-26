@@ -21,9 +21,7 @@ page {
 .form-text {
   height: 100rpx;
   margin: 20rpx;
-  /* border-bottom: 1px solid #c4c2c2; */
-  border: 2rpx solid #FA6650;
-  border-radius: 10rpx;
+  border-bottom: 1px solid #c4c2c2;
   box-sizing: border-box;
   text-align: center;
 }
@@ -52,6 +50,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   justify-content: flex-end;
   align-items: center;
   margin: 40rpx 40rpx 40rpx 0;
+  color: #c4c2c2;
 }
 .form-button-group {
   width: 100%;

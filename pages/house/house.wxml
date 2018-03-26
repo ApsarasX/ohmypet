@@ -82,7 +82,7 @@
       </view>
       <view class='house-info-animal-group'>
         <view class='house-info-animal'>
-          <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58'></image>
+          <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
           <text class='house-info-animal-name'>小可爱</text>
           <text class='house-info-animal-type'>英国短毛猫</text>
         </view>
@@ -100,17 +100,23 @@
       <view class='house-info-title'>
         <text>寄养屋日历</text>
       </view>
-      <text class='house-info-order'>查看预约情况</text>
+      <navigator open-type='navigateTo' url=''>
+        <text class='house-info-order'>查看预约情况</text>
+      </navigator>
     </view>
   </view>
 
   <view class='house-button-group'>
-    <view class='house-info-msg-button'>
-      <image src='../../images/chat-1.png'></image>
-      <text>消息</text>
-    </view>
-    <view class='house-info-order-button'>
-      <text>立即预订</text>
-    </view>
+    <navigator open-type='switchTab' url='../msg/msg' >
+      <view class='house-info-msg-button'>
+        <image src='../../images/chat-1.png'></image>
+        <text>消息</text>
+      </view>
+    </navigator>
+    <navigator open-type='navigateTo' url=''>
+      <view  class='house-info-order-button'>
+        <text>立即预订</text>
+      </view>
+    </navigator>
   </view>
 </view>

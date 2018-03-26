@@ -1,0 +1,150 @@
+page {
+  width: 750rpx;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+.form-group > label {
+  font-size: 34rpx;
+  color: #404040;
+  font-weight: normal;
+}
+.require {
+  font-size: 24rpx;
+  color: #FA6650;
+  line-height: 40rpx;
+  vertical-align: text-top;
+}
+.form-group {
+  min-height: 100rpx;
+  padding: 10rpx 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #c4c2c2;
+}
+.submit-container {
+  justify-content: center;
+  margin-top: 40rpx;
+  border: none;
+}
+.textarea {
+  flex-wrap: wrap;
+  margin: 40rpx 0;
+  border: none;
+}
+.form-group > input {
+  /* box-shadow: 0 0 3rpx #c4c2c2;  */
+  /* border-bottom: 1rpx solid #c4c2c2;  */
+  text-align: right;
+  font-size: 34rpx;
+  box-sizing: border-box;
+  padding-right: 10rpx;
+  flex-grow: 1;
+}
+.form-group > textarea {
+  box-shadow: 0 0 3rpx #c4c2c2; 
+}
+.head-icon {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+.head-icon > image {
+  height: 100%;
+  width: 100%;
+}
+.head-add-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 40rpx;
+  line-height: 40rpx;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  vertical-align: top;
+  color: white;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.img-group {
+  margin: 40rpx 0; 
+  width: 100%;
+}
+.img-group > image{
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 10rpx;
+  margin: 20rpx;
+  float: left;
+}
+.img-add-button {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 10rpx;
+  box-shadow: 0 0  3rpx #c4c2c2;
+  float: left;
+  margin: 20rpx;
+  color: #c4c2c2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50rpx;
+}
+radio-group > label {
+  font-size: 24rpx;
+  color: #9B9B9B;
+}
+.wx-radio-input{
+  width: 40rpx;
+  height: 40rpx;
+}
+.switch-group > text{
+  font-size: 24rpx;
+  color: #9B9B9B;
+}
+.wx-switch-input {
+  width:42px !important;
+  height:22px !important;
+}
+.wx-switch-input::before{
+  width: 100% !important;
+  height: 100% !important;
+}
+.wx-switch-input::after{
+  width: 48rpx !important;
+  height: 48rpx !important;
+}
+.picker {
+  font-size: 28rpx;
+  color: #FA6650;
+}
+textarea {
+  margin: 40rpx 0;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+.submit {
+  height: 80rpx;
+  width: 400rpx;
+  margin: 20rpx;
+  background: #FA6650;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit > image {
+  height: 44rpx;
+  width: 42rpx;
+  margin-right: 20rpx;
+}
+.submit > text {
+  font-size: 24rpx;
+  color: white;
+}

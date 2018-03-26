@@ -1,0 +1,94 @@
+<form>
+  <view class='form-group'>
+    <label for=''>宠物头像 <text class="require" class="require">*</text></label>
+    <view class='head-icon'>
+      <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+      <view class='head-add-button'>+</view>
+    </view>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>宠物昵称 <text class="require" class="require">*</text></label>
+    <input type='text' id=''></input>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>宠物品种 <text class="require" class="require">*</text></label>
+    <input type='text' id=''></input>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>性别 <text class="require" class="require">*</text></label>  
+    <radio-group class="" bindchange="">
+      <label class="">
+        <radio value="" checked="" color='#FA6650' />男
+      </label>
+      <label class="">
+        <radio value="" checked="" color='#FA6650' />女
+      </label>
+    </radio-group>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>体重 <text class="require" class="require">*</text></label>
+    <picker mode="selector" bindchange='bindPickerChange' value='{{index}}' range='{{ weight }}'>
+      <view class='picker'>{{ weight[index] }}</view>
+    </picker>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>是否绝育 <text class="require" class="require">*</text></label>
+    <view class='switch-group'>
+      <switch bindchange="switchJueyu" color='#FA6650'/> 
+      <text>{{ jueyu }}</text>
+    </view>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>是否免疫 <text class="require" class="require">*</text></label>
+    <view class='switch-group'>
+      <switch bindchange="switchMianyi" color='#FA6650'/>
+      <text>{{mianyi}}</text>
+    </view>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>出生年月 <text class="require" class="require">*</text></label>
+    <picker mode="date" value="{{birthday}}" start="2010-01-01" end="2020-01-01" bindchange="bindBirthDateChange">
+      <view class="picker">
+        {{birthday}}
+      </view>
+    </picker>
+  </view>
+
+  <view class='form-group'>
+    <label for=''>到家日期 <text class="require" class="require">*</text></label>
+    <picker mode="date" value="{{homeday}}" start="2010-01-01" end="2020-01-01" bindchange="bindHomeDateChange">
+      <view class="picker">
+        {{homeday}}
+      </view>
+    </picker>
+  </view>
+
+  <view class='form-group textarea'>
+    <label for=''>展示照片（最多4张）</label>
+    <view class='img-group'>
+      <view class='img-add-button'>+</view>
+      <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+      <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+      <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+    </view>
+  </view>
+
+  <view class='form-group textarea'>
+    <label for=''>爱宠介绍</label>
+    <textarea ></textarea>
+  </view>
+
+  <view class='form-group submit-container'>
+    <view formType="submit" class='submit'>
+      <image src="../../images/telephone.png"></image>
+      <text>提交资料</text>
+    </view>
+  </view>
+</form>

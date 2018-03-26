@@ -1,0 +1,10 @@
+<view class='pet-item'>
+  <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+  <text>帅气的斯比奈鲁</text>
+</view>
+<navigator open-type="navigateTo" url='../addpet/addpet'>
+  <view class='pets-add-button'>
+    <image src='../../images/telephone.png'></image>
+    <text>添加宠物</text>
+  </view>
+</navigator>

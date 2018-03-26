@@ -30,12 +30,43 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
 					"name": "msg",
-					"pathName": "pages/msg/msg"
+					"pathName": "pages/msg/msg",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pets",
+					"pathName": "pages/pets/pets",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addpet",
+					"pathName": "pages/addpet/addpet",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "profile",
+					"pathName": "pages/profile/profile",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "house",
+					"pathName": "pages/house/house",
+					"query": ""
 				}
 			]
 		}

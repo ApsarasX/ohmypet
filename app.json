@@ -4,12 +4,14 @@
         "pages/msg/msg",
         "pages/profile/profile",
         "pages/house/house",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/pets/pets",
+        "pages/addpet/addpet"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#FA6650",
-        "navigationBarTitleText": "小宠",
+        "navigationBarTitleText": "小宠爱",
         "navigationBarTextStyle": "white"
     },
     "tabBar": {
