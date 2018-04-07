@@ -9,6 +9,9 @@ module.exports = {
     },
     // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
     extends: 'standard',
+    globals: {
+        wx: true
+    },
     // required to lint *.wpy files
     plugins: ['html'],
     settings: {

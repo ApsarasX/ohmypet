@@ -1,0 +1,59 @@
+<template>
+    <view class="search-bar">
+        <input type="text" bindinput="bindinput" placeholder="用户昵称/寄养屋名称/地址" placeholder-style='color: #fff;font-weight: lighter;'></input>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class SearchBar extends wepy.component {
+    data = {
+        timer: null
+    };
+    methods = {
+        bindinput(e) {
+            this.debounce(() => {
+                // 向父组件派发事件
+                this.$emit('query', e.detail.value);
+            }, 800);
+        }
+    };
+    watch = {
+        query: this.queryWatcher
+    };
+    /**
+     * @function debounce 节流函数
+     * @param {Function} func 延迟执行的函数
+     * @param {Integer} delay 延迟时间
+     */
+    debounce(func, delay) {
+        if (this.timer) {
+            clearTimeout(this.timer);
+        }
+        this.timer = setTimeout(() => {
+            func();
+        }, delay);
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+/* Search Bar */
+.search-bar {
+    height: 100rpx;
+    width: 750rpx;
+    background: #fa6650;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-bar > input {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 200rpx;
+    height: 70rpx;
+    width: 702rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #ffffff;
+}
+</style>

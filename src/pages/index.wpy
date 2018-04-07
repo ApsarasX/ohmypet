@@ -1,40 +1,10 @@
 <template>
-    <view class="search-bar">
-        <input type='text' placeholder='用户昵称/寄养屋名称/地址' placeholder-class='search-bar-placeholder'></input>
-    </view>
+    <search-bar @query.user="queryChange"></search-bar>
     <view class='main-body'>
-        <view class='filter-bar'>
-            <view class='filter-position'>位置区域</view>
-            <view class='filter-sort'>推荐排序</view>
-            <view class='filter-condition'>筛选条件</view>
-            <view class='user-position'>
-                <image src='../assets/images/position-icon.png'></image>
-                <text>西安</text>
-            </view>
-        </view>
+        <filter-bar></filter-bar>
         <view class='items-container'>
-            <navigator open-type="navigateTo" url='../house/house?house_id=111'>
-                <view class='item'>
-                    <view class='item-status'>可随时接单</view>
-                    <view class='back-img'>
-                        <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
-                    </view>
-                    <view class='item-text-container'>
-                        <view class='item-title'>
-                            <text>巧克莉与小可爱</text>
-                            <view class='item-detail'>评分 5.0</view>
-                        </view>
-                        <view class='item-price'>
-                            <text>
-                                <text class='item-price-number'>¥40</text> 起 每晚 </text>
-                            <view class='item-detail'>距我 7.32km </view>
-                        </view>
-                    </view>
-                    <view class='item-head-icon'>
-                        <text>信用认证</text>
-                        <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
-                    </view>
-                </view>
+            <navigator open-type="navigateTo" url='./house?house_id=111'>
+                <seller-card></seller-card>
             </navigator>
 
             <view class='item'>
@@ -88,7 +58,10 @@
 <script>
 import wepy from 'wepy';
 import { connect } from 'wepy-redux';
-import testMixin from '../mixins/test';
+import Mixin from '../mixins/index';
+import SerachBar from '../components/search-bar';
+import FilterBar from '../components/filter-bar';
+import SellerCard from '../components/seller-card';
 
 @connect({
     num(state) {
@@ -102,20 +75,25 @@ import testMixin from '../mixins/test';
     }
 })
 export default class Index extends wepy.page {
-    config = {
-
-    };
+    config = {};
     components = {
-
+        'search-bar': SerachBar,
+        'filter-bar': FilterBar,
+        'seller-card': SellerCard
     };
 
-    mixins = [testMixin];
+    mixins = [Mixin];
 
     data = {};
 
     computed = {};
 
-    methods = {};
+    methods = {
+        queryChange(e) {
+            console.log('--------');
+            console.log(e);
+        }
+    };
 
     events = {};
 
@@ -123,81 +101,10 @@ export default class Index extends wepy.page {
 }
 </script>
 <style lang="scss" scoped>
-/* Search Bar */
-.search-bar {
-    height: 100rpx;
-    width: 750rpx;
-    background: #fa6650;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.search-bar > input {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 200rpx;
-    height: 70rpx;
-    width: 702rpx;
-    text-align: center;
-    font-size: 24rpx;
-    color: #ffffff;
-}
-.search-bar-placeholder {
-    font-size: 24rpx;
-    color: #ffffff;
-    text-align: center;
-    font-weight: lighter;
-}
 /* Main Body*/
 .main-body {
     min-height: 100%;
     width: 750rpx;
-}
-/* Filter Bar */
-.filter-bar {
-    height: 80rpx;
-    width: 750rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 1rpx #979797;
-    margin-bottom: 15rpx;
-}
-.filter-position,
-.filter-sort,
-.filter-condition {
-    font-size: 28rpx;
-    margin: 0 36rpx;
-}
-.filter-position::after,
-.filter-sort::after,
-.filter-condition::after {
-    content: '';
-    display: inline-block;
-    height: 0;
-    width: 0;
-    border-top: 6rpx solid transparent;
-    border-left: 6rpx solid transparent;
-    border-bottom: 6rpx solid #000000;
-    border-right: 6rpx solid #000000;
-}
-/* User Position */
-.user-position {
-    height: 60rpx;
-    width: 120rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5rpx;
-    margin: 0 10rpx;
-}
-.user-position > image {
-    height: 28rpx;
-    width: 24rpx;
-    margin-right: 10rpx;
-}
-.user-position > text {
-    font-size: 24rpx;
-    color: #fa6650;
 }
 /* Items */
 .items-container {

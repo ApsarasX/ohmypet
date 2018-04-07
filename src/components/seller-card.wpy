@@ -1,0 +1,181 @@
+<template>
+    <view class='item'>
+        <view class='item-status'>{{status}}</view>
+        <view class='back-img'>
+            <image src="{{poster}}"></image>
+        </view>
+        <view class='item-text-container'>
+            <view class='item-title'>
+                <text>{{name}}</text>
+                <view class='item-detail'>评分 {{_rate}}</view>
+            </view>
+            <view class='item-price'>
+                <text>
+                    <text class='item-price-number'>¥{{price}}</text> 起 每晚 </text>
+                <view class='item-detail'>距我 {{_range}}km </view>
+            </view>
+        </view>
+        <view class='item-head-icon'>
+            <text wx:if="{{certification}}">信用认证</text>
+            <text wx:else class="no-certi">信用未认证</text>
+            <image src="{{avatar}}"></image>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class SellerCard extends wepy.component {
+    props = {
+        // 商家头像
+        avatar: {
+            type: String,
+            default:
+                'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'
+        },
+        // 是否信用认证
+        certification: {
+            type: Boolean,
+            default: false
+        },
+        // 商家宠物屋名字
+        name: {
+            type: String,
+            default: '商家的宠物屋'
+        },
+        // 商家接单状态
+        status: {
+            type: String,
+            default: '暂不接单'
+        },
+        // 商家宠物屋封面
+        poster: {
+            type: String,
+            default:
+                'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'
+        },
+        // 价格
+        price: {
+            type: Number,
+            default: 0
+        },
+        // 距离
+        range: {
+            type: Number,
+            default: 0
+        },
+        // 评分
+        rate: {
+            type: Number,
+            default: 0
+        }
+    };
+    computed = {
+        _range() {
+            if (this.range === 0) return 0;
+            return this.range.toFixed(2);
+        },
+        _rate() {
+            if (this.rate === 0) return 0;
+            return this.rate.toFixed(1);
+        }
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+.items-container {
+    min-height: 980rpx;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.item {
+    height: 436rpx;
+    width: 654rpx;
+    margin: 20rpx 0;
+    overflow: hidden;
+    position: relative;
+}
+.item-status {
+    background: rgba(255, 255, 255, 0.75);
+    height: 66rpx;
+    width: 132rpx;
+    position: absolute;
+    right: 14rpx;
+    top: 14rpx;
+    font-size: 22rpx;
+    color: #fa6650;
+    line-height: 66rpx;
+    text-align: center;
+}
+.back-img {
+    height: 314rpx;
+    width: 654rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > image {
+        width: 100%;
+    }
+}
+.item-text-container {
+    height: 122rpx;
+    width: 654rpx;
+    font-size: 34rpx;
+}
+.item-detail {
+    display: inline-block;
+    font-size: 22rpx !important;
+    font-weight: normal !important;
+    color: #fa6650;
+    margin: 0 20rpx;
+}
+.item-title {
+    width: 654rpx;
+    color: #404040;
+    margin: 14rpx 0 10rpx 0;
+    font-weight: bold;
+}
+.item-price {
+    width: 654rpx;
+    font-size: 24rpx;
+}
+.item-price-number {
+    font-size: 40rpx;
+    color: #fa6650;
+    &::first-letter {
+        font-size: 18rpx;
+        color: #000000;
+    }
+}
+.item-head-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 80rpx;
+    width: 200rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    & > image {
+        height: 80rpx;
+        width: 80rpx;
+        border-radius: 50%;
+    }
+    & > text {
+        font-size: 24rpx;
+        color: #fa6650;
+        font-weight: bold;
+        margin-bottom: 10rpx;
+    }
+    & > .no-certi {
+        color: #000;
+    }
+}
+</style>

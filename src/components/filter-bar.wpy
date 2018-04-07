@@ -1,0 +1,68 @@
+<template>
+    <view class='filter-bar'>
+        <view class='filter-position'>位置区域</view>
+        <view class='filter-sort'>推荐排序</view>
+        <view class='filter-condition'>筛选条件</view>
+        <view class='user-position'>
+            <image src='../assets/images/position-icon.png'></image>
+            <text>西安</text>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class FilterBar extends wepy.component {
+
+}
+</script>
+
+<style lang="scss" scoped>
+/* Filter Bar */
+.filter-bar {
+    height: 80rpx;
+    width: 750rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1rpx #979797;
+    margin-bottom: 15rpx;
+}
+.filter-position,
+.filter-sort,
+.filter-condition {
+    font-size: 28rpx;
+    margin: 0 36rpx;
+}
+.filter-position::after,
+.filter-sort::after,
+.filter-condition::after {
+    content: '';
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 6rpx solid transparent;
+    border-left: 6rpx solid transparent;
+    border-bottom: 6rpx solid #000000;
+    border-right: 6rpx solid #000000;
+}
+/* User Position */
+.user-position {
+    height: 60rpx;
+    width: 120rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rpx;
+    margin: 0 10rpx;
+    & > image {
+        height: 28rpx;
+        width: 24rpx;
+        margin-right: 10rpx;
+    }
+    & > text {
+        font-size: 24rpx;
+        color: #fa6650;
+    }
+}
+</style>

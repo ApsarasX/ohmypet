@@ -12,9 +12,9 @@
 <script>
 import wepy from 'wepy';
 import 'wepy-async-function';
-
 import { setStore } from 'wepy-redux';
 import configStore from './store';
+import { request } from './lib';
 
 const store = configStore();
 setStore(store);
@@ -62,9 +62,10 @@ export default class extends wepy.app {
             ]
         }
     };
-
     globalData = {
-        userInfo: null
+        // 登录状态
+        hasLogin: false,
+        openid: ''
     };
 
     constructor() {
@@ -72,10 +73,35 @@ export default class extends wepy.app {
         this.use('requestfix');
     }
 
-    onLaunch() {
-
+    async onLaunch() {
+        await this.login();
     }
-    login() {
+    /**
+     * @function login 向服务器发起登录请求
+     * @return {void}
+     */
+    async login() {
+        const codeRes = await this.getCode();
+        if (codeRes.errMsg === 'login:ok') {
+            try {
+                const res = await request('http://xiao.pet/api/auth/login/wechat', 'POST', {
+                    mobile: '13201685806',
+                    code: codeRes.code
+                });
+                if (res.code === 0) {
+                    this.globalData.hasLogin = true;
+                    this.$apply();
+                }
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+    }
+    /**
+     * @function getCode 调用wx.login获取code准备向服务器发起登录请求
+     * @return {Promise} 临时登录凭证code
+     */
+    getCode() {
         return new Promise((resolve, reject) => {
             wepy.login({
                 success(res) {
@@ -87,6 +113,10 @@ export default class extends wepy.app {
             });
         });
     }
+    /**
+     * @function getUserInfo 获取用户信息
+     * @return {Promise(Object)} 用户信息对象
+     */
     getUserInfo() {
         const that = this;
         if (this.globalData.userInfo) {

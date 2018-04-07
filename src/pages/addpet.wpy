@@ -116,7 +116,7 @@
 <script>
 import wepy from 'wepy';
 import { connect } from 'wepy-redux';
-import testMixin from '../mixins/test';
+import Mixin from '../mixins/index';
 
 @connect({
     num(state) {
@@ -137,7 +137,7 @@ export default class AddPet extends wepy.page {
 
     };
 
-    mixins = [testMixin];
+    mixins = [Mixin];
 
     data = {};
 
