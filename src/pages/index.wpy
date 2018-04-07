@@ -1,0 +1,293 @@
+<template>
+    <view class="search-bar">
+        <input type='text' placeholder='用户昵称/寄养屋名称/地址' placeholder-class='search-bar-placeholder'></input>
+    </view>
+    <view class='main-body'>
+        <view class='filter-bar'>
+            <view class='filter-position'>位置区域</view>
+            <view class='filter-sort'>推荐排序</view>
+            <view class='filter-condition'>筛选条件</view>
+            <view class='user-position'>
+                <image src='../assets/images/position-icon.png'></image>
+                <text>西安</text>
+            </view>
+        </view>
+        <view class='items-container'>
+            <navigator open-type="navigateTo" url='../house/house?house_id=111'>
+                <view class='item'>
+                    <view class='item-status'>可随时接单</view>
+                    <view class='back-img'>
+                        <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
+                    </view>
+                    <view class='item-text-container'>
+                        <view class='item-title'>
+                            <text>巧克莉与小可爱</text>
+                            <view class='item-detail'>评分 5.0</view>
+                        </view>
+                        <view class='item-price'>
+                            <text>
+                                <text class='item-price-number'>¥40</text> 起 每晚 </text>
+                            <view class='item-detail'>距我 7.32km </view>
+                        </view>
+                    </view>
+                    <view class='item-head-icon'>
+                        <text>信用认证</text>
+                        <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
+                    </view>
+                </view>
+            </navigator>
+
+            <view class='item'>
+                <view class='item-status'>春节接单</view>
+                <view class='back-img'>
+                    <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg'></image>
+                </view>
+                <view class='item-text-container'>
+                    <view class='item-title'>
+                        <text>有猫有家</text>
+                        <view class='item-detail'>评分 5.0</view>
+                    </view>
+                    <view class='item-price'>
+                        <text>
+                            <text class='item-price-number'>¥60</text> 起 每晚 </text>
+                        <view class='item-detail'>距我 14.22km </view>
+                    </view>
+                </view>
+                <view class='item-head-icon'>
+                    <text>信用认证</text>
+                    <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg'></image>
+                </view>
+            </view>
+
+            <view class='item'>
+                <view class='item-status'>可随时接单</view>
+                <view class='back-img'>
+                    <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
+                </view>
+                <view class='item-text-container'>
+                    <view class='item-title'>
+                        <text>巧克莉与小可爱</text>
+                        <view class='item-detail'>评分 5.0</view>
+                    </view>
+                    <view class='item-price'>
+                        <text>
+                            <text class='item-price-number'>¥40</text> 起 每晚 </text>
+                        <view class='item-detail'>距我 7.32km </view>
+                    </view>
+                </view>
+                <view class='item-head-icon'>
+                    <text>信用认证</text>
+                    <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
+                </view>
+            </view>
+
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { connect } from 'wepy-redux';
+import testMixin from '../mixins/test';
+
+@connect({
+    num(state) {
+        return state.counter.num;
+    },
+    asyncNum(state) {
+        return state.counter.asyncNum;
+    },
+    sumNum(state) {
+        return state.counter.num + state.counter.asyncNum;
+    }
+})
+export default class Index extends wepy.page {
+    config = {
+
+    };
+    components = {
+
+    };
+
+    mixins = [testMixin];
+
+    data = {};
+
+    computed = {};
+
+    methods = {};
+
+    events = {};
+
+    onLoad() {}
+}
+</script>
+<style lang="scss" scoped>
+/* Search Bar */
+.search-bar {
+    height: 100rpx;
+    width: 750rpx;
+    background: #fa6650;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-bar > input {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 200rpx;
+    height: 70rpx;
+    width: 702rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #ffffff;
+}
+.search-bar-placeholder {
+    font-size: 24rpx;
+    color: #ffffff;
+    text-align: center;
+    font-weight: lighter;
+}
+/* Main Body*/
+.main-body {
+    min-height: 100%;
+    width: 750rpx;
+}
+/* Filter Bar */
+.filter-bar {
+    height: 80rpx;
+    width: 750rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1rpx #979797;
+    margin-bottom: 15rpx;
+}
+.filter-position,
+.filter-sort,
+.filter-condition {
+    font-size: 28rpx;
+    margin: 0 36rpx;
+}
+.filter-position::after,
+.filter-sort::after,
+.filter-condition::after {
+    content: '';
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 6rpx solid transparent;
+    border-left: 6rpx solid transparent;
+    border-bottom: 6rpx solid #000000;
+    border-right: 6rpx solid #000000;
+}
+/* User Position */
+.user-position {
+    height: 60rpx;
+    width: 120rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rpx;
+    margin: 0 10rpx;
+}
+.user-position > image {
+    height: 28rpx;
+    width: 24rpx;
+    margin-right: 10rpx;
+}
+.user-position > text {
+    font-size: 24rpx;
+    color: #fa6650;
+}
+/* Items */
+.items-container {
+    min-height: 980rpx;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.item {
+    height: 436rpx;
+    width: 654rpx;
+    margin: 20rpx 0;
+    overflow: hidden;
+    position: relative;
+}
+.item-status {
+    background: rgba(255, 255, 255, 0.75);
+    height: 66rpx;
+    width: 132rpx;
+    position: absolute;
+    right: 14rpx;
+    top: 14rpx;
+    font-size: 22rpx;
+    color: #fa6650;
+    line-height: 66rpx;
+    text-align: center;
+}
+.back-img {
+    height: 314rpx;
+    width: 654rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back-img > image {
+    width: 100%;
+}
+.item-text-container {
+    height: 122rpx;
+    width: 654rpx;
+    font-size: 34rpx;
+}
+.item-detail {
+    display: inline-block;
+    font-size: 22rpx !important;
+    font-weight: normal !important;
+    color: #fa6650;
+    margin: 0 20rpx;
+}
+.item-title {
+    width: 654rpx;
+    color: #404040;
+    margin: 14rpx 0 10rpx 0;
+    font-weight: bold;
+}
+.item-price {
+    width: 654rpx;
+    font-size: 24rpx;
+}
+.item-price-number {
+    font-size: 40rpx;
+    color: #fa6650;
+}
+.item-price-number::first-letter {
+    font-size: 18rpx;
+    color: #000000;
+}
+.item-head-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 80rpx;
+    width: 200rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.item-head-icon > image {
+    height: 80rpx;
+    width: 80rpx;
+    border-radius: 50%;
+}
+.item-head-icon > text {
+    font-size: 24rpx;
+    color: #fa6650;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+</style>

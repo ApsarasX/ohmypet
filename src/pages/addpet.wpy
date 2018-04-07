@@ -1,0 +1,305 @@
+<template>
+    <form>
+        <view class='form-group'>
+            <label for=''>宠物头像
+                <text class="require" class="require">*</text>
+            </label>
+            <view class='head-icon'>
+                <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+                <view class='head-add-button'>+</view>
+            </view>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>宠物昵称
+                <text class="require" class="require">*</text>
+            </label>
+            <input type='text' id=''></input>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>宠物品种
+                <text class="require" class="require">*</text>
+            </label>
+            <input type='text' id=''></input>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>性别
+                <text class="require" class="require">*</text>
+            </label>
+            <radio-group class="" bindchange="">
+                <label class="">
+                    <radio value="" checked="" color='#FA6650' />男
+                </label>
+                <label class="">
+                    <radio value="" checked="" color='#FA6650' />女
+                </label>
+            </radio-group>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>体重
+                <text class="require" class="require">*</text>
+            </label>
+            <picker mode="selector" bindchange='bindPickerChange' value='{{index}}' range='{{ weight }}'>
+                <view class='picker'>{{ weight[index] }}</view>
+            </picker>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>是否绝育
+                <text class="require" class="require">*</text>
+            </label>
+            <view class='switch-group'>
+                <switch bindchange="switchJueyu" color='#FA6650' />
+                <text>{{ jueyu }}</text>
+            </view>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>是否免疫
+                <text class="require" class="require">*</text>
+            </label>
+            <view class='switch-group'>
+                <switch bindchange="switchMianyi" color='#FA6650' />
+                <text>{{mianyi}}</text>
+            </view>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>出生年月
+                <text class="require" class="require">*</text>
+            </label>
+            <picker mode="date" value="{{birthday}}" start="2010-01-01" end="2020-01-01" bindchange="bindBirthDateChange">
+                <view class="picker">
+                    {{birthday}}
+                </view>
+            </picker>
+        </view>
+
+        <view class='form-group'>
+            <label for=''>到家日期
+                <text class="require" class="require">*</text>
+            </label>
+            <picker mode="date" value="{{homeday}}" start="2010-01-01" end="2020-01-01" bindchange="bindHomeDateChange">
+                <view class="picker">
+                    {{homeday}}
+                </view>
+            </picker>
+        </view>
+
+        <view class='form-group textarea'>
+            <label for=''>展示照片（最多4张）</label>
+            <view class='img-group'>
+                <view class='img-add-button'>+</view>
+                <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+                <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+                <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+            </view>
+        </view>
+
+        <view class='form-group textarea'>
+            <label for=''>爱宠介绍</label>
+            <textarea></textarea>
+        </view>
+
+        <view class='form-group submit-container'>
+            <view formType="submit" class='submit'>
+                <image src="../assets/images/telephone.png"></image>
+                <text>提交资料</text>
+            </view>
+        </view>
+    </form>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { connect } from 'wepy-redux';
+import testMixin from '../mixins/test';
+
+@connect({
+    num(state) {
+        return state.counter.num;
+    },
+    asyncNum(state) {
+        return state.counter.asyncNum;
+    },
+    sumNum(state) {
+        return state.counter.num + state.counter.asyncNum;
+    }
+})
+export default class AddPet extends wepy.page {
+    config = {
+
+    };
+    components = {
+
+    };
+
+    mixins = [testMixin];
+
+    data = {};
+
+    computed = {};
+
+    methods = {};
+
+    events = {};
+
+    onLoad() {}
+}
+</script>
+
+<style lang="scss" scoped>
+page {
+    width: 750rpx;
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 40rpx;
+}
+.form-group > label {
+    font-size: 34rpx;
+    color: #404040;
+    font-weight: normal;
+}
+.require {
+    font-size: 24rpx;
+    color: #fa6650;
+    line-height: 40rpx;
+    vertical-align: text-top;
+}
+.form-group {
+    min-height: 100rpx;
+    padding: 10rpx 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #c4c2c2;
+}
+.submit-container {
+    justify-content: center;
+    margin-top: 40rpx;
+    border: none;
+}
+.textarea {
+    flex-wrap: wrap;
+    margin: 40rpx 0;
+    border: none;
+}
+.form-group > input {
+    /* box-shadow: 0 0 3rpx #c4c2c2;  */
+    /* border-bottom: 1rpx solid #c4c2c2;  */
+    text-align: right;
+    font-size: 34rpx;
+    box-sizing: border-box;
+    padding-right: 10rpx;
+    flex-grow: 1;
+}
+.form-group > textarea {
+    box-shadow: 0 0 3rpx #c4c2c2;
+}
+.head-icon {
+    height: 120rpx;
+    width: 120rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.head-icon > image {
+    height: 100%;
+    width: 100%;
+}
+.head-add-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40rpx;
+    line-height: 40rpx;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    vertical-align: top;
+    color: white;
+    font-size: 36rpx;
+    font-weight: bold;
+}
+.img-group {
+    margin: 40rpx 0;
+    width: 100%;
+}
+.img-group > image {
+    height: 120rpx;
+    width: 120rpx;
+    border-radius: 10rpx;
+    margin: 20rpx;
+    float: left;
+}
+.img-add-button {
+    height: 120rpx;
+    width: 120rpx;
+    border-radius: 10rpx;
+    box-shadow: 0 0 3rpx #c4c2c2;
+    float: left;
+    margin: 20rpx;
+    color: #c4c2c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50rpx;
+}
+radio-group > label {
+    font-size: 24rpx;
+    color: #9b9b9b;
+}
+.wx-radio-input {
+    width: 40rpx;
+    height: 40rpx;
+}
+.switch-group > text {
+    font-size: 24rpx;
+    color: #9b9b9b;
+}
+.wx-switch-input {
+    width: 42px !important;
+    height: 22px !important;
+}
+.wx-switch-input::before {
+    width: 100% !important;
+    height: 100% !important;
+}
+.wx-switch-input::after {
+    width: 48rpx !important;
+    height: 48rpx !important;
+}
+.picker {
+    font-size: 28rpx;
+    color: #fa6650;
+}
+textarea {
+    margin: 40rpx 0;
+    font-size: 28rpx;
+    box-sizing: border-box;
+    padding: 20rpx;
+}
+.submit {
+    height: 80rpx;
+    width: 400rpx;
+    margin: 20rpx;
+    background: #fa6650;
+    border-radius: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit > image {
+    height: 44rpx;
+    width: 42rpx;
+    margin-right: 20rpx;
+}
+.submit > text {
+    font-size: 24rpx;
+    color: white;
+}
+</style>

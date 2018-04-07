@@ -1,0 +1,108 @@
+<style lang="scss">
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+</style>
+
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+
+import { setStore } from 'wepy-redux';
+import configStore from './store';
+
+const store = configStore();
+setStore(store);
+
+export default class extends wepy.app {
+    config = {
+        pages: [
+            'pages/index',
+            'pages/msg',
+            'pages/profile',
+            'pages/house',
+            'pages/login',
+            'pages/pets',
+            'pages/addpet'
+        ],
+        window: {
+            backgroundTextStyle: 'light',
+            navigationBarBackgroundColor: '#FA6650',
+            navigationBarTitleText: '小宠爱',
+            navigationBarTextStyle: 'white'
+        },
+        tabBar: {
+            color: '#808080',
+            selectedColor: '#FA6650',
+            borderStyle: 'white',
+            list: [
+                {
+                    pagePath: 'pages/index',
+                    text: '寄养',
+                    iconPath: 'assets/images/earth-0.png',
+                    selectedIconPath: 'assets/images/earth-1.png'
+                },
+                {
+                    pagePath: 'pages/msg',
+                    text: '消息',
+                    iconPath: 'assets/images/chat-0.png',
+                    selectedIconPath: 'assets/images/chat-1.png'
+                },
+                {
+                    pagePath: 'pages/profile',
+                    text: '我的',
+                    iconPath: 'assets/images/me-0.png',
+                    selectedIconPath: 'assets/images/me-1.png'
+                }
+            ]
+        }
+    };
+
+    globalData = {
+        userInfo: null
+    };
+
+    constructor() {
+        super();
+        this.use('requestfix');
+    }
+
+    onLaunch() {
+
+    }
+    login() {
+        return new Promise((resolve, reject) => {
+            wepy.login({
+                success(res) {
+                    resolve(res);
+                },
+                fail() {
+                    reject(new Error('login fail'));
+                }
+            });
+        });
+    }
+    getUserInfo() {
+        const that = this;
+        if (this.globalData.userInfo) {
+            return this.globalData.userInfo;
+        }
+        return new Promise((resolve, reject) => {
+            wepy.getUserInfo({
+                success(res) {
+                    that.globalData.userInfo = res.userInfo;
+                    resolve(res.userInfo);
+                },
+                fail() {
+                    reject(new Error('get user info fail'));
+                }
+            });
+        });
+    }
+}
+</script>

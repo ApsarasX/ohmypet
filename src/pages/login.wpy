@@ -1,0 +1,56 @@
+<style lang="scss" scoped>
+
+</style>
+
+<template>
+    <view class="container">
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { connect } from 'wepy-redux';
+import testMixin from '../mixins/test';
+
+@connect({
+    num(state) {
+        return state.counter.num;
+    },
+    asyncNum(state) {
+        return state.counter.asyncNum;
+    },
+    sumNum(state) {
+        return state.counter.num + state.counter.asyncNum;
+    }
+})
+export default class Login extends wepy.page {
+    config = {
+
+    };
+    components = {
+
+    };
+
+    mixins = [testMixin];
+
+    data = {
+
+    };
+
+    computed = {
+
+    };
+
+    methods = {
+
+    };
+
+    events = {
+
+    };
+
+    onLoad() {
+
+    }
+}
+</script>

@@ -1,0 +1,95 @@
+
+<template>
+    <view class='pet-item'>
+        <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+        <text>帅气的斯比奈鲁</text>
+    </view>
+    <navigator open-type="navigateTo" url='./addpet'>
+        <view class='pets-add-button'>
+            <image src='../assets/images/telephone.png'></image>
+            <text>添加宠物</text>
+        </view>
+    </navigator>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { connect } from 'wepy-redux';
+import testMixin from '../mixins/test';
+
+@connect({
+    num(state) {
+        return state.counter.num;
+    },
+    asyncNum(state) {
+        return state.counter.asyncNum;
+    },
+    sumNum(state) {
+        return state.counter.num + state.counter.asyncNum;
+    }
+})
+export default class Pets extends wepy.page {
+    config = {
+
+    };
+    components = {
+
+    };
+
+    mixins = [testMixin];
+
+    data = {};
+
+    computed = {};
+
+    methods = {};
+
+    events = {};
+
+    onLoad() {}
+}
+</script>
+<style lang="scss" scoped>
+page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 750rpx;
+}
+.pet-item {
+    height: 120rpx;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1rpx solid #c4c2c2;
+}
+.pet-item > image {
+    height: 80rpx;
+    width: 80rpx;
+    border-radius: 50%;
+    margin: 20rpx;
+}
+.pet-item > text {
+    font-size: 34rpx;
+    color: #fa6650;
+}
+.pets-add-button {
+    width: 750rpx;
+    height: 60rpx;
+    margin: 34rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pets-add-button > image {
+    width: 42rpx;
+    height: 44rpx;
+    margin: 0 20rpx 0 0;
+}
+.pets-add-button > text {
+    font-size: 28rpx;
+    color: #fa6650;
+}
+</style>

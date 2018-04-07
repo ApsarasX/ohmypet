@@ -1,0 +1,15 @@
+{
+	"description": "Wechat Mini-app for XiaoChong",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wx211cb8e84f3c849b",
+	"projectname": "ohmypet-wepy",
+	"miniprogramRoot": "./dist",
+	"condition": {}
+}
