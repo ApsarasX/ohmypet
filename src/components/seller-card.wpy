@@ -2,7 +2,7 @@
     <view class='item'>
         <view class='item-status'>{{status}}</view>
         <view class='back-img'>
-            <image src="{{poster}}"></image>
+            <image src="{{cover}}"></image>
         </view>
         <view class='item-text-container'>
             <view class='item-title'>
@@ -34,6 +34,12 @@ export default class SellerCard extends wepy.component {
             default:
                 'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'
         },
+        // 商家宠物屋封面
+        cover: {
+            type: String,
+            default:
+                'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'
+        },
         // 是否信用认证
         certification: {
             type: Boolean,
@@ -48,12 +54,6 @@ export default class SellerCard extends wepy.component {
         status: {
             type: String,
             default: '暂不接单'
-        },
-        // 商家宠物屋封面
-        poster: {
-            type: String,
-            default:
-                'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'
         },
         // 价格
         price: {
@@ -85,14 +85,6 @@ export default class SellerCard extends wepy.component {
 </script>
 
 <style lang="scss" scoped>
-.items-container {
-    min-height: 980rpx;
-    width: 750rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
 .item {
     height: 436rpx;
     width: 654rpx;
@@ -159,7 +151,7 @@ export default class SellerCard extends wepy.component {
     bottom: 0;
     right: 0;
     height: 80rpx;
-    width: 200rpx;
+    width: 220rpx;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;

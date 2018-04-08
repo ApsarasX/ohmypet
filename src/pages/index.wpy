@@ -2,61 +2,62 @@
     <search-bar @query.user="queryChange"></search-bar>
     <view class='main-body'>
         <filter-bar></filter-bar>
-        <view class='items-container'>
-            <navigator open-type="navigateTo" url='./house?house_id=111'>
-                <seller-card></seller-card>
-            </navigator>
+        <scroll-view class="scroll-view" scroll-y>
+            <view class='items-container'>
+                <navigator open-type="navigateTo" url='./house?house_id=111'>
+                    <seller-card></seller-card>
+                </navigator>
+                <view class='item'>
+                    <view class='item-status'>春节接单</view>
+                    <view class='back-img'>
+                        <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg'></image>
+                    </view>
+                    <view class='item-text-container'>
+                        <view class='item-title'>
+                            <text>有猫有家</text>
+                            <view class='item-detail'>评分 5.0</view>
+                        </view>
+                        <view class='item-price'>
+                            <text>
+                                <text class='item-price-number'>¥60</text> 起 每晚 </text>
+                            <view class='item-detail'>距我 14.22km </view>
+                        </view>
+                    </view>
+                    <view class='item-head-icon'>
+                        <text>信用认证</text>
+                        <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg'></image>
+                    </view>
+                </view>
 
-            <view class='item'>
-                <view class='item-status'>春节接单</view>
-                <view class='back-img'>
-                    <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg'></image>
-                </view>
-                <view class='item-text-container'>
-                    <view class='item-title'>
-                        <text>有猫有家</text>
-                        <view class='item-detail'>评分 5.0</view>
+                <view class='item'>
+                    <view class='item-status'>可随时接单</view>
+                    <view class='back-img'>
+                        <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
                     </view>
-                    <view class='item-price'>
-                        <text>
-                            <text class='item-price-number'>¥60</text> 起 每晚 </text>
-                        <view class='item-detail'>距我 14.22km </view>
+                    <view class='item-text-container'>
+                        <view class='item-title'>
+                            <text>巧克莉与小可爱</text>
+                            <view class='item-detail'>评分 5.0</view>
+                        </view>
+                        <view class='item-price'>
+                            <text>
+                                <text class='item-price-number'>¥40</text> 起 每晚 </text>
+                            <view class='item-detail'>距我 7.32km </view>
+                        </view>
                     </view>
-                </view>
-                <view class='item-head-icon'>
-                    <text>信用认证</text>
-                    <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg'></image>
+                    <view class='item-head-icon'>
+                        <text>信用认证</text>
+                        <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
+                    </view>
                 </view>
             </view>
-
-            <view class='item'>
-                <view class='item-status'>可随时接单</view>
-                <view class='back-img'>
-                    <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
-                </view>
-                <view class='item-text-container'>
-                    <view class='item-title'>
-                        <text>巧克莉与小可爱</text>
-                        <view class='item-detail'>评分 5.0</view>
-                    </view>
-                    <view class='item-price'>
-                        <text>
-                            <text class='item-price-number'>¥40</text> 起 每晚 </text>
-                        <view class='item-detail'>距我 7.32km </view>
-                    </view>
-                </view>
-                <view class='item-head-icon'>
-                    <text>信用认证</text>
-                    <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
-                </view>
-            </view>
-
-        </view>
+        </scroll-view>
     </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import { request } from '../lib';
 import Mixin from '../mixins/index';
 import SerachBar from '../components/search-bar';
 import FilterBar from '../components/filter-bar';
@@ -72,7 +73,9 @@ export default class Index extends wepy.page {
 
     mixins = [Mixin];
 
-    data = {};
+    data = {
+        sellerList: []
+    };
 
     computed = {};
 
@@ -85,7 +88,33 @@ export default class Index extends wepy.page {
 
     events = {};
 
-    onLoad() {}
+    onLoad() {
+        this.getAllSellers();
+    }
+
+    async getAllSellers() {
+        try {
+            const res = await request('http://xiao.pet/api/user/adopter', 'POST', {
+                openid: this.$parent.globalData.openid
+            });
+            if (res.code === 0) {
+                this.sellerList = res.data.data.map(item => {
+                    return {
+                        avatar: null,
+                        cover: item.cover.url,
+                        certification: null,
+                        name: item.name,
+                        status: null,
+                        price: null,
+                        range: null,
+                        rate: item.rank
+                    };
+                });
+            }
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -94,9 +123,16 @@ export default class Index extends wepy.page {
     min-height: 100%;
     width: 750rpx;
 }
+.scroll-view {
+    height: 930rpx;
+    position: fixed;
+    top: 180rpx;
+    bottom: 0px;
+    left: 0px;
+}
 /* Items */
 .items-container {
-    min-height: 980rpx;
+    min-height: 930rpx;
     width: 750rpx;
     display: flex;
     flex-direction: column;

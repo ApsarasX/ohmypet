@@ -78,9 +78,11 @@ export default class extends wepy.app {
         const openid = wepy.getStorageSync('openid');
         if (openid && openid.length !== 0) {
             this.globalData.openid = openid;
-            return;
+            this.globalData.hasLogin = true;
+        } else {
+            await this.login();
         }
-        await this.login();
+        await this.getUserLocation();
     }
     /**
      * @function login 向服务器发起登录请求
@@ -164,6 +166,29 @@ export default class extends wepy.app {
                 },
                 fail() {
                     reject(new Error('get user info fail'));
+                }
+            });
+        });
+    }
+
+    getUserLocation() {
+        const that = this;
+        if (this.globalData.userLocation) {
+            return this.globalData.userLocation;
+        }
+        return new Promise((resolve, reject) => {
+            wepy.getLocation({
+                success(res) {
+                    const userLocation = {
+                        latitude: res.latitude,
+                        longitude: res.longitude,
+                        altitude: res.altitude
+                    };
+                    that.globalData.userLocation = userLocation;
+                    resolve(userLocation);
+                },
+                fail() {
+                    reject(new Error('get user location fail'));
                 }
             });
         });

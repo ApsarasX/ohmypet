@@ -20,7 +20,7 @@ export default function(url, method, data) {
                 }
             },
             fail() {
-                reject(new Error('request fail'));
+                reject(new Error(`request fail: ${url}`));
             }
         });
     });
