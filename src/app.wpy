@@ -74,6 +74,12 @@ export default class extends wepy.app {
     }
 
     async onLaunch() {
+        // 小程序启动时, 先尝试本地获取openid, 本地没有则向服务器请求
+        const openid = wepy.getStorageSync('openid');
+        if (openid && openid.length !== 0) {
+            this.globalData.openid = openid;
+            return;
+        }
         await this.login();
     }
     /**
@@ -90,13 +96,40 @@ export default class extends wepy.app {
                 });
                 if (res.code === 0) {
                     this.globalData.hasLogin = true;
-                    this.$apply();
+                    this.globalData.openid = res.data.openid;
+                    wepy.setStorageSync('openid', res.data.openid);
+                    // 第一次登陆后如果返回的用户信息 nickname === null
+                    if (res.data.nickname === null) {
+                        await this.fillUserInfo();
+                    }
                 }
             } catch (e) {
                 console.log(e.message);
             }
         }
     }
+
+    /**
+     * @function fillUserInfo 向服务器补充用户信息
+     */
+    async fillUserInfo() {
+        const { avatarUrl: avatar, nickName: nickname } = await this.getUserInfo();
+        try {
+            const res = await request('http://xiao.pet/api/user/info/fill', 'POST', {
+                openid: this.globalData.openid,
+                nickname,
+                avatar
+            });
+            if (res.code === 0) {
+                console.log('补充用户信息完成');
+            } else {
+                console.log('补充用户信息失败');
+            }
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
+
     /**
      * @function getCode 调用wx.login获取code准备向服务器发起登录请求
      * @return {Promise} 临时登录凭证code
@@ -113,6 +146,7 @@ export default class extends wepy.app {
             });
         });
     }
+
     /**
      * @function getUserInfo 获取用户信息
      * @return {Promise(Object)} 用户信息对象

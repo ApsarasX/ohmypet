@@ -57,23 +57,11 @@
 
 <script>
 import wepy from 'wepy';
-import { connect } from 'wepy-redux';
 import Mixin from '../mixins/index';
 import SerachBar from '../components/search-bar';
 import FilterBar from '../components/filter-bar';
 import SellerCard from '../components/seller-card';
 
-@connect({
-    num(state) {
-        return state.counter.num;
-    },
-    asyncNum(state) {
-        return state.counter.asyncNum;
-    },
-    sumNum(state) {
-        return state.counter.num + state.counter.asyncNum;
-    }
-})
 export default class Index extends wepy.page {
     config = {};
     components = {

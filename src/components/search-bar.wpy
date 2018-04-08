@@ -15,7 +15,7 @@ export default class SearchBar extends wepy.component {
             this.debounce(() => {
                 // 向父组件派发事件
                 this.$emit('query', e.detail.value);
-            }, 800);
+            }, 400);
         }
     };
     watch = {

@@ -9,8 +9,8 @@ export default function(url, method, data) {
                 'X-Requested-With': 'XMLHttpRequest'
             },
             success(res) {
-                if (res.statusCode === 200) {
-                    resolve(res);
+                if (res.statusCode >= 200 || res.statusCode < 300) {
+                    resolve(res.data);
                 } else {
                     reject(
                         new Error(
