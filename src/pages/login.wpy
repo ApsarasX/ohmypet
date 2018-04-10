@@ -1,18 +1,22 @@
 <template>
     <view class="login-container">
-        <view class="form-wrapper">
-            <input type="number" bindinput="mobileChange" auto-focus placeholder="手机号" placeholder-style="color: rgba(250,102,80,0.30);text-align: center;" />
-            <input type="number" bindinput="msgCodeChange" placeholder="验证码" placeholder-style="color: rgba(250,102,80,0.30);text-align: center;" />
-            <checkbox-group bindchange="agreementChange">
-                <label class="agreement">
-                    <checkbox value="agreement" checked="{{agreement}}" color="#FA6650" />
-                    <text>同意用户协议</text>
-                </label>
-            </checkbox-group>
+        <view class="input-wrapper">
+            <input type="number" bindinput="mobileChange" placeholder="手机号" placeholder-class="login-input-placeholder" />
         </view>
+        <view class="input-wrapper">
+            <input type="number" bindinput="msgCodeChange" placeholder="验证码" placeholder-class="login-input-placeholder" />
+        </view>
+        <checkbox-group bindchange="agreementChange" class="checkbox-wrapper">
+            <label class="agreement">
+                <checkbox value="agreement" checked="{{agreement}}" color="#FA6650" />
+                <text>同意用户协议</text>
+            </label>
+        </checkbox-group>
         <view class="btn-wrapper">
-            <button class="send-btn">发送验证码</button>
-            <button class="login-btn">登入</button>
+            <button class="send-btn" catchtap="sendCode" disabled="{{countdown>0}}">
+                {{countdown > 0 ? countdown+'s 后再次发送' : '发送验证码'}}
+            </button>
+            <button class="login-btn" catchtap="login">登入</button>
         </view>
     </view>
 </template>
@@ -20,6 +24,9 @@
 <script>
 import wepy from 'wepy';
 import Mixin from '../mixins/index';
+
+const MOBILE_REG = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+const MSGCODE_REG = /^\d{6}$/;
 
 export default class Login extends wepy.page {
     config = {
@@ -32,7 +39,9 @@ export default class Login extends wepy.page {
     data = {
         mobile: '',
         msgCode: '',
-        agreement: true
+        agreement: true,
+        timer: null,
+        countdown: 0
     };
 
     computed = {};
@@ -50,81 +59,137 @@ export default class Login extends wepy.page {
             } else {
                 this.agreement = false;
             }
+        },
+        // 发送验证码
+        sendCode() {
+            if (this.countdown > 0) return;
+            this.countDown();
+            console.log('发送短信验证码');
+            wepy.showToast({
+                title: '发送成功',
+                icon: 'success',
+                mask: true
+            });
+        },
+        // 登入
+        login() {
+            if (!MOBILE_REG.test(this.mobile)) {
+                wepy.showModal({
+                    title: '请输入正确的手机号',
+                    showCancel: false,
+                    confirmColor: '#fa6650'
+                });
+            } else if (!MSGCODE_REG.test(this.msgCode)) {
+                wepy.showModal({
+                    title: '请输入正确的验证码',
+                    showCancel: false,
+                    confirmColor: '#fa6650'
+                });
+            } else if (!this.agreement) {
+                wepy.showModal({
+                    title: '您未同意本产品的协议',
+                    showCancel: false,
+                    confirmColor: '#fa6650'
+                });
+            }
         }
     };
 
     events = {};
 
-    onLoad() {
-
-    }
-
-    sendCode() {
-
-    }
-
-    login() {
-
+    onLoad() {}
+    // 倒计时
+    countDown() {
+        if (this.timer) {
+            clearInterval(this.timer);
+        }
+        this.countdown = 60;
+        this.timer = setInterval(() => {
+            if (this.countdown > 0) {
+                this.countdown--;
+                this.$apply();
+            } else {
+                clearInterval(this.timer);
+                this.timer = null;
+                this.$apply();
+            }
+        }, 1000);
     }
 }
 </script>
 
 <style lang="scss" scoped>
-// .login-container {
-//     font-family: PingFangSC-Regular;
-// }
-// .form-wrapper {
-//     width: 646rpx;
-//     height: 320rpx;
-//     margin: 80rpx auto 30rpx;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-around;
-//     align-items: center;
-//     & > input,
-//     & > input:focus {
-//         width: 100%;
-//         text-align: center;
-//         line-height: 40rpx;
-//         border-bottom: 1px solid #979797;
-//     }
+.login-container {
+    width: 646rpx;
+    margin: 60rpx auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.input-wrapper {
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.3);
+    position: relative;
+    & > input {
+        font-size: 32rpx;
+        display: inline-block;
+        width: 100%;
+        height: 80%;
+        line-height: 100rpx;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+    }
+}
+.checkbox-wrapper {
+    width: 100%;
+    height: 60rpx;
+    margin-top: 20rpx;
+    text-align: right;
+    & > label {
+        font-size: 22rpx;
+        color: rgba(250, 102, 80, 0.7);
+        text-align: center;
+        & > checkbox {
+            transform: scale(0.55);
+            vertical-align: middle;
+        }
+        & > text {
+            vertical-align: middle;
+        }
+    }
+}
+.btn-wrapper {
+    margin-top: 45rpx;
+    & > button,
+    & > button:disabled {
+        width: 588rpx;
+        height: 88rpx;
+        opacity: 0.9;
+        font-size: 36rpx;
+        color: #ffffff;
+        text-align: center;
+        border: 1px solid rgba(250, 102, 80, 0.9);
+        border-radius: 8px;
+    }
+}
+.send-btn,
+.send-btn:disabled,
+.send-btn[disabled] {
+    background-color: rgba(250, 102, 80, 0.4);
+}
+.login-btn {
+    margin-top: 30rpx;
+    background-color: rgba(250, 102, 80, 0.7);
+}
+</style>
 
-//     & > checkbox-group {
-//         align-self: flex-end;
-//         width: 250rpx;
-//     }
-// }
-// .agreement {
-//     display: block;
-//     width: 100%;
-//     font-size: 20rpx;
-//     text-align: right;
-//     & > checkbox {
-//         width: 10rpx;
-//         height: 10rpx;
-//     }
-// }
-// .send-btn {
-//     width: 588rpx;
-//     height: 88rpx;
-//     opacity: 0.9;
-//     font-size: 36rpx;
-//     color: #ffffff;
-//     text-align: center;
-//     background: rgba(250, 102, 80, 0.4);
-//     border: 1px solid #fa6650;
-//     border-radius: 8px;
-// }
-// .login-btn {
-//     width: 588rpx;
-//     height: 88rpx;
-//     margin-top: 30rpx;
-//     opacity: 0.9;
-//     font-size: 36rpx;
-//     color: #ffffff;
-//     text-align: center;
-//     background: rgba(250, 102, 80, 0.7);
-//     border: 1px solid #fa6650;
-//     border-radius: 8px;
-// }
+<style>
+.login-input-placeholder {
+    color: #fa6650;
+    text-align: center;
+    line-height: 100rpx;
+}
 </style>

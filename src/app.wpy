@@ -25,8 +25,8 @@ export default class extends wepy.app {
             'pages/index',
             'pages/msg',
             'pages/profile',
-            'pages/house',
             'pages/login',
+            'pages/house',
             'pages/pets',
             'pages/addpet'
         ],
@@ -71,6 +71,7 @@ export default class extends wepy.app {
     constructor() {
         super();
         this.use('requestfix');
+        this.use('promisify');
     }
 
     async onLaunch() {
@@ -170,7 +171,7 @@ export default class extends wepy.app {
             });
         });
     }
-
+    // 获得用户地理位置
     getUserLocation() {
         const that = this;
         if (this.globalData.userLocation) {
@@ -192,6 +193,10 @@ export default class extends wepy.app {
                 }
             });
         });
+    }
+
+    isFirstLogin() {
+
     }
 }
 </script>
