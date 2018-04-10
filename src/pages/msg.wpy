@@ -1,5 +1,30 @@
 <template>
-    <view></view>
+    <view>
+        <scroll-view class="scroll-container" scroll-y>
+            <block wx:for="{{msgs}}" wx:key="createTime">
+                <block wx:if="{{item.isSelf}}">
+                    <view class="msg-wrapper reverse">
+                        <view class="text-wrapper">{{item.content}}</view>
+                        <view class="avatar-wrapper">
+                            <image class="avatar" src="{{avatar.self}}" />
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="msg-wrapper">
+                        <view class="avatar-wrapper">
+                            <image class="avatar" src="{{avatar.seller}}" />
+                        </view>
+                        <view class="text-wrapper">{{item.content}}</view>
+                    </view>
+                </block>
+            </block>
+        </scroll-view>
+        <view class="bottom-container">
+            <input type="text" class="input" confirm-type="发送" maxlength="-1" />
+            <button class="send-btn">发送</button>
+        </view>
+    </view>
 </template>
 
 <script>
@@ -8,10 +33,100 @@ export default class Msg extends wepy.page {
     config = {
         navigationBarTitleText: '用户名'
     };
-    data = {};
+    data = {
+        msgs: [
+            {
+                isSelf: true,
+                createTime: '',
+                content: '您好您好您好您好'
+            },
+            {
+                isSelf: false,
+                createTime: '',
+                content: '您好您好您好您好'
+            }
+        ],
+        avatar: {
+            seller:
+                'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg',
+            self:
+                'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'
+        }
+    };
     methods = {};
 }
 </script>
 <style lang="scss" scoped>
-
+.scroll-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 100rpx;
+}
+.msg-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    & > view {
+        margin: 20rpx 0;
+        display: inline-block;
+        box-sizing: border-box;
+    }
+}
+.avatar-wrapper {
+    width: 120rpx;
+    padding: 0 20rpx;
+    transform: translate3d(0, 10%, 0);
+}
+.avatar {
+    height: 80rpx;
+    width: 80rpx;
+    border-radius: 50%;
+}
+.text-wrapper {
+    max-width: 510rpx;
+    padding: 20rpx;
+    font-size: 32rpx;
+    color: #404040;
+    border-radius: 20rpx;
+    line-height: 36rpx;
+    background-color: rgba(250, 102, 80, 0.3);
+}
+.reverse {
+    justify-content: flex-end;
+    & > .text-wrapper {
+        background-color: rgba(250, 102, 80, 0.75);
+    }
+}
+.bottom-container {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 750rpx;
+    height: 100rpx;
+    background-color: rgba(216, 216, 216, 0.5);
+}
+.input {
+    display: inline-block;
+    width: 72%;
+    height: 80%;
+    margin: 10rpx 10rpx 0 20rpx;
+    vertical-align: middle;
+    background-color: #fff;
+}
+.send-btn {
+    display: inline-block;
+    width: 20%;
+    height: 80%;
+    padding: 0;
+    margin: 10rpx 20rpx 0 10rpx;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    border-radius: 10rpx;
+    background-color: rgba(250, 102, 80, 0.9);
+    line-height: 80rpx;
+}
 </style>
