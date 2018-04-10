@@ -17,6 +17,7 @@
     "author": "pyyzcwg2833 <pyyzcwg2833@outlook.com>",
     "license": "MIT",
     "dependencies": {
+        "luxon": "^1.0.0",
         "redux": "^3.7.2",
         "redux-actions": "^2.2.1",
         "redux-promise": "^0.5.3",

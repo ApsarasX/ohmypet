@@ -1,11 +1,19 @@
 <template>
-    <view class='filter-bar'>
-        <view class='filter-position'>位置区域</view>
-        <view class='filter-sort'>推荐排序</view>
-        <view class='filter-condition'>筛选条件</view>
-        <view class='user-position'>
+    <view class="filter-bar-container">
+        <view class='filter-bar' catchtap="switchBar">
+            <view class="filter-position {{activeBar===1 && 'active-bar'}}" data-bar="1">位置区域</view>
+            <view class="filter-sort {{activeBar===2 && 'active-bar'}}" data-bar="2">推荐排序</view>
+            <view class="filter-condition {{activeBar===3 && 'active-bar'}}" data-bar="3">筛选条件</view>
+        </view>
+        <view class="down-select {{activeBar!==1 ? 'pull-up' : ''}}">
             <image src='../assets/images/position-icon.png'></image>
             <text>西安</text>
+        </view>
+        <view class="down-select {{activeBar!==2 ? 'pull-up' : ''}}" catchtap="switchSort">
+            <text class="{{activeSort===0? 'active-sort' : ''}}" data-sort="0">距离最近</text>
+            <text class="{{activeSort===1? 'active-sort' : ''}}" data-sort="1">价格最低</text>
+            <text class="{{activeSort===2? 'active-sort' : ''}}" data-sort="2">智能排序</text>
+            <text class="{{activeSort===3? 'active-sort' : ''}}" data-sort="3">评分最高</text>
         </view>
     </view>
 </template>
@@ -13,20 +21,44 @@
 import wepy from 'wepy';
 
 export default class FilterBar extends wepy.component {
-
+    data = {
+        activeBar: 0,
+        activeSort: 2
+    };
+    methods = {
+        switchBar(e) {
+            const bar = parseInt(e.target.dataset.bar);
+            if (this.activeBar === bar) {
+                this.activeBar = 0;
+            } else {
+                this.activeBar = bar;
+            }
+        },
+        // 排序方式
+        switchSort(e) {
+            const sort = parseInt(e.target.dataset.sort);
+            this.activeSort = sort;
+        }
+    };
 }
 </script>
 
 <style lang="scss" scoped>
+.filter-bar-container {
+    position: relative;
+    margin-bottom: 15rpx;
+}
 /* Filter Bar */
 .filter-bar {
+    position: relative;
+    z-index: 20;
     height: 80rpx;
     width: 750rpx;
     display: flex;
+    background-color: #fff;
     justify-content: center;
     align-items: center;
     box-shadow: 0 0 1rpx #979797;
-    margin-bottom: 15rpx;
 }
 .filter-position,
 .filter-sort,
@@ -46,23 +78,50 @@ export default class FilterBar extends wepy.component {
     border-bottom: 6rpx solid #000000;
     border-right: 6rpx solid #000000;
 }
+.active-bar {
+    color: #fa6650;
+    &::after {
+        border-bottom: 6rpx solid #fa6650;
+        border-right: 6rpx solid #fa6650;
+    }
+}
 /* User Position */
-.user-position {
+.down-select {
+    width: 100%;
     height: 60rpx;
-    width: 120rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    line-height: 60rpx;
+    position: absolute;
+    top: 82rpx;
+    z-index: 10;
+    background-color: #fff;
     border-radius: 5rpx;
-    margin: 0 10rpx;
+    text-align: center;
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    opacity: 0.8;
     & > image {
         height: 28rpx;
         width: 24rpx;
         margin-right: 10rpx;
+        vertical-align: middle;
     }
     & > text {
         font-size: 24rpx;
-        color: #fa6650;
+        padding: 0 20rpx;
+        vertical-align: middle;
     }
+    &:nth-of-type(2) {
+        & > text {
+            padding: 0;
+            color: #fa6650;
+        }
+    }
+}
+.active-sort {
+    color: #fa6650;
+}
+.pull-up {
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
 }
 </style>

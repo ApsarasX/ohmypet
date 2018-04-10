@@ -23,12 +23,13 @@ export default class extends wepy.app {
     config = {
         pages: [
             'pages/index',
-            'pages/msg',
+            'pages/msg-list',
             'pages/profile',
-            'pages/login',
             'pages/house',
+            'pages/msg',
             'pages/pets',
-            'pages/addpet'
+            'pages/add-pet',
+            'pages/login'
         ],
         window: {
             backgroundTextStyle: 'light',
@@ -39,7 +40,7 @@ export default class extends wepy.app {
         tabBar: {
             color: '#808080',
             selectedColor: '#FA6650',
-            borderStyle: 'white',
+            borderStyle: 'black',
             list: [
                 {
                     pagePath: 'pages/index',
@@ -48,7 +49,7 @@ export default class extends wepy.app {
                     selectedIconPath: 'assets/images/earth-1.png'
                 },
                 {
-                    pagePath: 'pages/msg',
+                    pagePath: 'pages/msg-list',
                     text: '消息',
                     iconPath: 'assets/images/chat-0.png',
                     selectedIconPath: 'assets/images/chat-1.png'
@@ -74,27 +75,26 @@ export default class extends wepy.app {
         this.use('promisify');
     }
 
-    async onLaunch() {
+    onLaunch() {
         // 小程序启动时, 先尝试本地获取openid, 本地没有则向服务器请求
         const openid = wepy.getStorageSync('openid');
         if (openid && openid.length !== 0) {
             this.globalData.openid = openid;
             this.globalData.hasLogin = true;
         } else {
-            await this.login();
+            this.login();
         }
-        await this.getUserLocation();
+        this.getUserLocation();
     }
     /**
      * @function login 向服务器发起登录请求
      * @return {void}
      */
     async login() {
-        const codeRes = await this.getCode();
+        const codeRes = await wepy.login();
         if (codeRes.errMsg === 'login:ok') {
             try {
                 const res = await request('http://xiao.pet/api/auth/login/wechat', 'POST', {
-                    mobile: '13201685806',
                     code: codeRes.code
                 });
                 if (res.code === 0) {
@@ -137,18 +137,18 @@ export default class extends wepy.app {
      * @function getCode 调用wx.login获取code准备向服务器发起登录请求
      * @return {Promise} 临时登录凭证code
      */
-    getCode() {
-        return new Promise((resolve, reject) => {
-            wepy.login({
-                success(res) {
-                    resolve(res);
-                },
-                fail() {
-                    reject(new Error('login fail'));
-                }
-            });
-        });
-    }
+    // getCode() {
+    //     return new Promise((resolve, reject) => {
+    //         wx.login({
+    //             success(res) {
+    //                 resolve(res);
+    //             },
+    //             fail() {
+    //                 reject(new Error('login fail'));
+    //             }
+    //         });
+    //     });
+    // }
 
     /**
      * @function getUserInfo 获取用户信息
@@ -195,8 +195,6 @@ export default class extends wepy.app {
         });
     }
 
-    isFirstLogin() {
-
-    }
+    isFirstLogin() {}
 }
 </script>

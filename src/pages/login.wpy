@@ -1,22 +1,22 @@
 <template>
     <view class="login-container">
         <view class="input-wrapper">
-            <input type="number" bindinput="mobileChange" placeholder="手机号" placeholder-class="login-input-placeholder" />
+            <input type="number" @input="mobileChange" placeholder="手机号" placeholder-class="login-input-placeholder" />
         </view>
         <view class="input-wrapper">
-            <input type="number" bindinput="msgCodeChange" placeholder="验证码" placeholder-class="login-input-placeholder" />
+            <input type="number" @input="msgCodeChange" placeholder="验证码" placeholder-class="login-input-placeholder" />
         </view>
-        <checkbox-group bindchange="agreementChange" class="checkbox-wrapper">
+        <checkbox-group @change="agreementChange" class="checkbox-wrapper">
             <label class="agreement">
                 <checkbox value="agreement" checked="{{agreement}}" color="#FA6650" />
                 <text>同意用户协议</text>
             </label>
         </checkbox-group>
         <view class="btn-wrapper">
-            <button class="send-btn" catchtap="sendCode" disabled="{{countdown>0}}">
+            <button class="send-btn" @tap.stop="sendCode" disabled="{{countdown>0}}">
                 {{countdown > 0 ? countdown+'s 后再次发送' : '发送验证码'}}
             </button>
-            <button class="login-btn" catchtap="login">登入</button>
+            <button class="login-btn" @tap.stop="login">登入</button>
         </view>
     </view>
 </template>
@@ -62,14 +62,22 @@ export default class Login extends wepy.page {
         },
         // 发送验证码
         sendCode() {
-            if (this.countdown > 0) return;
-            this.countDown();
-            console.log('发送短信验证码');
-            wepy.showToast({
-                title: '发送成功',
-                icon: 'success',
-                mask: true
-            });
+            if (!MOBILE_REG.test(this.mobile)) {
+                wepy.showModal({
+                    title: '请输入正确的手机号',
+                    showCancel: false,
+                    confirmColor: '#fa6650'
+                });
+            } else {
+                if (this.countdown > 0) return;
+                this.countDown();
+                console.log('发送短信验证码');
+                wepy.showToast({
+                    title: '发送成功',
+                    icon: 'success',
+                    mask: true
+                });
+            }
         },
         // 登入
         login() {

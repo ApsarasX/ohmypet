@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <view class="form-container">
         <view class='form-group'>
             <label for=''>宠物头像
                 <text class="require" class="require">*</text>
@@ -14,26 +14,26 @@
             <label for=''>宠物昵称
                 <text class="require" class="require">*</text>
             </label>
-            <input type='text' id=''></input>
+            <input type='text' id='' @input="changeNickname" />
         </view>
 
         <view class='form-group'>
             <label for=''>宠物品种
                 <text class="require" class="require">*</text>
             </label>
-            <input type='text' id=''></input>
+            <input type='text' id='' @input="changeVariety"></input>
         </view>
 
         <view class='form-group'>
             <label for=''>性别
                 <text class="require" class="require">*</text>
             </label>
-            <radio-group class="" bindchange="">
+            <radio-group class="" @change="changeGender">
                 <label class="">
-                    <radio value="" checked="" color='#FA6650' />男
+                    <radio value="male" checked="true" color='#FA6650' />男
                 </label>
                 <label class="">
-                    <radio value="" checked="" color='#FA6650' />女
+                    <radio value="female" color='#FA6650' />女
                 </label>
             </radio-group>
         </view>
@@ -42,8 +42,8 @@
             <label for=''>体重
                 <text class="require" class="require">*</text>
             </label>
-            <picker mode="selector" bindchange='bindPickerChange' value='{{index}}' range='{{ weight }}'>
-                <view class='picker'>{{ weight[index] }}</view>
+            <picker mode="selector" value='{{weightIndex}}' range='{{ weightRange }}' @change='changeWeight'>
+                <view class='picker'>{{ weightRange[weightIndex] }}</view>
             </picker>
         </view>
 
@@ -52,8 +52,7 @@
                 <text class="require" class="require">*</text>
             </label>
             <view class='switch-group'>
-                <switch bindchange="switchJueyu" color='#FA6650' />
-                <text>{{ jueyu }}</text>
+                <switch @change="changeJueyu" color='#FA6650' />
             </view>
         </view>
 
@@ -62,8 +61,7 @@
                 <text class="require" class="require">*</text>
             </label>
             <view class='switch-group'>
-                <switch bindchange="switchMianyi" color='#FA6650' />
-                <text>{{mianyi}}</text>
+                <switch @change="changeMianyi" color='#FA6650' />
             </view>
         </view>
 
@@ -71,7 +69,7 @@
             <label for=''>出生年月
                 <text class="require" class="require">*</text>
             </label>
-            <picker mode="date" value="{{birthday}}" start="2010-01-01" end="2020-01-01" bindchange="bindBirthDateChange">
+            <picker mode="date" value="{{birthday}}" fields="month" start="2010-01-01" end="2020-01-01" @change="changeBirthday">
                 <view class="picker">
                     {{birthday}}
                 </view>
@@ -82,7 +80,7 @@
             <label for=''>到家日期
                 <text class="require" class="require">*</text>
             </label>
-            <picker mode="date" value="{{homeday}}" start="2010-01-01" end="2020-01-01" bindchange="bindHomeDateChange">
+            <picker mode="date" value="{{homeday}}" start="2010-01-01" end="2020-01-01" @change="changeHomeday">
                 <view class="picker">
                     {{homeday}}
                 </view>
@@ -101,7 +99,7 @@
 
         <view class='form-group textarea'>
             <label for=''>爱宠介绍</label>
-            <textarea></textarea>
+            <textarea maxlength="250" @input="changeIntroduction"></textarea>
         </view>
 
         <view class='form-group submit-container'>
@@ -110,28 +108,69 @@
                 <text>提交资料</text>
             </view>
         </view>
-    </form>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
-import Mixin from '../mixins/index';
-
+import { DateTime } from 'luxon';
+const weightRange = new Array(10)
+    .fill(0)
+    .map((item, index) => `${index * 5} ~ ${(index + 1) * 5} kg`);
+const now = DateTime.local();
 export default class AddPet extends wepy.page {
     config = {
-
+        navigationBarTitleText: '添加宠物'
     };
-    components = {
+    components = {};
 
+    data = {
+        nickname: '',
+        variety: '',
+        gender: 'male',
+        jueyu: false,
+        mianyi: false,
+        weight: '',
+        birthday: now.toFormat('yyyy-MM'),
+        homeday: now.toFormat('yyyy-MM-dd'),
+        introduction: '',
+        weightRange,
+        weightIndex: 0
     };
-
-    mixins = [Mixin];
-
-    data = {};
 
     computed = {};
 
-    methods = {};
+    methods = {
+        changeNickname(e) {
+            this.nickname = e.detail.value;
+        },
+        changeVariety(e) {
+            this.variety = e.detail.value;
+        },
+        changeGender(e) {
+            this.gender = e.detail.value;
+        },
+        changeJueyu(e) {
+            console.log(e);
+            this.jueyu = e.detail.value;
+        },
+        changeMianyi(e) {
+            this.mianyi = e.detail.value;
+        },
+        changeWeight(e) {
+            this.weightIndex = e.detail.value;
+            this.weight = weightRange[this.weightIndex];
+        },
+        changeBirthday(e) {
+            this.birthday = e.detail.value;
+        },
+        changeHomeday(e) {
+            this.homeday = e.detail.value;
+        },
+        changeIntroduction(e) {
+            this.introduction = e.detail.value;
+        }
+    };
 
     events = {};
 
@@ -140,11 +179,11 @@ export default class AddPet extends wepy.page {
 </script>
 
 <style lang="scss" scoped>
-page {
+.form-container {
     width: 750rpx;
     min-height: 100%;
     box-sizing: border-box;
-    padding: 40rpx;
+    padding: 50rpx;
 }
 .form-group > label {
     font-size: 34rpx;
@@ -241,26 +280,26 @@ radio-group > label {
     font-size: 24rpx;
     color: #9b9b9b;
 }
-.wx-radio-input {
-    width: 40rpx;
-    height: 40rpx;
-}
+// .wx-radio-input {
+//     width: 40rpx;
+//     height: 40rpx;
+// }
 .switch-group > text {
     font-size: 24rpx;
     color: #9b9b9b;
 }
-.wx-switch-input {
-    width: 42px !important;
-    height: 22px !important;
-}
-.wx-switch-input::before {
-    width: 100% !important;
-    height: 100% !important;
-}
-.wx-switch-input::after {
-    width: 48rpx !important;
-    height: 48rpx !important;
-}
+// .wx-switch-input {
+//     width: 42px !important;
+//     height: 22px !important;
+// }
+// .wx-switch-input::before {
+//     width: 100% !important;
+//     height: 100% !important;
+// }
+// .wx-switch-input::after {
+//     width: 48rpx !important;
+//     height: 48rpx !important;
+// }
 .picker {
     font-size: 28rpx;
     color: #fa6650;

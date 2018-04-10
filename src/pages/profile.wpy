@@ -145,6 +145,7 @@ export default class Profile extends wepy.page {
     width: 750rpx;
     height: 80rpx;
     line-height: 60rpx;
+    padding-left: 20rpx;
     font-size: 34rpx;
     color: #fa6650;
     margin: 20rpx 0;
