@@ -23,7 +23,6 @@
 
 <script>
 import wepy from 'wepy';
-import Mixin from '../mixins/index';
 
 const MOBILE_REG = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
 const MSGCODE_REG = /^\d{6}$/;
@@ -33,8 +32,6 @@ export default class Login extends wepy.page {
         navigationBarTitleText: '登入'
     };
     components = {};
-
-    mixins = [Mixin];
 
     data = {
         mobile: '',

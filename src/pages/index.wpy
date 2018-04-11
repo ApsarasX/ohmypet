@@ -4,7 +4,7 @@
         <filter-bar></filter-bar>
         <scroll-view class="scroll-view" scroll-y>
             <view class='items-container'>
-                <navigator open-type="navigateTo" url='./house?house_id=111'>
+                <navigator open-type="navigateTo" url='./order'>
                     <seller-card></seller-card>
                 </navigator>
                 <view class='item'>

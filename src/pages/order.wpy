@@ -1,0 +1,360 @@
+
+
+<template>
+    <view>
+        <view class='banner-container'>
+            <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'></image>
+        </view>
+
+        <view class='house-info-container'>
+
+            <view class='house-info'>
+                <view class='house-info-head-icon'>
+                    <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
+                </view>
+                <view class='house-info-title'>
+                    <text>巧克莉与小可爱</text>
+                    <text class='score'>评分 5.0</text>
+                </view>
+                <view class='house-info-tag'>
+                    <view class="tag">可随时接单</view>
+                    <view class="tag">养宠经验 10年</view>
+                </view>
+            </view>
+
+            <view class='house-info'>
+                <view class='house-info-title'>
+                    <text>信用认证</text>
+                </view>
+                <view class='house-info-tag'>
+                    <view class="tag">实名视频认证</view>
+                    <view class="tag">信用保证金 ¥1000</view>
+                    <view class="tag">芝麻信用分</view>
+                    <view class="tag">疫苗证</view>
+                </view>
+            </view>
+
+            <view class='house-info'>
+                <view class='house-info-title'>
+                    <text>寄养环境</text>
+                </view>
+                <view class='house-info-tag'>
+                    <view class="tag">单元住宅</view>
+                    <view class="tag">100平米以上</view>
+                    <view class="tag">带阳台</view>
+                    <view class="tag">封闭阳台</view>
+                    <view class="tag">空调</view>
+                    <view class="tag">电梯</view>
+                    <view class="tag">小区花园</view>
+                    <view class="tag">周边公园</view>
+                    <view class="tag">交通便利</view>
+                </view>
+                <view class='house-position'>
+                    <image src='../assets/images/position-icon.png'></image>
+                    <text>陕西省西安市长安区兴隆社区</text>
+                </view>
+            </view>
+
+            <view class='house-info'>
+                <view class='house-info-title'>
+                    <text>寄养价格</text>
+                </view>
+                <view class='house-info-price'>
+                    <view class='house-info-price-group'>
+                        <text>猫</text>
+                        <view>¥40</view>
+                    </view>
+                    <view class='house-info-price-group'>
+                        <text>小型犬</text>
+                        <view>¥50</view>
+                    </view>
+                    <view class='house-info-price-group'>
+                        <text>中型犬</text>
+                        <view>¥60</view>
+                    </view>
+                </view>
+
+                <view class='house-info-promotion'>
+                    <view>新用户下单，立减20元</view>
+                    <view>老顾客下单，每单立减10元</view>
+                </view>
+            </view>
+
+            <view class='house-info'>
+                <view class='house-info-title'>
+                    <text>家中宠物</text>
+                </view>
+                <view class='house-info-animal-group'>
+                    <view class='house-info-animal'>
+                        <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+                        <text class='house-info-animal-name'>小可爱</text>
+                        <text class='house-info-animal-type'>英国短毛猫</text>
+                    </view>
+                </view>
+            </view>
+
+            <view class='house-info'>
+                <view class='house-info-title'>
+                    <text>来自寄养屋主的Tips</text>
+                </view>
+                <view class='house-info-tips'>允许宠物上沙发，有专门的宠物活动区</view>
+            </view>
+
+            <view class='house-info'>
+                <view class='house-info-title'>
+                    <text>寄养屋日历</text>
+                </view>
+                <navigator open-type='navigateTo' url=''>
+                    <text class='house-info-order'>查看预约情况</text>
+                </navigator>
+            </view>
+        </view>
+
+        <view class='house-button-group'>
+            <navigator open-type='switchTab' url='../msg/msg'>
+                <view class='house-info-msg-button'>
+                    <image src='../assets/images/chat-1.png'></image>
+                    <text>消息</text>
+                </view>
+            </navigator>
+            <navigator open-type='navigateTo' url=''>
+                <view class='house-info-order-button'>
+                    <text>立即预订</text>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import Mixin from '../mixins/index';
+
+export default class Order extends wepy.page {
+    config = {
+
+    };
+    components = {
+
+    };
+
+    mixins = [Mixin];
+
+    data = {};
+
+    computed = {};
+
+    methods = {};
+
+    events = {};
+
+    onLoad() {}
+}
+</script>
+<style lang="scss" scoped>
+.banner-container {
+    height: 400rpx;
+    width: 750rpx;
+    overflow: hidden;
+    margin-bottom: 10rpx;
+}
+.banner-container > image {
+    height: 100%;
+    width: 100%;
+}
+.house-info-container {
+    min-height: 980rpx;
+    width: 750rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 150rpx;
+}
+.house-info {
+    min-height: 130rpx;
+    height: auto;
+    width: 750rpx;
+    box-sizing: border-box;
+    padding: 0 40rpx;
+    border-bottom: 1rpx solid #c4c2c2;
+}
+.house-info:first-of-type {
+    position: relative;
+}
+.house-info:last-of-type {
+    border-bottom: none;
+}
+.tag,
+.score {
+    font-size: 22rpx;
+    color: #fa6650;
+    margin: 10rpx 20rpx;
+    display: inline-block;
+}
+.house-info-head-icon {
+    height: 80rpx;
+    width: 80rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    right: 50rpx;
+    bottom: 30rpx;
+}
+.house-info-head-icon > image {
+    height: 100%;
+    width: 100%;
+}
+.house-info-title {
+    font-size: 34rpx;
+    color: #404040;
+    width: 100%;
+    margin: 20rpx 0 10rpx 0;
+    font-weight: bold;
+}
+.house-info-tag {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
+.house-position {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20rpx;
+    margin-left: 0;
+}
+.house-position > image {
+    height: 28rpx;
+    width: 24rpx;
+}
+.house-position > text {
+    font-size: 24rpx;
+    color: #404040;
+    margin-left: 20rpx;
+}
+.house-info-price {
+    height: 60rpx;
+    width: 100%;
+}
+.house-info-price-group {
+    height: 60rpx;
+    width: 200rpx;
+    display: inline-block;
+}
+.house-info-price-group > text {
+    font-size: 18rpx;
+    color: #404040;
+    margin-right: 40rpx;
+}
+.house-info-price-group > view {
+    font-size: 34rpx;
+    color: #fa6650;
+    display: inline-block;
+}
+.house-info-promotion {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20rpx 0;
+}
+.house-info-promotion > view {
+    font-size: 22rpx;
+    color: #fa6650;
+    display: inline-block;
+    margin: 0 20rpx;
+}
+.house-info-animal-group {
+    width: 100%rpx;
+    height: 160rpx;
+    margin-bottom: 20rpx;
+}
+.house-info-animal {
+    width: 100rpx;
+    height: 160rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.house-info-animal > image {
+    height: 80rpx;
+    width: 80rpx;
+    border-radius: 50%;
+}
+.house-info-animal-name {
+    width: 100%;
+    font-size: 18rpx;
+    color: #404040;
+    text-align: center;
+}
+.house-info-animal-type {
+    width: 100%;
+    font-size: 20rpx;
+    color: #fa6650;
+    text-align: center;
+}
+.house-info-tips {
+    height: 40rpx;
+    width: 100%;
+    font-size: 24rpx;
+    color: #404040;
+    margin: 20rpx 0;
+}
+.house-info-order {
+    font-size: 24rpx;
+    color: #fa6650;
+    margin: 10rpx 0;
+}
+.house-button-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 108rpx;
+    width: 750rpx;
+    background: white;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.house-button-group > navigator {
+    height: 108rpx;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.house-info-msg-button {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.house-info-msg-button > image {
+    height: 56rpx;
+    width: 56rpx;
+}
+.house-info-msg-button > text {
+    font-size: 24rpx;
+    color: #252e39;
+}
+.house-info-order-button {
+    background: rgba(250, 102, 80, 0.7);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.house-info-order-button > text {
+    font-size: 34rpx;
+    color: #404040;
+}
+</style>

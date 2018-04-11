@@ -1,28 +1,40 @@
 <template>
     <view>
         <scroll-view class="scroll-container" scroll-y>
-            <block wx:for="{{msgs}}" wx:key="createTime">
-                <block wx:if="{{item.isSelf}}">
-                    <view class="msg-wrapper reverse">
-                        <view class="text-wrapper">{{item.content}}</view>
-                        <view class="avatar-wrapper">
-                            <image class="avatar" src="{{avatar.self}}" />
+            <view style="padding: 20rpx 0;">
+                <block wx:for="{{msgs}}" wx:key="createTime">
+                    <block wx:if="{{item.isSelf}}">
+                        <view class="msg-wrapper reverse">
+                            <view wx:if="{{item.createTime.show}}" class="create-time-wrapper">
+                                {{item.createTime.text}}
+                            </view>
+                            <view class="content-wrapper">
+                                <view class="text-wrapper">{{item.content}}</view>
+                                <view class="avatar-wrapper">
+                                    <image class="avatar" src="{{avatar.self}}" />
+                                </view>
+                            </view>
                         </view>
-                    </view>
-                </block>
-                <block wx:else>
-                    <view class="msg-wrapper">
-                        <view class="avatar-wrapper">
-                            <image class="avatar" src="{{avatar.seller}}" />
+                    </block>
+                    <block wx:else>
+                        <view class="msg-wrapper">
+                            <view wx:if="{{item.createTime.show}}" class="create-time-wrapper">
+                                {{item.createTime.text}}
+                            </view>
+                            <view class="content-wrapper">
+                                <view class="avatar-wrapper">
+                                    <image class="avatar" src="{{avatar.seller}}" />
+                                </view>
+                                <view class="text-wrapper">{{item.content}}</view>
+                            </view>
                         </view>
-                        <view class="text-wrapper">{{item.content}}</view>
-                    </view>
+                    </block>
                 </block>
-            </block>
+            </view>
         </scroll-view>
         <view class="bottom-container">
             <input type="text" class="input" confirm-type="发送" maxlength="-1" />
-            <button class="send-btn">发送</button>
+            <image src="../assets/images/paw.png" class="send"></image>
         </view>
     </view>
 </template>
@@ -36,13 +48,67 @@ export default class Msg extends wepy.page {
     data = {
         msgs: [
             {
+                isSelf: false,
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
+                content: '您好您好您好您好'
+            },
+            {
                 isSelf: true,
-                createTime: '',
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
                 content: '您好您好您好您好'
             },
             {
                 isSelf: false,
-                createTime: '',
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
+                content: '您好您好您好您好'
+            },
+            {
+                isSelf: true,
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
+                content: '您好您好您好您好'
+            },
+            {
+                isSelf: false,
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
+                content: '您好您好您好您好'
+            },
+            {
+                isSelf: true,
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
+                content: '您好您好您好您好'
+            },
+            {
+                isSelf: false,
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
+                content: '您好您好您好您好'
+            },
+            {
+                isSelf: true,
+                createTime: {
+                    show: true,
+                    text: '2018年04月11日 01:32'
+                },
                 content: '您好您好您好您好'
             }
         ],
@@ -63,15 +129,27 @@ export default class Msg extends wepy.page {
     left: 0;
     right: 0;
     bottom: 100rpx;
+    & view {
+        box-sizing: border-box;
+        overflow: hidden;
+    }
 }
-.msg-wrapper {
+.create-time-wrapper {
+    width: 750rpx;
+    height: 36rpx;
+    margin: 20rpx 0 20rpx;
+    text-align: center;
+    color: rgba(64, 64, 64, 0.5);
+    font-size: 24rpx;
+    line-height: 36rpx;
+}
+.content-wrapper {
+    margin: 10rpx 0;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     & > view {
-        margin: 20rpx 0;
         display: inline-block;
-        box-sizing: border-box;
     }
 }
 .avatar-wrapper {
@@ -88,15 +166,18 @@ export default class Msg extends wepy.page {
     max-width: 510rpx;
     padding: 20rpx;
     font-size: 32rpx;
+    font-weight: 300;
     color: #404040;
     border-radius: 20rpx;
     line-height: 36rpx;
     background-color: rgba(250, 102, 80, 0.3);
 }
 .reverse {
-    justify-content: flex-end;
-    & > .text-wrapper {
-        background-color: rgba(250, 102, 80, 0.75);
+    & > .content-wrapper {
+        justify-content: flex-end;
+        & > .text-wrapper {
+            background-color: rgba(250, 102, 80, 0.75);
+        }
     }
 }
 .bottom-container {
@@ -109,24 +190,19 @@ export default class Msg extends wepy.page {
 }
 .input {
     display: inline-block;
-    width: 72%;
-    height: 80%;
-    margin: 10rpx 10rpx 0 20rpx;
+    width: 630rpx;
+    height: 74rpx;
+    padding: 10rpx;
+    margin: 13rpx 0 13rpx 10rpx;
     vertical-align: middle;
     background-color: #fff;
+    border-radius: 15rpx;
+    box-sizing: border-box;
 }
-.send-btn {
+.send {
     display: inline-block;
-    width: 20%;
-    height: 80%;
-    padding: 0;
-    margin: 10rpx 20rpx 0 10rpx;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    border: none;
-    border-radius: 10rpx;
-    background-color: rgba(250, 102, 80, 0.9);
-    line-height: 80rpx;
+    width: 80rpx;
+    height: 70rpx;
+    margin: auto;
 }
 </style>

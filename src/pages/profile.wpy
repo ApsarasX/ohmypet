@@ -13,25 +13,25 @@
     <view class='items-container'>
         <view class='item-title'>订单</view>
         <view class='item-icon-group'>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/doughnut1.png' mode='aspectFit'></image>
                     <text>待付款</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/basin.png' mode='aspectFit'></image>
                     <text>待交付</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/pencil1.png' mode='aspectFit'></image>
                     <text>待评价</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/notebook.png' mode='aspectFit'></image>
                     <text>全部订单</text>
@@ -43,25 +43,25 @@
     <view class='items-container'>
         <view class='item-title'>相关</view>
         <view class='item-icon-group'>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/heart.png' mode='aspectFit'></image>
                     <text>收藏</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/telephone.png' mode='aspectFit'></image>
                     <text>我的宠物</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./house' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/shop.png' mode='aspectFit'></image>
                     <text>我的寄养屋</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets'>
+            <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/more.png' mode='aspectFit'></image>
                     <text>更多</text>

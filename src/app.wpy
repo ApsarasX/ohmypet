@@ -26,8 +26,9 @@ export default class extends wepy.app {
             'pages/index',
             'pages/msg-list',
             'pages/profile',
-            'pages/house',
+            'pages/order',
             'pages/pets',
+            'pages/house',
             'pages/add-pet',
             'pages/login'
         ],
