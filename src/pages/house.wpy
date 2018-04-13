@@ -3,7 +3,7 @@
         <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
         <text>帅气的斯比奈鲁</text>
     </view>
-    <navigator open-type="navigateTo" url='./addpet'>
+    <navigator open-type="navigateTo" url='./add-house'>
         <view class='pets-add-button'>
             <image src='../assets/images/telephone.png'></image>
             <text>成为寄养屋</text>

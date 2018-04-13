@@ -1,0 +1,46 @@
+<template>
+    <view class="select-container">
+        <view @tap.stop="switch" wx:for="{{list}}" wx:key="index" data-index="{{index}}" class="item">
+            <text class="{{active===index ? 'active': ''}}">{{item}}</text>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+export default class Select extends wepy.component {
+    props = {
+        list: {
+            type: Array,
+            default: []
+        }
+    };
+    data = {
+        active: -1
+    };
+    methods = {
+        switch(e) {
+            this.active = e.currentTarget.dataset.index;
+        }
+    };
+}
+</script>
+<style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
+.select-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.item {
+    display: inline-block;
+    flex: 1;
+    height: 100%;
+    text-align: center;
+    color: $inactive-color;
+    font-size: $text-medium-size;
+}
+.active {
+    color: $active-color;
+}
+</style>
