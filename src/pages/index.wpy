@@ -4,10 +4,10 @@
         <filter-bar></filter-bar>
         <scroll-view class="scroll-view" scroll-y>
             <view class='items-container'>
-                <navigator open-type="navigateTo" url='./order'>
+                <navigator open-type="navigateTo" url='./order' hover-class="none">
                     <seller-card></seller-card>
                 </navigator>
-                <navigator open-type="navigateTo" url='./order'>
+                <navigator open-type="navigateTo" url='./order' hover-class="none">
                     <view class='item'>
                         <view class='item-status'>春节接单</view>
                         <view class='back-img'>
@@ -30,7 +30,7 @@
                         </view>
                     </view>
                 </navigator>
-                <navigator open-type="navigateTo" url='./order'>
+                <navigator open-type="navigateTo" url='./order' hover-class="none">
                     <view class='item'>
                         <view class='item-status'>可随时接单</view>
                         <view class='back-img'>

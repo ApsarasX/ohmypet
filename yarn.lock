@@ -3786,8 +3786,8 @@ safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   resolved "http://registry.npm.taobao.org/safe-buffer/download/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
 
 safer-buffer@^2.1.0:
-  version "2.1.0"
-  resolved "http://registry.npm.taobao.org/safer-buffer/download/safer-buffer-2.1.0.tgz#d9f653a55538c8d7829cb1a92e90bbcbc5ff5d3b"
+  version "2.1.2"
+  resolved "http://registry.npm.taobao.org/safer-buffer/download/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
 sass-graph@^2.2.4:
   version "2.2.4"
@@ -4393,8 +4393,8 @@ ware@^1.2.0:
     wrap-fn "^0.1.0"
 
 wepy-async-function@^1.4.4:
-  version "1.4.5"
-  resolved "http://registry.npm.taobao.org/wepy-async-function/download/wepy-async-function-1.4.5.tgz#5e7e543bd99e590493556da908a26534c7c8807c"
+  version "1.4.6"
+  resolved "http://registry.npm.taobao.org/wepy-async-function/download/wepy-async-function-1.4.6.tgz#b650c3d46ddea54404ba1e005e0b949897c69804"
   dependencies:
     promise-polyfill "^6.0.2"
     regenerator-runtime "^0.10.3"
@@ -4448,8 +4448,8 @@ wepy-redux@^1.5.3:
   resolved "http://registry.npm.taobao.org/wepy-redux/download/wepy-redux-1.5.6.tgz#f61b6123788ed724bcf0962e43fd43087bb4d923"
 
 wepy-web@^1.5.10:
-  version "1.5.10"
-  resolved "http://registry.npm.taobao.org/wepy-web/download/wepy-web-1.5.10.tgz#a1bc24a3749da8f3c78565d5a6a7864a8222451f"
+  version "1.6.0"
+  resolved "http://registry.npm.taobao.org/wepy-web/download/wepy-web-1.6.0.tgz#091794e238bb254fccabf155f0b237c7d4e38d3f"
   dependencies:
     axios "^0.16.1"
     vue "^1.0.28"

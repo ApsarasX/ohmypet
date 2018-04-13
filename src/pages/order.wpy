@@ -1,9 +1,18 @@
-
-
 <template>
     <view>
-        <view class='banner-container'>
-            <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'></image>
+        <view class="banner-container">
+            <swiper indicator-dots indicator-color="rgba(255,255,255,0.3)" indicator-active-color="#fff" autoplay interval="3000" circular>
+                <swiper-item>
+                    <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'></image>
+                </swiper-item>
+                <swiper-item>
+                    <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'></image>
+                </swiper-item>
+            </swiper>
+            <view class="collection-status" @tap.stop="switchCollection">
+                <image hidden="{{!collected}}" src="../assets/images/collected-focus.png"></image>
+                <image hidden="{{collected}}" src="../assets/images/collected-normal.png"></image>
+            </view>
         </view>
 
         <view class='house-info-container'>
@@ -17,7 +26,7 @@
                     <text class='score'>评分 5.0</text>
                 </view>
                 <view class='house-info-tag'>
-                    <view class="tag">可随时接单</view>
+                    <view class="tag">屋主接单中</view>
                     <view class="tag">养宠经验 10年</view>
                 </view>
             </view>
@@ -27,10 +36,9 @@
                     <text>信用认证</text>
                 </view>
                 <view class='house-info-tag'>
-                    <view class="tag">实名视频认证</view>
-                    <view class="tag">信用保证金 ¥1000</view>
-                    <view class="tag">芝麻信用分</view>
-                    <view class="tag">疫苗证</view>
+                    <view class="tag">身份证实名认证</view>
+                    <view class="tag">芝麻信用优秀</view>
+                    <view class="tag">已免疫(可询)</view>
                 </view>
             </view>
 
@@ -42,15 +50,14 @@
                     <view class="tag">单元住宅</view>
                     <view class="tag">100平米以上</view>
                     <view class="tag">带阳台</view>
-                    <view class="tag">封闭阳台</view>
-                    <view class="tag">空调</view>
-                    <view class="tag">电梯</view>
+                    <view class="tag">封闭阳台(猫咪需求)</view>
                     <view class="tag">小区花园</view>
                     <view class="tag">周边公园</view>
-                    <view class="tag">交通便利</view>
+                    <view class="tag">空调</view>
+                    <view class="tag">电梯</view>
                 </view>
                 <view class='house-position'>
-                    <image src='../assets/images/position-icon.png'></image>
+                    <image class="black-position" src='../assets/images/position-icon.png'></image>
                     <text>陕西省西安市长安区兴隆社区</text>
                 </view>
             </view>
@@ -76,37 +83,36 @@
 
                 <view class='house-info-promotion'>
                     <view>新用户下单，立减20元</view>
-                    <view>老顾客下单，每单立减10元</view>
                 </view>
             </view>
 
             <view class='house-info'>
                 <view class='house-info-title'>
-                    <text>家中宠物</text>
+                    <text>一周内家中宠物</text>
                 </view>
                 <view class='house-info-animal-group'>
+                    <view class="house-info-role">屋主:</view>
                     <view class='house-info-animal'>
                         <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
                         <text class='house-info-animal-name'>小可爱</text>
                         <text class='house-info-animal-type'>英国短毛猫</text>
                     </view>
                 </view>
+                <view class='house-info-animal-group'>
+                    <view class="house-info-role">寄养者:</view>
+                    <view class='house-info-animal'>
+                        <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
+                        <text class='house-info-animal-name'>小可爱</text>
+                        <text class='house-info-animal-type'>中华田园猫</text>
+                    </view>
+                </view>
             </view>
 
             <view class='house-info'>
                 <view class='house-info-title'>
-                    <text>来自寄养屋主的Tips</text>
+                    <text>来自寄养屋主的寄养屋介绍</text>
                 </view>
                 <view class='house-info-tips'>允许宠物上沙发，有专门的宠物活动区</view>
-            </view>
-
-            <view class='house-info'>
-                <view class='house-info-title'>
-                    <text>寄养屋日历</text>
-                </view>
-                <navigator open-type='navigateTo' url=''>
-                    <text class='house-info-order'>查看预约情况</text>
-                </navigator>
             </view>
         </view>
 
@@ -128,23 +134,26 @@
 
 <script>
 import wepy from 'wepy';
-import Mixin from '../mixins/index';
 
 export default class Order extends wepy.page {
-    config = {
+    config = {};
+    components = {};
 
+    data = {
+        collected: false
     };
-    components = {
-
-    };
-
-    mixins = [Mixin];
-
-    data = {};
 
     computed = {};
 
-    methods = {};
+    methods = {
+        switchCollection() {
+            this.collected = !this.collected;
+            wx.showToast({
+                title: this.collected ? '已成功收藏' : '已取消收藏',
+                icon: this.collected ? 'success' : 'none'
+            });
+        }
+    };
 
     events = {};
 
@@ -152,15 +161,30 @@ export default class Order extends wepy.page {
 }
 </script>
 <style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
+
 .banner-container {
     height: 400rpx;
     width: 750rpx;
     overflow: hidden;
     margin-bottom: 10rpx;
+    position: relative;
+    & > swiper,
+    & image {
+        height: 100%;
+        width: 100%;
+    }
 }
-.banner-container > image {
-    height: 100%;
-    width: 100%;
+.collection-status {
+    position: absolute;
+    width: 50rpx;
+    height: 46rpx;
+    top: 30rpx;
+    right: 30rpx;
+    & > image {
+        height: 100%;
+        width: 100%;
+    }
 }
 .house-info-container {
     min-height: 980rpx;
@@ -169,7 +193,7 @@ export default class Order extends wepy.page {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 150rpx;
+    padding-bottom: 100rpx;
 }
 .house-info {
     min-height: 130rpx;
@@ -231,21 +255,26 @@ export default class Order extends wepy.page {
     width: 24rpx;
 }
 .house-position > text {
-    font-size: 24rpx;
+    font-size: $text-small-size;
     color: #404040;
-    margin-left: 20rpx;
+}
+.black-position {
+    border-right: 25rpx solid transparent;
+    filter: drop-shadow(#404040 25rpx 0);
+    transform: translate3d(-10rpx, 0, 0);
 }
 .house-info-price {
     height: 60rpx;
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 .house-info-price-group {
     height: 60rpx;
-    width: 200rpx;
-    display: inline-block;
+    flex: 1;
 }
 .house-info-price-group > text {
-    font-size: 18rpx;
+    font-size: $text-small-size;
     color: #404040;
     margin-right: 40rpx;
 }
@@ -264,12 +293,15 @@ export default class Order extends wepy.page {
     font-size: 22rpx;
     color: #fa6650;
     display: inline-block;
-    margin: 0 20rpx;
 }
 .house-info-animal-group {
     width: 100%rpx;
-    height: 160rpx;
+    height: 200rpx;
     margin-bottom: 20rpx;
+}
+.house-info-role {
+    font-size: $text-small-size;
+    margin-bottom: 10rpx;
 }
 .house-info-animal {
     width: 100rpx;
