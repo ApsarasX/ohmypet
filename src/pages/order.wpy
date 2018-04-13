@@ -175,7 +175,6 @@ export default class Order extends wepy.page {
     min-height: 130rpx;
     height: auto;
     width: 750rpx;
-    box-sizing: border-box;
     padding: 0 40rpx;
     border-bottom: 1rpx solid #c4c2c2;
 }

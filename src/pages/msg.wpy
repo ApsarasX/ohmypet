@@ -129,10 +129,6 @@ export default class Msg extends wepy.page {
     left: 0;
     right: 0;
     bottom: 100rpx;
-    & view {
-        box-sizing: border-box;
-        overflow: hidden;
-    }
 }
 .create-time-wrapper {
     width: 750rpx;
@@ -197,7 +193,6 @@ export default class Msg extends wepy.page {
     vertical-align: middle;
     background-color: #fff;
     border-radius: 15rpx;
-    box-sizing: border-box;
 }
 .send {
     display: inline-block;

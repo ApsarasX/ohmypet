@@ -12,17 +12,18 @@
                 </view>
             </view>
         </navigator>
-        <view class='msg'>
-            <view class='msg-head'>
-                <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg'></image>
+        <navigator open-type='navigate' url='./msg' hover-class="none">
+            <view class='msg'>
+                <view class='msg-head'>
+                    <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg'></image>
+                </view>
+                <view class='msg-body'>
+                    <text class='user-name'>小灰狼</text>
+                    <text class='msg-text'>对不起，最近不接寄养哦</text>
+                    <text class='msg-time'>1分钟前</text>
+                </view>
             </view>
-            <view class='msg-body'>
-                <text class='user-name'>小灰狼</text>
-                <text class='msg-text'>对不起，最近不接寄养哦</text>
-                <text class='msg-time'>1分钟前</text>
-            </view>
-        </view>
-
+        </navigator>
     </view>
 
 </template>
@@ -59,12 +60,12 @@ export default class MsgList extends wepy.page {
     align-items: center;
 }
 .msg {
-    height: 120rpx;
+    height: 140rpx;
     width: 750rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10rpx 0;
+    margin: 5rpx 0;
 }
 .msg-head {
     height: 80rpx;
@@ -78,11 +79,15 @@ export default class MsgList extends wepy.page {
     height: 100%;
 }
 .msg-body {
+    height: 100%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-bottom: 1rpx solid rgba(151, 151, 151, 0.3);
+    & > text {
+        margin: 3rpx 0;
+    }
 }
 .user-name {
     width: 100%;

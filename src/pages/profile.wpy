@@ -13,25 +13,25 @@
     <view class='items-container'>
         <view class='item-title'>订单</view>
         <view class='item-icon-group'>
-            <navigator open-type='navigateTo' url='./pets' hover-class="none">
+            <navigator open-type='navigateTo' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/doughnut1.png' mode='aspectFit'></image>
                     <text>待付款</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets' hover-class="none">
+            <navigator open-type='navigateTo' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/basin.png' mode='aspectFit'></image>
                     <text>待交付</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets' hover-class="none">
+            <navigator open-type='navigateTo' hover-class="none">
                 <view class='item-icon'>
-                    <image src='../assets/images/pencil1.png' mode='aspectFit'></image>
-                    <text>待评价</text>
+                    <image src='../assets/images/camera.png' mode='aspectFit'></image>
+                    <text>寄养中</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets' hover-class="none">
+            <navigator open-type='navigateTo' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/notebook.png' mode='aspectFit'></image>
                     <text>全部订单</text>
@@ -43,7 +43,7 @@
     <view class='items-container'>
         <view class='item-title'>相关</view>
         <view class='item-icon-group'>
-            <navigator open-type='navigateTo' url='./pets' hover-class="none">
+            <navigator open-type='navigateTo' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/heart.png' mode='aspectFit'></image>
                     <text>收藏</text>
@@ -61,7 +61,7 @@
                     <text>我的寄养屋</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url='./pets' hover-class="none">
+            <navigator open-type='navigateTo' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/more.png' mode='aspectFit'></image>
                     <text>更多</text>
@@ -150,7 +150,6 @@ export default class Profile extends wepy.page {
     color: #fa6650;
     margin: 20rpx 0;
     border-bottom: 1rpx solid rgba(151, 151, 151, 0.1);
-    box-sizing: border-box;
     display: flex;
     justify-content: flex-start;
     align-items: center;

@@ -1,6 +1,7 @@
 <template>
     <view class="search-bar">
-        <input type="text" bindinput="bindinput" placeholder="用户昵称/寄养屋名称/地址" placeholder-style='color: #fff;font-weight: lighter;'></input>
+        <input type="text" @input="bindinput" @focus="bindfocus" @blur="bindblur" placeholder="用户昵称/寄养屋名称/地址" placeholder-class="find-placeholder"></input>
+        <image class="icon-find" hidden="{{displayFind}}" src="../assets/images/find.png"></image>
     </view>
 </template>
 <script>
@@ -8,14 +9,24 @@ import wepy from 'wepy';
 
 export default class SearchBar extends wepy.component {
     data = {
-        timer: null
+        timer: null,
+        displayFind: false,
+        content: ''
     };
     methods = {
         bindinput(e) {
             this.debounce(() => {
                 // 向父组件派发事件
+                this.content = e.detail.value;
+                this.$apply();
                 this.$emit('query', e.detail.value);
             }, 400);
+        },
+        bindfocus() {
+            this.displayFind = true;
+        },
+        bindblur() {
+            this.displayFind = this.content.length !== 0;
         }
     };
     watch = {
@@ -46,14 +57,30 @@ export default class SearchBar extends wepy.component {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 .search-bar > input {
-    background: rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 200rpx;
     height: 70rpx;
     width: 702rpx;
     text-align: center;
     font-size: 24rpx;
     color: #ffffff;
+}
+.icon-find {
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    top: 32rpx;
+    left: 182rpx;
+}
+</style>
+<style>
+.find-placeholder {
+    color: #fff;
+    font-weight: lighter;
+    font-size: 22rpx;
 }
 </style>

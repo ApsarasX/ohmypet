@@ -95,11 +95,7 @@ export default class AddHouse extends wepy.page {
 .form-container {
     width: 750rpx;
     min-height: 100%;
-    box-sizing: border-box;
     padding: 50rpx;
-    & view {
-        box-sizing: border-box;
-    }
 }
 .form-group > label {
     font-size: $text-medium-size;
@@ -149,7 +145,6 @@ export default class AddHouse extends wepy.page {
 .form-group > input {
     text-align: right;
     font-size: $text-medium-size;
-    box-sizing: border-box;
     padding-right: 10rpx;
     flex: 1;
     padding-left: 100rpx;
@@ -218,7 +213,6 @@ radio-group > label {
 textarea {
     margin: 40rpx 0;
     font-size: 28rpx;
-    box-sizing: border-box;
     padding: 20rpx;
 }
 .submit {
