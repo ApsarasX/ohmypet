@@ -44,6 +44,8 @@ export default class FilterBar extends wepy.component {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
+
 .filter-bar-container {
     position: relative;
     margin-bottom: 15rpx;
@@ -104,6 +106,9 @@ export default class FilterBar extends wepy.component {
         width: 24rpx;
         margin-right: 10rpx;
         vertical-align: middle;
+        border-right: 25rpx solid transparent;
+        filter: drop-shadow($theme-color 25rpx 0);
+        transform: translate3d(-10rpx, 0, 0);
     }
     & > text {
         font-size: 24rpx;

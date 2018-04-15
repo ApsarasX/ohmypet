@@ -1,0 +1,227 @@
+<template>
+    <view>
+        <view class="order-container">
+            <view class="house-info">
+                <image class="house-info-image" src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg'></image>
+                <view class="house-info-desc">
+                    <view class="house-name">巧克莉与小可爱</view>
+                    <view class="house-owner">寄养屋主人: 巧克莉</view>
+                </view>
+            </view>
+            <view class="order-date">
+                <text>日期</text>
+                <view class="date-picker-box">
+                    <picker mode="date" value="{{startDate}}" fields="day" start="2018-01-01" end="2018-12-31" @change="changeStartDate">
+                        <view class="picker">
+                            {{startDate}}
+                        </view>
+                    </picker>
+                    <text>至</text>
+                    <picker mode="date" value="{{endDate}}" fields="day" start="2018-01-01" end="2018-12-31" @change="changeEndDate">
+                        <view class="picker">
+                            {{endDate}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="add-pet">
+                <text class="add-desc">选择添加我的宠物</text>
+                <image class="add-icon" src="../assets/images/add.png"></image>
+            </view>
+            <view class="selected-pets">
+                <view>
+                    <image class="pet-avatar" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3061008613,3340487285&fm=27&gp=0.jpg"></image>
+                    <text class="pet-name">帅气的斯比奈鲁</text>
+                    <checkbox color="#FA6650"></checkbox>
+                </view>
+            </view>
+            <view class="agreement">
+                <view>
+                    <text>预订须知</text>
+                    <checkbox color="#FA6650"></checkbox>
+                </view>
+                <view class="tips">勾选表示我已经同意了解相关
+                    <span class="highlight">用户保障协议</span>
+                </view>
+            </view>
+        </view>
+        <view class='bottom-button-group'>
+            <view class='pay-info'>
+                <text class="pay-info-price">￥120</text>
+                <text class="pay-info-duration">共3天</text>
+            </view>
+            <navigator open-type='navigateTo' url="" hover-class="none">
+                <view class='pay-button'>
+                    <text>去支付</text>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { DateTime } from 'luxon';
+
+const now = DateTime.local();
+
+export default class Settlement extends wepy.page {
+    config = {
+        navigationBarTitleText: '预定'
+    };
+    data = {
+        startDate: now.toFormat('MM月dd日'),
+        endDate: now.plus({ weeks: 1 }).toFormat('MM月dd日')
+    };
+    methods = {
+        changeStartDate(e) {
+            this.startDate = DateTime.fromISO(e.detail.value).toFormat('MM月dd日');
+        },
+        changeEndDate(e) {
+            this.endDate = DateTime.fromISO(e.detail.value).toFormat('MM月dd日');
+        }
+    };
+}
+</script>
+<style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
+checkbox {
+    transform: scale(0.65);
+    vertical-align: middle;
+}
+.order-container {
+    width: 750rpx;
+    color: $text-light-color;
+    font-weight: 400;
+    & > view {
+        width: 670rpx;
+        margin: 0 auto;
+        padding: 30rpx 0;
+        border-bottom: 1rpx solid $splitline-color;
+    }
+}
+.house-info-image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 10rpx;
+    vertical-align: middle;
+}
+.house-info-desc {
+    display: inline-block;
+    height: 80rpx;
+    margin-left: 40rpx;
+    vertical-align: middle;
+}
+.house-name {
+    font-size: $text-large-size;
+    color: $text-color;
+    font-weight: 700;
+}
+.house-owner {
+    padding-top: 10rpx;
+    font-size: $text-small-size;
+    color: $inactive-color;
+}
+.order-date {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.date-picker-box {
+    width: 350rpx;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: $theme-color;
+}
+.add-pet {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.add-icon {
+    width: 52rpx;
+    height: 52rpx;
+}
+.selected-pets {
+    & > view {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+}
+.pet-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+.pet-name {
+    color: $theme-color;
+    line-height: 80rpx;
+    height: 80rpx;
+    font-size: 32rpx;
+    margin-left: -200rpx;
+}
+.agreement {
+    border: none !important;
+    & > view:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+}
+.tips {
+    padding-top: 20rpx;
+    font-size: $text-medium-size;
+    font-weight: 300;
+}
+.highlight {
+    color: $theme-color;
+}
+.bottom-button-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 108rpx;
+    width: 750rpx;
+    background-color: white;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bottom-button-group > navigator {
+    height: 108rpx;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pay-info {
+    height: 108rpx;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pay-info-price {
+    color: $theme-color;
+}
+.pay-info-duration {
+    padding-left: 20rpx;
+    color: $text-color;
+}
+.pay-button {
+    background: rgba(250, 102, 80, 0.7);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pay-button > text {
+    font-size: $text-large-size;
+    color: $text-color;
+}
+</style>

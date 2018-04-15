@@ -73,7 +73,6 @@
 
 <script>
 import wepy from 'wepy';
-import Mixin from '../mixins/index';
 
 export default class Profile extends wepy.page {
     config = {
@@ -82,8 +81,6 @@ export default class Profile extends wepy.page {
     components = {
 
     };
-
-    mixins = [Mixin];
 
     data = {};
 

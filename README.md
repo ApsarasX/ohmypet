@@ -24,6 +24,7 @@
 |   |   |-- msg.wpy         聊天详情页
 |   |   |-- order.wpy       准备订单页面
 |   |   |-- pets.wpy        我的宠物
+|   |   |-- settlement.wpy  结算页
 |   |   `-- profile.wpy     我的页
 |   |-- store               Redux状态管理目录
 |   |-- app.wpy             小程序配置项(全局数据、样式、声明钩子等)

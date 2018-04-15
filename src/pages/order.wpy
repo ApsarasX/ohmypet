@@ -117,13 +117,13 @@
         </view>
 
         <view class='house-button-group'>
-            <navigator open-type='switchTab' url='../msg/msg'>
+            <navigator open-type='switchTab' url="./msg" hover-class="none">
                 <view class='house-info-msg-button'>
                     <image src='../assets/images/chat-1.png'></image>
                     <text>消息</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url=''>
+            <navigator open-type='navigateTo' url="./settlement" hover-class="none">
                 <view class='house-info-order-button'>
                     <text>立即预订</text>
                 </view>
