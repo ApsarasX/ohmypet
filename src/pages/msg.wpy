@@ -1,6 +1,6 @@
 <template>
     <view>
-        <scroll-view class="scroll-container" scroll-y>
+        <scroll-view class="scroll-container" scroll-y scroll-top="{{scrollTop}}">
             <view style="padding: 20rpx 0;">
                 <block wx:for="{{msgs}}" wx:key="createTime">
                     <block wx:if="{{item.isSelf}}">
@@ -33,19 +33,25 @@
             </view>
         </scroll-view>
         <view class="bottom-container">
-            <input type="text" class="input" confirm-type="发送" maxlength="-1" />
-            <image src="../assets/images/paw.png" class="send"></image>
+            <input type="text" class="input" value="{{tempText}}" confirm-type="发送" confirm-hold="{{true}}" maxlength="-1" @input="changeText" @confirm="sendMsg"/>
+            <image src="../assets/images/paw.png" class="send" @tap.stop="sendMsg"></image>
         </view>
     </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import { DateTime } from 'luxon';
 export default class Msg extends wepy.page {
     config = {
         navigationBarTitleText: '用户名'
     };
+    onLoad() {
+        this.scrollTop = this.msgs.length * 100;
+    }
     data = {
+        scrollTop: 0,
+        tempText: '',
         msgs: [
             {
                 isSelf: false,
@@ -119,7 +125,24 @@ export default class Msg extends wepy.page {
                 'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'
         }
     };
-    methods = {};
+    methods = {
+        changeText(e) {
+            this.tempText = e.detail.value;
+        },
+        // 发送消息
+        sendMsg() {
+            this.msgs.push({
+                isSelf: true,
+                createTime: {
+                    show: true,
+                    text: DateTime.local().toFormat('yyyy年MM月dd日 HH:mm')
+                },
+                content: this.tempText
+            });
+            this.tempText = '';
+            this.scrollTop += 100;
+        }
+    };
 }
 </script>
 <style lang="scss" scoped>

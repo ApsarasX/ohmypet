@@ -13,25 +13,25 @@
     <view class='items-container'>
         <view class='item-title'>订单</view>
         <view class='item-icon-group'>
-            <navigator open-type='navigateTo' hover-class="none">
+            <navigator open-type='navigateTo' url='./order-status?id=paying' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/doughnut1.png' mode='aspectFit'></image>
                     <text>待付款</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' hover-class="none">
+            <navigator open-type='navigateTo' url='./order-status?id=delivering' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/basin.png' mode='aspectFit'></image>
                     <text>待交付</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' hover-class="none">
+            <navigator open-type='navigateTo' url='./order-status?id=fostering' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/camera.png' mode='aspectFit'></image>
                     <text>寄养中</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' hover-class="none">
+            <navigator open-type='navigateTo' url='./order-status?id=all' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/notebook.png' mode='aspectFit'></image>
                     <text>全部订单</text>

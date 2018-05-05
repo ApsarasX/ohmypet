@@ -32,7 +32,8 @@ export default class extends wepy.app {
             'pages/add-pet',
             'pages/add-house',
             'pages/login',
-            'pages/settlement'
+            'pages/settlement',
+            'pages/order-status'
         ],
         window: {
             backgroundTextStyle: 'light',

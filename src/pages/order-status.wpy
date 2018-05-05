@@ -1,0 +1,52 @@
+<template>
+    <view wx:for="{{orders}}" wx:key="*this">
+        <order-record :houseImage="item.houseImage" :houseName="item.houseName" :petName="item.petName" :startEndTime="item.startEndTime" :timeSpan="item.timeSpan" :price="item.price" :discount="item.discount" :status="item.status"></order-record>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import OrderRecord from '../components/order-record';
+
+const titleMap = {
+    paying: '待付款',
+    delivering: '待交付',
+    fostering: '寄养中',
+    all: '全部订单'
+};
+
+export default class OrderStatus extends wepy.page {
+    components = {
+        'order-record': OrderRecord
+    };
+    data = {
+        orders: [
+            {
+                houseImage:
+                    'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg',
+                houseName: '未知的宠物屋',
+                petName: '未知的小宠物',
+                startEndTime: '未知时间~未知时间',
+                timeSpan: 0,
+                price: 0,
+                discount: false,
+                status: '未知状态'
+            }
+        ]
+    };
+    onLoad(options) {
+        if (!options.id) {
+            wepy.setNavigationBarTitle({
+                title: '订单'
+            });
+            return;
+        }
+        wepy.setNavigationBarTitle({
+            title: titleMap[options.id]
+        });
+    }
+}
+</script>
+<style lang="scss" scoped>
+
+</style>
