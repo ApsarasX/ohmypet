@@ -1,0 +1,59 @@
+<template>
+    <view class="submit-btn">
+        <view @tap.stop="handleTap">
+            <image src="../assets/images/{{icon || 'shop'}}.png"></image>
+            <text>{{title}}</text>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class SubmitBtn extends wepy.component {
+    props = {
+        // icon是图标
+        icon: String,
+        // title是图标旁边的文字
+        title: String,
+        // url是跳转页面的路径
+        url: String,
+        // handler是一个内含f函数的对象, 仅当url不存在时生效
+        handler: {
+            type: Object,
+            default: {}
+        }
+    };
+    methods = {
+        handleTap() {
+            if (this.url) {
+                wepy.navigateTo({ url: this.url });
+            } else {
+                this.handler.f && this.handler.f();
+            }
+        }
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../assets/styles/mixin.scss';
+
+.submit-btn {
+    width: 750rpx;
+    margin: 40rpx;
+    @include display-flex;
+}
+.submit-btn > view {
+    @include display-flex;
+}
+.submit-btn image {
+    width: 60rpx;
+    height: 60rpx;
+    margin: 0 20rpx 0 0;
+}
+.submit-btn text {
+    font-size: 28rpx;
+    color: #fa6650;
+}
+</style>

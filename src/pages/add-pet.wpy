@@ -2,7 +2,7 @@
     <view class="form-container">
         <view class='form-group'>
             <label for=''>宠物头像
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <view class='head-icon'>
                 <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
@@ -12,21 +12,21 @@
 
         <view class='form-group'>
             <label for=''>宠物昵称
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <input type='text' id='' @input="changeNickname" />
         </view>
 
         <view class='form-group'>
             <label for=''>宠物品种
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <input type='text' id='' @input="changeVariety"></input>
         </view>
 
         <view class='form-group'>
             <label for=''>性别
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <radio-group class="" @change="changeGender">
                 <label class="">
@@ -40,7 +40,7 @@
 
         <view class='form-group'>
             <label for=''>体重
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <picker mode="selector" value='{{weightIndex}}' range='{{ weightRange }}' @change='changeWeight'>
                 <view class='picker'>{{ weightRange[weightIndex] }}</view>
@@ -49,7 +49,7 @@
 
         <view class='form-group'>
             <label for=''>是否绝育
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <view class='switch-group'>
                 <switch @change="changeJueyu" color='#FA6650' />
@@ -58,7 +58,7 @@
 
         <view class='form-group'>
             <label for=''>是否免疫
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <view class='switch-group'>
                 <switch @change="changeMianyi" color='#FA6650' />
@@ -67,7 +67,7 @@
 
         <view class='form-group'>
             <label for=''>出生年月
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <picker mode="date" value="{{birthday}}" fields="month" start="2010-01-01" end="2020-01-01" @change="changeBirthday">
                 <view class="picker">
@@ -78,7 +78,7 @@
 
         <view class='form-group'>
             <label for=''>到家日期
-                <text class="require" class="require">*</text>
+                <text class="require">*</text>
             </label>
             <picker mode="date" value="{{homeday}}" start="2010-01-01" end="2020-01-01" @change="changeHomeday">
                 <view class="picker">

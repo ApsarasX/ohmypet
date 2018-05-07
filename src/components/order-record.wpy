@@ -8,8 +8,7 @@
                 <view class="house-name">{{houseName}}</view>
                 <view class="pet-info">
                     <text>寄养宠物：{{petName}}</text>
-                    <text>寄养时间：{{startEndTime}}</text>
-                    <text>寄养时长：{{timeSpan}}日</text>
+                    <text>寄养时间：{{startEndTime}} 共{{timeSpan}}日</text>
                     <text>优惠：{{discount ? '有' : '无'}}</text>
                 </view>
             </view>
@@ -78,9 +77,9 @@ export default class OrderRecord extends wepy.component {
     height: 100%;
     & > image {
         display: block;
-        width: 120rpx;
-        height: 120rpx;
-        margin: 40rpx auto;
+        width: 100rpx;
+        height: 100rpx;
+        margin: 20rpx auto;
         border-radius: 20%;
     }
 }
@@ -97,17 +96,19 @@ export default class OrderRecord extends wepy.component {
     width: 480rpx;
 }
 .house-name {
-    font-size: $text-x-large-size;
+    font-size: $text-large-size;
     color: $text-color;
-    font-weight: bold;
+    padding: 5rpx 0;
     @include text-ellipsis;
 }
 .pet-info {
     display: flex;
     flex-direction: column;
-    font-size: $text-medium-size;
+    font-size: $text-small-size;
+    font-weight: 300;
     color: $inactive-color;
     & > text {
+        padding: 2rpx 0;
         @include text-ellipsis;
     }
 }
@@ -118,8 +119,8 @@ export default class OrderRecord extends wepy.component {
     }
 }
 .price {
-    height: 150rpx;
-    line-break: 150rpx;
+    height: 120rpx;
+    line-height: 100rpx;
     color: $active-color;
     font-size: $text-x-large-size;
 }
@@ -127,5 +128,6 @@ export default class OrderRecord extends wepy.component {
     height: 50rpx;
     line-height: 50rpx;
     font-size: $text-medium-size;
+    font-weight: 300;
 }
 </style>

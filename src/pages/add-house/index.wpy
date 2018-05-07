@@ -1,0 +1,63 @@
+<template>
+    <view class="page-container">
+        <view class="grid-wrapper">
+            <view class="grid-row">
+                <text>实名认证</text>
+                <text class="required">*</text>
+            </view>
+            <view class="grid-row">
+                <text>养宠经验</text>
+                <text class="required">*</text>
+            </view>
+            <view class="grid-row">
+                <text>寄养屋信息</text>
+                <text class="required">*</text>
+            </view>
+        </view>
+        <submit-btn icon="shop" title="申请成为寄养屋"></submit-btn>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import SubmitBtn from '@/components/submit-btn';
+
+export default class AddHouse extends wepy.page {
+    config = {
+        navigationBarTitleText: '成为寄养屋'
+    };
+    components = {
+        'submit-btn': SubmitBtn
+    };
+    data = {};
+    methods = {};
+}
+</script>
+<style lang="scss" scoped>
+@import '../../assets/styles/variable.scss';
+@import '../../assets/styles/mixin.scss';
+
+.page-container {
+    width: 750rpx;
+}
+.grid-wrapper {
+    width: 646rpx;
+    margin: 30rpx auto 0;
+}
+.grid-row {
+    width: 100%;
+    height: 100rpx;
+    line-height: 80rpx;
+    padding: 10rpx 20rpx;
+    font: {
+        size: $text-medium-size;
+    }
+    border-bottom: 1rpx solid $splitline-color;
+}
+.required {
+    font-size: 24rpx;
+    color: #fa6650;
+    line-height: 40rpx;
+    vertical-align: text-top;
+}
+</style>

@@ -68,7 +68,7 @@
 </template>
 <script>
 import wepy from 'wepy';
-import Select from '../components/select';
+import Select from '@/components/select';
 
 const list = {
     property: ['租客', '房主'],
@@ -77,7 +77,10 @@ const list = {
     other: ['无补充', '电梯', '空调']
 };
 
-export default class AddHouse extends wepy.page {
+export default class AddHouseInfo extends wepy.page {
+    config = {
+        navigationBarTitleText: '成为寄养屋'
+    };
     components = {
         'select-property-right': Select,
         'select-balcony': Select,
@@ -90,7 +93,7 @@ export default class AddHouse extends wepy.page {
 }
 </script>
 <style lang="scss" scoped>
-@import '../assets/styles/variable.scss';
+@import '../../assets/styles/variable.scss';
 
 .form-container {
     width: 750rpx;
@@ -237,7 +240,7 @@ textarea {
 </style>
 
 <style lang="scss">
-@import '../assets/styles/variable.scss';
+@import '../../assets/styles/variable.scss';
 .placeholder {
     font-size: $text-medium-size;
     color: $inactive-color;

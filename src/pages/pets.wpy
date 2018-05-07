@@ -3,22 +3,20 @@
         <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
         <text>帅气的斯比奈鲁</text>
     </view>
-    <navigator open-type="navigateTo" url='./add-pet' hover-class="none">
-        <view class='pets-add-button'>
-            <image src='../assets/images/telephone.png'></image>
-            <text>添加宠物</text>
-        </view>
-    </navigator>
+    <submit-btn icon="telephone" title="添加宠物" url="./add-pet"></submit-btn>
 </template>
 
 <script>
 import wepy from 'wepy';
+import SubmitBtn from '@/components/submit-btn';
 
 export default class Pets extends wepy.page {
     config = {
         navigationBarTitleText: '我的宠物'
     };
-    components = {};
+    components = {
+        'submit-btn': SubmitBtn
+    };
 
     data = {};
 

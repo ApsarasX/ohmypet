@@ -1,0 +1,17 @@
+<template>
+<view></view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class OrderDetail extends wepy.page {
+    components = {
+    };
+    data = {
+    };
+}
+</script>
+<style lang="scss" scoped>
+
+</style>

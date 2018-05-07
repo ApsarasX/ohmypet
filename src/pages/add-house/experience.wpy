@@ -1,0 +1,15 @@
+<template>
+    <view></view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class AddHouseExperience extends wepy.page {
+    config = {
+        navigationBarTitleText: '成为寄养屋'
+    };
+    data = {};
+    methods = {};
+}
+</script>
