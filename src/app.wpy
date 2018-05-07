@@ -22,6 +22,7 @@ setStore(store);
 export default class extends wepy.app {
     config = {
         pages: [
+            'pages/add-house/auth',
             'pages/index',
             'pages/msg-list',
             'pages/profile',
@@ -31,7 +32,7 @@ export default class extends wepy.app {
             'pages/order',
             'pages/add-pet',
             'pages/add-house/index',
-            'pages/add-house/auth',
+            // 'pages/add-house/auth',
             'pages/add-house/experience',
             'pages/add-house/info',
             'pages/login',

@@ -1,0 +1,144 @@
+<template>
+    <view class="weui-uploader__bd" style="width: {{_width}}px;height: {{_height}}px">
+        <view wx:if="{{_poster && files.length===0}}" class="weui-uploader__file" @tap.stop="previewImage" id="{{item}}" style="border-radius: {{_circle ? '50%' : 0}};z-index: 10;" @tap.stop="delPoster">
+            <image class="weui-uploader__img" src="{{poster}}" mode="aspectFill" style="border-radius: {{_circle ? '50%' : 0}};width: {{_width-13}}px;height: {{_height-13}}px;"/>
+        </view>
+        <block wx:for="{{files}}" wx:key="*this"> 
+            <view class="weui-uploader__file" @tap.stop="previewImage" id="{{item}}" style="border-radius: {{_circle ? '50%' : 0}};">
+                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" style="border-radius: {{_circle ? '50%' : 0}};width: {{_width-13}}px;height: {{_height-13}}px;"/>
+            </view>
+        </block>
+        <view wx:if="{{files.length===0}}" class="weui-uploader__input-box" style="border-radius: {{_circle ? '50%' : 0}};width: {{_width-13}}px;height: {{_height-13}}px;">
+            <view class="weui-uploader__input" @tap.stop="chooseImage"></view>
+        </view>
+        <icon wx:if="{{files.length!==0}}" @tap="delImage" color="#A9A9A9" class="del-icon" type="cancel" size="26"></icon>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Uploader extends wepy.component {
+    props = {
+        width: {
+            type: String,
+            default: '90'
+        },
+        height: {
+            type: String,
+            default: '90'
+        },
+        poster: String,
+        circle: String
+    };
+    data = {
+        _width: 77,
+        _height: 77,
+        _circle: false,
+        _poster: '',
+        files: []
+    };
+    onLoad() {
+        this._width = parseInt(this.width);
+        this._height = parseInt(this.height);
+        this._poster = this.poster;
+        this._circle = Boolean(this.circle);
+    }
+    methods = {
+        // 点击+选择图片
+        async chooseImage() {
+            let res = await wepy.chooseImage({
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'] // 可以指定来源是相册还是相机，默认二者都有
+            });
+            this.files = this.files.concat(res.tempFilePaths);
+            this.$apply();
+        },
+        // 预览图片
+        previewImage(e) {
+            wepy.previewImage({
+                current: e.currentTarget.id, // 当前显示图片的http链接
+                urls: this.data.files // 需要预览的图片http链接列表
+            });
+        },
+        // 点击封面删除
+        delPoster() {
+            this._poster = '';
+        },
+        // 点击右上角x删除图片
+        delImage() {
+            this.files = [];
+        }
+    };
+}
+</script>
+
+<style>
+.weui-uploader__bd {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    position: relative;
+}
+.weui-uploader__file {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.weui-uploader__img {
+    display: block;
+    width: 77px;
+    height: 77px;
+}
+
+.weui-uploader__input-box {
+    float: left;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 77px;
+    height: 77px;
+    border: 1px solid #d9d9d9;
+    border-radius: 50%;
+}
+.weui-uploader__input-box:after,
+.weui-uploader__input-box:before {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #d9d9d9;
+}
+.weui-uploader__input-box:before {
+    width: 2px;
+    height: 39.5px;
+}
+.weui-uploader__input-box:after {
+    width: 39.5px;
+    height: 2px;
+}
+.weui-uploader__input-box:active {
+    border-color: #999;
+}
+.weui-uploader__input-box:active:after,
+.weui-uploader__input-box:active:before {
+    background-color: #999;
+}
+.weui-uploader__input {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.del-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+</style>
