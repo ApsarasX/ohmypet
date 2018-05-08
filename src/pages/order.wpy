@@ -260,7 +260,7 @@ export default class Order extends wepy.page {
 }
 .black-position {
     border-right: 25rpx solid transparent;
-    filter: drop-shadow(#404040 25rpx 0);
+    filter: drop-shadow($theme-color 25rpx 0);
     transform: translate3d(-10rpx, 0, 0);
 }
 .house-info-price {

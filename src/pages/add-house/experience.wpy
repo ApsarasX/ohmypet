@@ -1,15 +1,156 @@
 <template>
-    <view></view>
+    <view class="page-container">
+        <view class="grid-wrapper">
+            <view class="grid-row title">
+                <text>养宠经验</text>
+            </view>
+            <view class="grid-row">
+                <text>我的宠物</text>
+            </view>
+            <view class="grid-row experience-list">
+                <text>养宠经历</text>
+                <image class="add-icon" src="../../assets/images/add.png"></image>
+            </view>
+            <view class="grid-row opt">
+                <text space="emsp">性别 </text>
+                <text>添加宠物种类</text>
+                <text>填写养育年数</text>
+            </view>
+            <view class="grid-row opt-v">
+                <view class="gender-selector" @tap.stop="changeGender">
+                    <view class="gender-icon-wrapper" data-gender="0">
+                        <image class="gender-icon {{genderMale ? 'active-gender': ''}}" src="../../assets/images/male.png"></image>
+                    </view>
+                    <view class="gender-icon-wrapper" data-gender="1">
+                        <image class="gender-icon {{!genderMale ? 'active-gender': ''}}" src="../../assets/images/female.png"></image>
+                    </view>
+                </view>
+                <picker class="picker" range="{{dogBreeds}}" @change="dogBreedChange" value="{{selectedDog}}">{{dogBreeds[selectedDog]}}</picker>
+                <picker class="picker" range="{{dogLifeSpan}}" @change="lifeSpanChange" value="{{selectedLifeSpan}}">{{dogLifeSpan[selectedLifeSpan]}}年</picker>
+            </view>
+            <submit-btn icon="shop" title="提交养宠经验"></submit-btn>
+        </view>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
+import SubmitBtn from '@/components/submit-btn';
+
+const NUM_ARRAY = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
 
 export default class AddHouseExperience extends wepy.page {
     config = {
         navigationBarTitleText: '成为寄养屋'
     };
-    data = {};
-    methods = {};
+    components = {
+        'submit-btn': SubmitBtn
+    };
+    data = {
+        genderMale: true,
+        dogBreeds: [
+            '阿拉斯加',
+            '哈士奇',
+            '柴犬',
+            '泰迪',
+            '柯基犬',
+            '比熊犬',
+            '蝴蝶犬',
+            '拉布拉多',
+            '金毛',
+            '萨摩耶',
+            '吉娃娃',
+            '牧羊犬',
+            '黑背',
+            '贵宾犬',
+            '松狮',
+            '中华田园犬'
+        ],
+        dogLifeSpan: NUM_ARRAY,
+        selectedDog: 1,
+        selectedLifeSpan: 0
+    };
+    methods = {
+        // 性别修改监听函数
+        changeGender() {
+            this.genderMale = !this.genderMale;
+        },
+        // 品种修改监听函数
+        dogBreedChange(e) {
+            this.selectedDog = e.detail.value;
+        },
+        // 养育年数修改监听函数
+        lifeSpanChange(e) {
+            this.selectedLifeSpan = e.detail.value;
+        }
+    };
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../../assets/styles/variable.scss';
+@import '../../assets/styles/mixin.scss';
+
+.page-container {
+    width: 750rpx;
+}
+.grid-wrapper {
+    width: 646rpx;
+    margin: 30rpx auto 0;
+}
+.grid-row {
+    width: 100%;
+    min-height: 100rpx;
+    line-height: 80rpx;
+    padding: 10rpx 20rpx;
+    font: {
+        size: $text-medium-size;
+    }
+    border-bottom: 1rpx solid $splitline-color;
+}
+.title {
+    font-size: $text-large-size;
+}
+.add-icon {
+    width: 42rpx;
+    height: 42rpx;
+}
+.experience-list {
+    @include display-flex(row, space-between, center);
+}
+.opt,
+.opt-v {
+    @include display-flex(row, space-around, center);
+    font-size: $text-small-size;
+    color: $inactive-color;
+}
+.opt-v {
+    color: $text-color;
+    justify-content: space-between;
+}
+.gender-selector {
+    width: 65px;
+    height: 30px;
+}
+.gender-icon-wrapper {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    // overflow: hidden;
+    &:last-child {
+        margin-left: -10px;
+        transform: rotateY(180deg);
+    }
+}
+.gender-icon {
+    width: 20px;
+    height: 20px;
+    &.active-gender {
+        filter: drop-shadow(20px 0 $theme-color);
+        transform: translateX(-20px);
+    }
+}
+.picker {
+    width: 135rpx;
+}
+</style>

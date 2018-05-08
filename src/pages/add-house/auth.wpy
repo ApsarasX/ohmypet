@@ -1,7 +1,7 @@
 <template>
     <view class="page-container">
         <view class="grid-wrapper">
-            <view class="grid-row">
+            <view class="grid-row title">
                 <text>实名认证</text>
             </view>
             <view class="grid-row avatar">
@@ -58,7 +58,6 @@ export default class AddHouseAuth extends wepy.page {
 
 .page-container {
     width: 750rpx;
-    height: 100vh;
 }
 .grid-wrapper {
     width: 646rpx;
@@ -73,6 +72,9 @@ export default class AddHouseAuth extends wepy.page {
         size: $text-medium-size;
     }
     border-bottom: 1rpx solid $splitline-color;
+}
+.title {
+    font-size: $text-large-size;
 }
 .avatar {
     @include display-flex(column, center, center);

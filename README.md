@@ -12,11 +12,17 @@
 |   |   |-- order-record.wpy    订单记录组件
 |   |   |-- search-bar.wpy      搜索栏组件
 |   |   |-- select.wpy          多选一组件
-|   |   `-- seller-card.wpy     商家卡片组件
+|   |   |-- seller-card.wpy     商家卡片组件
+|   |   |-- submit-btn.wpy      底部提交组件
+|   |   `-- uploader.wpy        图片上传组件
 |   |-- lib                     封装的代码库
 |   |-- mixins
 |   |-- pages                   WePY页面目录(属于完整页面)
-|   |   |-- add-house.wpy       增加宠物屋页
+|   |   |-- add-house           增加宠物屋部分
+|   |   |   |-- auth.wpy        身份验证页
+|   |   |   |-- experience.wpy  养宠经验
+|   |   |   |-- index.wpy       入口页
+|   |   |   |-- info.wpy        宠物屋信息页
 |   |   |-- add-pet.wpy         增加宠物页
 |   |   |-- house.wpy           我的宠物屋
 |   |   |-- index.wpy           首页

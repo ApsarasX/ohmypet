@@ -46,6 +46,7 @@ export default class SubmitBtn extends wepy.component {
 }
 .submit-btn > view {
     @include display-flex;
+    margin-left: -70rpx;
 }
 .submit-btn image {
     width: 60rpx;
