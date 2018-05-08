@@ -1,14 +1,14 @@
 <template>
     <view class="weui-uploader__bd" style="width: {{_width}}px;height: {{_height}}px">
-        <view wx:if="{{_poster && files.length===0}}" class="weui-uploader__file" @tap.stop="previewImage" id="{{item}}" style="border-radius: {{_circle ? '50%' : 0}};z-index: 10;" @tap.stop="delPoster">
-            <image class="weui-uploader__img" src="{{poster}}" mode="aspectFill" style="border-radius: {{_circle ? '50%' : 0}};width: {{_width-13}}px;height: {{_height-13}}px;"/>
+        <view wx:if="{{_poster && files.length===0}}" class="weui-uploader__file" @tap.stop="previewImage" id="{{item}}" style="border-radius: {{_circle ? '50%' : '6px'}};z-index: 10;" @tap.stop="delPoster">
+            <image class="weui-uploader__img" src="{{poster}}" mode="aspectFill" style="border-radius: {{_circle ? '50%' : '6px'}};width: {{_width-13}}px;height: {{_height-13}}px;" />
         </view>
-        <block wx:for="{{files}}" wx:key="*this"> 
-            <view class="weui-uploader__file" @tap.stop="previewImage" id="{{item}}" style="border-radius: {{_circle ? '50%' : 0}};">
-                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" style="border-radius: {{_circle ? '50%' : 0}};width: {{_width-13}}px;height: {{_height-13}}px;"/>
+        <block wx:for="{{files}}" wx:key="*this">
+            <view class="weui-uploader__file" @tap.stop="previewImage" id="{{item}}" style="border-radius: {{_circle ? '50%' : '6px'}};">
+                <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" style="border-radius: {{_circle ? '50%' : '6px'}};width: {{_width-13}}px;height: {{_height-13}}px;" />
             </view>
         </block>
-        <view wx:if="{{files.length===0}}" class="weui-uploader__input-box" style="border-radius: {{_circle ? '50%' : 0}};width: {{_width-13}}px;height: {{_height-13}}px;">
+        <view wx:if="{{files.length===0}}" class="weui-uploader__input-box" style="border-radius: {{_circle ? '50%' : '6px'}};width: {{_width-13}}px;height: {{_height-13}}px;">
             <view class="weui-uploader__input" @tap.stop="chooseImage"></view>
         </view>
         <icon wx:if="{{files.length!==0}}" @tap="delImage" color="#A9A9A9" class="del-icon" type="cancel" size="26"></icon>
@@ -29,13 +29,15 @@ export default class Uploader extends wepy.component {
             default: '90'
         },
         poster: String,
-        circle: String
+        circle: String,
+        radius: String
     };
     data = {
         _width: 77,
         _height: 77,
         _circle: false,
         _poster: '',
+        _radius: '',
         files: []
     };
     onLoad() {
@@ -43,6 +45,7 @@ export default class Uploader extends wepy.component {
         this._height = parseInt(this.height);
         this._poster = this.poster;
         this._circle = Boolean(this.circle);
+        this._radius = parseInt(this.radius);
     }
     methods = {
         // 点击+选择图片
@@ -78,6 +81,7 @@ export default class Uploader extends wepy.component {
     display: inline-block;
     width: 90px;
     height: 90px;
+    margin-right: -13px;
     overflow: hidden;
     position: relative;
 }

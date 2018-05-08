@@ -8,30 +8,34 @@
                 <avatar-uploader width="90" height="90" circle="1"></avatar-uploader>
                 <text>真人照片审核</text>
             </view>
-            <view class="grid-row">
+            <view class="grid-row name-wrapper">
                 <text>真实姓名</text>
+                <input type="text" confirm-type="done"/>
             </view>
-            <view class="grid-row">
+            <view class="grid-row idnumber-wrapper">
                 <text>身份证号码</text>
+                <input type="idcard" maxlength="18" confirm-type="done"/>
             </view>
             <view class="grid-row idcard">
                 <view>身份证照片</view>
                 <view class="idcard-wrapper">
-                    <idcard-uploader-1 width="132" height="83"></idcard-uploader-1>
-                    <idcard-uploader-2 width="132" height="83"></idcard-uploader-2>
+                    <idcard-uploader-1 width="132" height="83" poster="../../assets/images/idcard1.png"></idcard-uploader-1>
+                    <idcard-uploader-2 width="132" height="83" poster="../../assets/images/idcard2.png"></idcard-uploader-2>
                 </view>
                 <view class="idcard-wrapper">
                     <text>上传身份证正面</text>
                     <text>上传身份证反面</text>
                 </view>
             </view>
+            <submit-btn icon="shop" title="提交实名认证"></submit-btn>
         </view>
     </view>
 </template>
 
 <script>
 import wepy from 'wepy';
-import Uploader from '../../components/uploader';
+import Uploader from '@/components/uploader';
+import SubmitBtn from '@/components/submit-btn';
 
 export default class AddHouseAuth extends wepy.page {
     config = {
@@ -40,7 +44,8 @@ export default class AddHouseAuth extends wepy.page {
     components = {
         'avatar-uploader': Uploader,
         'idcard-uploader-1': Uploader,
-        'idcard-uploader-2': Uploader
+        'idcard-uploader-2': Uploader,
+        'submit-btn': SubmitBtn
     };
     data = {};
     methods = {};
@@ -71,6 +76,17 @@ export default class AddHouseAuth extends wepy.page {
 }
 .avatar {
     @include display-flex(column, center, center);
+}
+.name-wrapper,
+.idnumber-wrapper {
+    @include display-flex(row, space-between, center);
+    & > input {
+        color: $theme-color;
+        font-size: $text-medium-size;
+    }
+}
+.name-wrapper > input {
+    text-align: center;
 }
 .idcard-wrapper {
     @include display-flex(row, space-around, center);
