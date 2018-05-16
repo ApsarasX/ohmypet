@@ -29,6 +29,7 @@
 |   |   |-- login.wpy           登录页
 |   |   |-- msg-list.wpy        聊天列表页
 |   |   |-- msg.wpy             聊天详情页
+|   |   |-- order-detail.wpy    订单详情页
 |   |   |-- order-status.wpy    订单状态页
 |   |   |-- order.wpy           准备订单页面
 |   |   |-- pets.wpy            我的宠物

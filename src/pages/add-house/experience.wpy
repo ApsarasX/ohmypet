@@ -18,17 +18,17 @@
             </view>
             <view class="grid-row opt-v">
                 <view class="gender-selector" @tap.stop="changeGender">
-                    <view class="gender-icon-wrapper" data-gender="0">
-                        <image class="gender-icon {{genderMale ? 'active-gender': ''}}" src="../../assets/images/male.png"></image>
+                    <view class="gender-icon-wrapper">
+                        <image class="gender-icon" src="../../assets/images/male{{genderMale?'-active':''}}.png"></image>
                     </view>
-                    <view class="gender-icon-wrapper" data-gender="1">
-                        <image class="gender-icon {{!genderMale ? 'active-gender': ''}}" src="../../assets/images/female.png"></image>
+                    <view class="gender-icon-wrapper">
+                        <image class="gender-icon" src="../../assets/images/female{{genderMale?'':'-active'}}.png"></image>
                     </view>
                 </view>
                 <picker class="picker" range="{{dogBreeds}}" @change="dogBreedChange" value="{{selectedDog}}">{{dogBreeds[selectedDog]}}</picker>
                 <picker class="picker" range="{{dogLifeSpan}}" @change="lifeSpanChange" value="{{selectedLifeSpan}}">{{dogLifeSpan[selectedLifeSpan]}}年</picker>
             </view>
-            <submit-btn icon="shop" title="提交养宠经验"></submit-btn>
+            <submit-btn icon="shop" title="提交养宠经验" urlType="navigateBack"></submit-btn>
         </view>
     </view>
 </template>
@@ -124,6 +124,11 @@ export default class AddHouseExperience extends wepy.page {
     font-size: $text-small-size;
     color: $inactive-color;
 }
+.opt {
+    & > text:nth-child(2) {
+        margin-left: 10px;
+    }
+}
 .opt-v {
     color: $text-color;
     justify-content: space-between;
@@ -131,24 +136,16 @@ export default class AddHouseExperience extends wepy.page {
 .gender-selector {
     width: 65px;
     height: 30px;
+    margin-left: 5px;
 }
 .gender-icon-wrapper {
     display: inline-block;
     width: 30px;
     height: 30px;
-    // overflow: hidden;
-    &:last-child {
-        margin-left: -10px;
-        transform: rotateY(180deg);
-    }
 }
 .gender-icon {
     width: 20px;
     height: 20px;
-    &.active-gender {
-        filter: drop-shadow(20px 0 $theme-color);
-        transform: translateX(-20px);
-    }
 }
 .picker {
     width: 135rpx;

@@ -18,6 +18,8 @@ export default class SubmitBtn extends wepy.component {
         title: String,
         // url是跳转页面的路径
         url: String,
+        // url跳转方式
+        urlType: String,
         // handler是一个内含f函数的对象, 仅当url不存在时生效
         handler: {
             type: Object,
@@ -26,8 +28,20 @@ export default class SubmitBtn extends wepy.component {
     };
     methods = {
         handleTap() {
-            if (this.url) {
-                wepy.navigateTo({ url: this.url });
+            if (this.url || this.urlType) {
+                switch (this.urlType) {
+                case 'navigate':
+                    wepy.navigateTo({ url: this.url });
+                    break;
+                case 'redirect':
+                    wepy.redirectTo({ url: this.url });
+                    break;
+                case 'navigateBack':
+                    wepy.navigateBack();
+                    break;
+                default:
+                    break;
+                }
             } else {
                 this.handler.f && this.handler.f();
             }

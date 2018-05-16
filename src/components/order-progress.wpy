@@ -1,0 +1,114 @@
+<template>
+    <view class="order-progress-container">
+        <view class="progress-bar">
+            <block wx:for="{{rate}}">
+                <image src="../assets/images/oval.png"></image>
+                <view class="line-wrapper">
+                    <view class="line-inner-wrapper">
+                        <view class="line active"></view>
+                    </view>
+                </view>
+            </block>
+            <image class="cat" src="../assets/images/cat.png"></image>
+            <block wx:for="{{4-rate}}">
+                <view class="line-wrapper">
+                    <view class="line-inner-wrapper">
+                        <view class="line"></view>
+                    </view>
+                </view>
+                <view class="point-wrapper">
+                    <view class="point-inner-wrapper">
+                        <view class="point"></view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="progress-text-wrapper">
+            <text>已预订</text>
+            <text>已付款</text>
+            <text>已交付</text>
+            <text>待寄养</text>
+            <text>待评价</text>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class OrderProgress extends wepy.component {
+    props = {
+        rate: {
+            type: Number,
+            default: 0
+        }
+    };
+    methods = {};
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
+@import '../assets/styles/mixin.scss';
+
+.order-progress-container {
+    width: 750rpx;
+    height: 150rpx;
+}
+.progress-bar {
+    width: 650rpx;
+    height: 100rpx;
+    @include inline-block-middle;
+    margin-left: 50rpx;
+}
+image {
+    width: 50rpx;
+    height: 50rpx;
+    @include inline-block-middle;
+}
+.cat {
+    height: 100rpx;
+}
+.point-wrapper {
+    width: 50rpx;
+    height: 100rpx;
+    @include inline-block-middle;
+}
+.point-inner-wrapper {
+    width: 100%;
+    height: 100%;
+    @include display-flex;
+}
+.point {
+    width: 20rpx;
+    height: 20rpx;
+    background-color: $theme-color;
+    border-radius: 50%;
+}
+.line-wrapper {
+    width: 100rpx;
+    height: 100rpx;
+    @include inline-block-middle;
+}
+.line-inner-wrapper {
+    width: 100%;
+    height: 100%;
+    @include display-flex;
+}
+.line {
+    width: 100%;
+    height: 10rpx;
+    background-color: $shadow-color;
+    &.active {
+        background-color: $theme-color;
+    }
+}
+.progress-text-wrapper {
+    width: 650rpx;
+    height: 50rpx;
+    margin-left: 50rpx;
+    @include display-flex(row, space-between);
+    & > text {
+        font-size: $text-medium-size;
+    }
+}
+</style>

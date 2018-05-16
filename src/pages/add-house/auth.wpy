@@ -27,7 +27,7 @@
                     <text>上传身份证反面</text>
                 </view>
             </view>
-            <submit-btn icon="shop" title="提交实名认证"></submit-btn>
+            <submit-btn icon="shop" title="提交实名认证" urlType="navigateBack"></submit-btn>
         </view>
     </view>
 </template>

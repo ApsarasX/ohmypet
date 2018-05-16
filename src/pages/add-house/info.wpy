@@ -58,17 +58,13 @@
             <label for=''>寄养屋介绍</label>
         </view>
         <textarea class="introduction" maxlength="250" @input="changeIntroduction"></textarea>
-        <view class='form-group submit-container'>
-            <view formType="submit" class='submit'>
-                <image src="../assets/images/telephone.png"></image>
-                <text>提交资料</text>
-            </view>
-        </view>
+        <submit-btn icon="telephone" title="提交资料" urlType="navigateBack"></submit-btn>
     </view>
 </template>
 <script>
 import wepy from 'wepy';
 import Select from '@/components/select';
+import SubmitBtn from '@/components/submit-btn';
 
 const list = {
     property: ['租客', '房主'],
@@ -85,7 +81,8 @@ export default class AddHouseInfo extends wepy.page {
         'select-property-right': Select,
         'select-balcony': Select,
         'select-garden': Select,
-        'select-other': Select
+        'select-other': Select,
+        'submit-btn': SubmitBtn
     };
     data = {
         ...list
@@ -133,11 +130,6 @@ export default class AddHouseInfo extends wepy.page {
 }
 .select {
     width: 420rpx;
-}
-.submit-container {
-    justify-content: center;
-    margin-top: 40rpx;
-    border: none;
 }
 .introduction {
     flex-wrap: wrap;
@@ -217,25 +209,6 @@ textarea {
     margin: 40rpx 0;
     font-size: 28rpx;
     padding: 20rpx;
-}
-.submit {
-    height: 80rpx;
-    width: 400rpx;
-    margin: 20rpx;
-    background: #fa6650;
-    border-radius: 20rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.submit > image {
-    height: 44rpx;
-    width: 42rpx;
-    margin-right: 20rpx;
-}
-.submit > text {
-    font-size: 24rpx;
-    color: white;
 }
 </style>
 

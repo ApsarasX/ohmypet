@@ -3,7 +3,7 @@
         <image src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=3231543879,665615828&fm=58' mode='aspectFill'></image>
         <text>帅气的斯比奈鲁</text>
     </view>
-    <submit-btn icon="telephone" title="成为寄养屋" url="./add-house/index"></submit-btn>
+    <submit-btn icon="telephone" title="成为寄养屋" url="./add-house/index" urlType="navigate"></submit-btn>
 </template>
 
 <script>

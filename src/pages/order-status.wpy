@@ -1,6 +1,8 @@
 <template>
     <view wx:for="{{orders}}" wx:key="*this">
-        <order-record :houseImage="item.houseImage" :houseName="item.houseName" :petName="item.petName" :startEndTime="item.startEndTime" :timeSpan="item.timeSpan" :price="item.price" :discount="item.discount" :status="item.status"></order-record>
+        <navigator url="./order-detail" open-type="navigate" hover-class="none">
+            <order-record :houseImage="item.houseImage" :houseName="item.houseName" :petName="item.petName" :startEndTime="item.startEndTime" :timeSpan="item.timeSpan" :price="item.price" :discount="item.discount" :status="item.status"></order-record>
+        </navigator>
     </view>
 </template>
 
@@ -48,5 +50,4 @@ export default class OrderStatus extends wepy.page {
 }
 </script>
 <style lang="scss" scoped>
-
 </style>

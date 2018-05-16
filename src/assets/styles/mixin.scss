@@ -10,3 +10,8 @@
     justify-content: $xaxis;
     align-items: $yaxis;
 }
+
+@mixin inline-block-middle {
+    display: inline-block;
+    vertical-align: middle;
+}

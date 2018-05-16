@@ -2,16 +2,22 @@
     <view class="page-container">
         <view class="grid-wrapper">
             <view class="grid-row">
-                <text>实名认证</text>
-                <text class="required">*</text>
+                <navigator open-type="navigate" url="./auth" hover-class="none">
+                    <text>实名认证</text>
+                    <text class="required">*</text>
+                </navigator>
             </view>
             <view class="grid-row">
-                <text>养宠经验</text>
-                <text class="required">*</text>
+                <navigator open-type="navigate" url="./experience" hover-class="none">
+                    <text>养宠经验</text>
+                    <text class="required">*</text>
+                </navigator>
             </view>
             <view class="grid-row">
-                <text>寄养屋信息</text>
-                <text class="required">*</text>
+                <navigator open-type="navigate" url="./info" hover-class="none">
+                    <text>寄养屋信息</text>
+                    <text class="required">*</text>
+                </navigator>
             </view>
         </view>
         <submit-btn icon="shop" title="申请成为寄养屋"></submit-btn>
