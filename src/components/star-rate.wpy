@@ -1,0 +1,50 @@
+<template>
+    <view class="star-rate-container">
+        <block wx:for="{{_rate}}" wx:key="*this">
+            <image src="../assets/images/star.png" class="star" @tap.stop="star" data-index="{{index+1}}"></image>
+        </block>
+        <block wx:for="{{5-_rate}}" wx:key="*this">
+            <image src="../assets/images/nostar.png" class="star" @tap.stop="star" data-index="{{_rate+index+1}}"></image>
+        </block>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+
+export default class StarRate extends wepy.component {
+    props = {
+        rate: {
+            type: Number,
+            default: 0
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        }
+    };
+    data = {
+        _rate: this.rate
+    };
+    onLoad() {
+        this._rate = this.rate;
+    }
+    methods = {
+        star(e) {
+            if (!this.disabled) {
+                this._rate = e.target.dataset.index;
+            }
+        }
+    };
+}
+</script>
+
+<style lang="scss" scoped>
+.star-rate-container {
+    width: 250rpx;
+    height: 40rpx;
+}
+.star {
+    width: 50rpx;
+    height: 40rpx;
+}
+</style>

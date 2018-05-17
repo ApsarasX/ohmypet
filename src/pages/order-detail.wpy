@@ -1,53 +1,61 @@
 <template>
     <view>
         <order-progress></order-progress>
-        <view class="price-container">
-            <text class="price-wrapper">
-                <text class="price">40</text>元
-            </text>
-        </view>
-        <view class="pet-name-container">
-            <text>您的宠物</text>
-            <text>帅气的斯比奈鲁</text>
-        </view>
-        <view class="avatar-container">
-            <image class="avatar" src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg"></image>
-        </view>
-        <view class="status-container">
-            <text class="status-text">已交付</text>
-        </view>
-        <view class="house-name-container">
-            <text class="house-name">寄养屋</text>
-            <text class="house-name">巧克莉与小可爱</text>
-        </view>
-        <view class="time-container">
-            <text>预定时间 2018年3月31日 到 2018年3月31日 共1日</text>
-        </view>
-        <view class="trade-info-container">
-            <view class="trade-info-wrapper">
-                <view class="row">
-                    <text>寄养人昵称</text>
-                    <text>英俊的可鲁贝洛斯</text>
-                </view>
-                <view class="row">
-                    <text>订单编号</text>
-                    <text>81938298392</text>
-                </view>
-                <view class="row">
-                    <text>交易号</text>
-                    <text>201803222181938298392</text>
+        <view wx:if="{{!inEvaluationStatus}}">
+            <view class="price-container">
+                <text class="price-wrapper">
+                    <text class="price">40</text>元
+                </text>
+            </view>
+            <view class="pet-name-container">
+                <text>您的宠物</text>
+                <text>帅气的斯比奈鲁</text>
+            </view>
+            <view class="avatar-container">
+                <image class="avatar" src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg"></image>
+            </view>
+            <view class="status-container">
+                <text class="status-text">已交付</text>
+            </view>
+            <view class="house-name-container">
+                <text class="house-name">寄养屋</text>
+                <text class="house-name">巧克莉与小可爱</text>
+            </view>
+            <view class="time-container">
+                <text>预定时间 2018年3月31日 到 2018年3月31日 共1日</text>
+            </view>
+            <view class="trade-info-container">
+                <view class="trade-info-wrapper">
+                    <view class="row">
+                        <text>寄养人昵称</text>
+                        <text>英俊的可鲁贝洛斯</text>
+                    </view>
+                    <view class="row">
+                        <text>订单编号</text>
+                        <text>81938298392</text>
+                    </view>
+                    <view class="row">
+                        <text>交易号</text>
+                        <text>201803222181938298392</text>
+                    </view>
                 </view>
             </view>
+        </view>
+        <view wx:else class="evaluation-container">
+            <view class="evaluation-avatar-wrapper">
+                <image class="evaluation-avatar" src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg"></image>
+                <text>英俊的可鲁贝洛斯</text>
+            </view>
+            <evaluation-box-1 class="other-evaluation" :disabled="a" :text="b" :star="c"></evaluation-box-1>
+            <evaluation-box-2 class="my-evaluation"></evaluation-box-2>
         </view>
         <view class="bottom-button-group">
             <view class="cancel-button">
                 <text>取消订单</text>
             </view>
-            <navigator open-type="navigateTo" url="" hover-class="none">
-                <view class='confirm-button'>
-                    <text>联系屋主确认</text>
-                </view>
-            </navigator>
+            <view class="confirm-button" @tap.stop="toEvaluation">
+                <text>联系屋主确认</text>
+            </view>
         </view>
     </view>
 </template>
@@ -55,15 +63,28 @@
 <script>
 import wepy from 'wepy';
 import OrderProgress from '@/components/order-progress';
+import EvaluationBox from '@/components/evaluation-box';
 
 export default class OrderDetail extends wepy.page {
     config = {
         navigationBarTitleText: '订单详情'
     };
     components = {
-        'order-progress': OrderProgress
+        'order-progress': OrderProgress,
+        'evaluation-box-1': EvaluationBox,
+        'evaluation-box-2': EvaluationBox
     };
-    data = {};
+    data = {
+        inEvaluationStatus: false,
+        a: true,
+        b: '寄养屋环境很好',
+        c: 2
+    };
+    methods = {
+        toEvaluation() {
+            this.inEvaluationStatus = true;
+        }
+    };
 }
 </script>
 <style lang="scss" scoped>
@@ -77,6 +98,7 @@ export default class OrderDetail extends wepy.page {
     width: 750rpx;
     height: 120rpx;
     text-align: center;
+    margin-bottom: 10rpx;
 }
 .price-wrapper {
     color: $theme-color;
@@ -97,7 +119,6 @@ export default class OrderDetail extends wepy.page {
         height: 60rpx;
         line-height: 60rpx;
         margin: 0 10rpx;
-        font-weight: 400;
     }
 }
 .avatar-container,
@@ -106,14 +127,16 @@ export default class OrderDetail extends wepy.page {
 .time-container {
     width: 750rpx;
     height: 70rpx;
-    margin-top: 30rpx;
+    margin-top: 20rpx;
     @include display-flex;
 }
-.pet-name-container
+.pet-name-container,
 .status-container,
 .house-name-container {
-    font-weight: 500;
-    font-size: $text-large-size;
+    & > text {
+        font-weight: bold;
+        font-size: $text-large-size;
+    }
 }
 .avatar-container {
     height: 120rpx;
@@ -128,7 +151,6 @@ export default class OrderDetail extends wepy.page {
     font-size: $text-large-size;
 }
 .house-name {
-    font-size: $text-large-size;
     margin: 0 10rpx;
     @include inline-block-middle;
 }
@@ -176,21 +198,42 @@ export default class OrderDetail extends wepy.page {
         color: $text-color;
     }
 }
-.bottom-button-group > navigator {
-    height: 108rpx;
-    width: 50%;
-    display: flex;
-    @include display-flex(column);
-}
 .cancel-button {
-    height: 108rpx;
+    height: 100%;
     width: 50%;
-    @include display-flex(column);
+    @include display-flex;
 }
 .confirm-button {
     background: rgba(250, 102, 80, 0.7);
     height: 100%;
-    width: 100%;
+    width: 50%;
     @include display-flex;
+}
+.evaluation-container {
+    width: 576rpx;
+    margin: 10rpx auto;
+}
+.evaluation-avatar-wrapper {
+    width: 100%;
+    margin: 10rpx 0;
+    @include display-flex(row, flex-start, center);
+    & > text {
+        font-weight: 300;
+        font-size: $text-x-large-size;
+        color: $text-color;
+    }
+}
+.evaluation-avatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin: 0 10rpx;
+}
+
+.other-evaluation {
+    margin-top: 30rpx;
+}
+.my-evaluation {
+    margin-top: 60rpx;
 }
 </style>

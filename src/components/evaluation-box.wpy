@@ -1,0 +1,73 @@
+<template>
+    <view class="evaluation-box-container">
+        <textarea disabled="{{disabled}}" class="textarea" value="{{text || '请输入您的评价...'}}"></textarea>
+        <view class="evaluation-info">
+            <text class="time-text">{{nowTime}}</text>
+            <star-rate class="star-rate" :disabled="disabled" :rate="star"></star-rate>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+import { DateTime } from 'luxon';
+import StarRate from './star-rate';
+
+export default class EvaluationBox extends wepy.component {
+    components = {
+        'star-rate': StarRate
+    };
+    props = {
+        // 如果是true, 只则展示
+        disabled: {
+            type: Boolean,
+            default: false
+        },
+        // 评价文字
+        text: {
+            type: String,
+            default: ''
+        },
+        // 评价星级
+        star: {
+            type: Number,
+            default: 0
+        }
+    };
+    data = {
+        nowTime: DateTime.local().toFormat('yyyy年MM月dd日 HH:mm')
+    };
+    onLoad() {
+        console.log(this.disabled);
+    }
+    methods = {};
+}
+</script>
+
+<style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
+@import '../assets/styles/mixin.scss';
+
+.evaluation-box-container {
+    width: 576rpx;
+    margin: 0 auto;
+    @include display-flex(column, flex-start, flex-end);
+}
+.textarea {
+    width: 576rpx;
+    height: 250rpx;
+    background-color: $lite-shadow-color;
+    color: $text-color;
+    font-weight: 200;
+    font-size: $text-large-size;
+}
+.evaluation-info {
+    width: 100%;
+    margin-top: 10rpx;
+    @include display-flex(row, space-between, center);
+}
+.time-text {
+    font-size: $text-medium-size;
+    font-weight: 200;
+    color: $inactive-color;
+}
+</style>
