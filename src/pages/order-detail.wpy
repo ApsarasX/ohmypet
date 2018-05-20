@@ -1,6 +1,6 @@
 <template>
     <view>
-        <order-progress></order-progress>
+        <order-progress :rate.sync="orderProgress"></order-progress>
         <view wx:if="{{!inEvaluationStatus}}">
             <view class="price-container">
                 <text class="price-wrapper">
@@ -53,7 +53,7 @@
             <view class="cancel-button">
                 <text>取消订单</text>
             </view>
-            <view class="confirm-button" @tap.stop="toEvaluation">
+            <view class="confirm-button" @tap.stop="confirm">
                 <text>联系屋主确认</text>
             </view>
         </view>
@@ -78,11 +78,23 @@ export default class OrderDetail extends wepy.page {
         inEvaluationStatus: false,
         a: true,
         b: '寄养屋环境很好',
-        c: 2
+        c: 2,
+        orderProgress: 0
     };
+    onLoad(option) {
+        if (option.rate) {
+            this.orderProgress = Number.parseInt(option.rate);
+        }
+    }
     methods = {
-        toEvaluation() {
-            this.inEvaluationStatus = true;
+        async confirm() {
+            await wepy.setStorage({
+                key: 'order',
+                data: true
+            });
+            wepy.navigateTo({
+                url: 'msg'
+            });
         }
     };
 }

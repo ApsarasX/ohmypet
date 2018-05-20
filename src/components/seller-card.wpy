@@ -1,26 +1,28 @@
 <template>
-    <view class='item'>
-        <view class='item-status'>{{status}}</view>
-        <view class='back-img'>
-            <image src="{{cover}}"></image>
-        </view>
-        <view class='item-text-container'>
-            <view class='item-title'>
-                <text>{{name}}</text>
-                <view class='item-detail'>评分 {{_rate}}</view>
+    <navigator open-type="navigate" url="./order?id={{_data.id}}" hover-class="none">
+        <view class='item'>
+            <view class='item-status'>{{_data.status}}</view>
+            <view class='back-img'>
+                <image src="{{_data.cover}}"></image>
             </view>
-            <view class='item-price'>
-                <text>
-                    <text class='item-price-number'>¥{{price}}</text> 起 每晚 </text>
-                <view class='item-detail'>距我 {{_range}}km </view>
+            <view class='item-text-container'>
+                <view class='item-title'>
+                    <text>{{_data.name}}</text>
+                    <view class='item-detail'>评分 {{_data.rate}}</view>
+                </view>
+                <view class='item-price'>
+                    <text>
+                        <text class='item-price-number'>¥{{_data.price}}</text> 起 每晚 </text>
+                    <view class='item-detail'>距我 {{_data.distance}}km </view>
+                </view>
+            </view>
+            <view class='item-head-icon'>
+                <text wx:if="{{_data.certification}}">信用认证</text>
+                <text wx:else class="no-certi">信用未认证</text>
+                <image src="{{_data.avatar}}"></image>
             </view>
         </view>
-        <view class='item-head-icon'>
-            <text wx:if="{{certification}}">信用认证</text>
-            <text wx:else class="no-certi">信用未认证</text>
-            <image src="{{avatar}}"></image>
-        </view>
-    </view>
+    </navigator>
 </template>
 
 <script>
@@ -28,57 +30,29 @@ import wepy from 'wepy';
 
 export default class SellerCard extends wepy.component {
     props = {
-        // 商家头像
-        avatar: {
-            type: String,
-            default:
-                'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'
-        },
-        // 商家宠物屋封面
-        cover: {
-            type: String,
-            default:
-                'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg'
-        },
-        // 是否信用认证
-        certification: {
-            type: Boolean,
-            default: false
-        },
-        // 商家宠物屋名字
-        name: {
-            type: String,
-            default: '商家的宠物屋'
-        },
-        // 商家接单状态
-        status: {
-            type: String,
-            default: '暂不接单'
-        },
-        // 价格
-        price: {
-            type: Number,
-            default: 0
-        },
-        // 距离
-        range: {
-            type: Number,
-            default: 0
-        },
-        // 评分
-        rate: {
-            type: Number,
-            default: 0
-        }
-    };
-    computed = {
-        _range() {
-            if (this.range === 0) return 0;
-            return this.range.toFixed(2);
-        },
-        _rate() {
-            if (this.rate === 0) return 0;
-            return this.rate.toFixed(1);
+        _data: {
+            type: Object,
+            required: true,
+            default: {
+                // // 商家头像
+                // avatar:
+                //     'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg',
+                // // 商家宠物屋封面
+                // cover:
+                //     'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg',
+                // // 是否信用认证
+                // certification: false,
+                // // 商家宠物屋名字
+                // name: '商家的宠物屋',
+                // // 商家接单状态
+                // status: '暂不接单',
+                // // 价格
+                // price: 0,
+                // // 距离
+                // distance: 0,
+                // // 评分
+                // rate: 0
+            }
         }
     };
 }

@@ -117,15 +117,15 @@
         </view>
 
         <view class='house-button-group'>
-            <navigator open-type='switchTab' url="./msg" hover-class="none">
+            <navigator open-type='navigateTo' url="./msg" hover-class="none">
                 <view class='house-info-msg-button'>
                     <image src='../assets/images/chat-1.png'></image>
                     <text>消息</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' url="./settlement" hover-class="none">
-                <view class='house-info-order-button'>
-                    <text>立即预订</text>
+            <navigator open-type="navigateTo" url="{{status ? './settlement' : ''}}" hover-class="none">
+                <view class="house-info-order-button" style="background-color: {{status ? 'rgba(250, 102, 80, 0.7)' : '#b6b6b6'}}">
+                    <text>{{status ? '立即预订' : '不可预订'}}</text>
                 </view>
             </navigator>
         </view>
@@ -136,14 +136,17 @@
 import wepy from 'wepy';
 
 export default class Order extends wepy.page {
-    config = {};
-    components = {};
-
     data = {
         collected: false
     };
 
-    computed = {};
+    props = {
+        // 是否可以预定
+        status: {
+            type: Boolean,
+            default: false
+        }
+    };
 
     methods = {
         switchCollection() {
@@ -377,7 +380,6 @@ export default class Order extends wepy.page {
     color: #252e39;
 }
 .house-info-order-button {
-    background: rgba(250, 102, 80, 0.7);
     height: 100%;
     width: 100%;
     display: flex;

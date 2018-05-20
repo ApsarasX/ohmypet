@@ -50,11 +50,9 @@
                 <text class="pay-info-price">￥120</text>
                 <text class="pay-info-duration">共3天</text>
             </view>
-            <navigator open-type='navigateTo' url="" hover-class="none">
-                <view class='pay-button'>
-                    <text>去支付</text>
-                </view>
-            </navigator>
+            <view class='pay-button' @tap.stop="submitOrder">
+                <text>提交订单</text>
+            </view>
         </view>
     </view>
 </template>
@@ -79,12 +77,23 @@ export default class Settlement extends wepy.page {
         },
         changeEndDate(e) {
             this.endDate = DateTime.fromISO(e.detail.value).toFormat('MM月dd日');
+        },
+        async submitOrder() {
+            const res = await wepy.showModal({
+                content: '是否提交订单?'
+            });
+            if (res.confirm) {
+                wepy.navigateTo({
+                    url: 'order-detail'
+                });
+            }
         }
     };
 }
 </script>
 <style lang="scss" scoped>
 @import '../assets/styles/variable.scss';
+@import '../assets/styles/mixin.scss';
 checkbox {
     transform: scale(0.65);
     vertical-align: middle;
@@ -190,20 +199,10 @@ checkbox {
     justify-content: space-between;
     align-items: center;
 }
-.bottom-button-group > navigator {
-    height: 108rpx;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 .pay-info {
     height: 108rpx;
     width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include display-flex;
 }
 .pay-info-price {
     color: $theme-color;
@@ -215,10 +214,8 @@ checkbox {
 .pay-button {
     background: rgba(250, 102, 80, 0.7);
     height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 50%;
+    @include display-flex;
 }
 .pay-button > text {
     font-size: $text-large-size;

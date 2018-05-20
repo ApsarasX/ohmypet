@@ -4,55 +4,9 @@
         <filter-bar></filter-bar>
         <scroll-view class="scroll-view" scroll-y>
             <view class='items-container'>
-                <navigator open-type="navigateTo" url='./order' hover-class="none">
-                    <seller-card></seller-card>
-                </navigator>
-                <navigator open-type="navigateTo" url='./order' hover-class="none">
-                    <view class='item'>
-                        <view class='item-status'>春节接单</view>
-                        <view class='back-img'>
-                            <image src='https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg'></image>
-                        </view>
-                        <view class='item-text-container'>
-                            <view class='item-title'>
-                                <text>有猫有家</text>
-                                <view class='item-detail'>评分 5.0</view>
-                            </view>
-                            <view class='item-price'>
-                                <text>
-                                    <text class='item-price-number'>¥60</text> 起 每晚 </text>
-                                <view class='item-detail'>距我 14.22km </view>
-                            </view>
-                        </view>
-                        <view class='item-head-icon'>
-                            <text>信用认证</text>
-                            <image src='https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg'></image>
-                        </view>
-                    </view>
-                </navigator>
-                <navigator open-type="navigateTo" url='./order' hover-class="none">
-                    <view class='item'>
-                        <view class='item-status'>可随时接单</view>
-                        <view class='back-img'>
-                            <image src="https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg"></image>
-                        </view>
-                        <view class='item-text-container'>
-                            <view class='item-title'>
-                                <text>巧克莉与小可爱</text>
-                                <view class='item-detail'>评分 5.0</view>
-                            </view>
-                            <view class='item-price'>
-                                <text>
-                                    <text class='item-price-number'>¥40</text> 起 每晚 </text>
-                                <view class='item-detail'>距我 7.32km </view>
-                            </view>
-                        </view>
-                        <view class='item-head-icon'>
-                            <text>信用认证</text>
-                            <image src='https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg'></image>
-                        </view>
-                    </view>
-                </navigator>
+                <repeat for="{{sellerArr}}" key="index" index="index" item="item">
+                    <seller-card :_data.sync="item"></seller-card>
+                </repeat>
             </view>
         </scroll-view>
     </view>
@@ -66,6 +20,48 @@ import SerachBar from '../components/search-bar';
 import FilterBar from '../components/filter-bar';
 import SellerCard from '../components/seller-card';
 
+const sellerArr = [
+    {
+        id: '',
+        avatar:
+            'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg',
+        cover:
+            'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg',
+        certification: true,
+        name: '商家的宠物屋',
+        status: '可随时接单',
+        price: 40,
+        distance: 3,
+        rate: 3.5
+    },
+    {
+        id: '',
+        avatar:
+            'https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1521961286&di=f5ca014e618f843f991f48983572cbf7&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3Dcbf852a19ddda144da096cba82b6d009%2F8462041f3a292df527d15aa7b6315c6035a873fb.jpg',
+        cover:
+            'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg',
+        certification: true,
+        name: '有猫有家',
+        status: '春节接单',
+        price: 60,
+        distance: 14.33,
+        rate: 4.5
+    },
+    {
+        id: '',
+        avatar:
+            'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg',
+        cover:
+            'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/77094b36acaf2edd82ff36e5811001e9390193ab.jpg',
+        certification: true,
+        name: '巧克莉与小可爱',
+        status: '可随时接单',
+        price: 40,
+        distance: 7.32,
+        rate: 5
+    }
+];
+
 export default class Index extends wepy.page {
     config = {};
     components = {
@@ -77,7 +73,8 @@ export default class Index extends wepy.page {
     mixins = [Mixin];
 
     data = {
-        sellerList: []
+        sellerList: [],
+        sellerArr
     };
 
     computed = {};

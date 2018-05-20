@@ -1,8 +1,15 @@
 <template>
     <view class="select-container">
-        <view @tap.stop="switch" wx:for="{{list}}" wx:key="index" data-index="{{index}}" class="item">
-            <text class="{{active===index ? 'active': ''}}">{{item}}</text>
-        </view>
+        <block wx:if="{{multiple}}">
+            <view @tap.stop="switch" wx:for="{{list}}" wx:key="index" data-index="{{index}}" class="item">
+                <text class="{{activeArr[index] ? 'active': ''}}">{{item}}</text>
+            </view>
+        </block>
+        <block wx:else>
+            <view @tap.stop="switch" wx:for="{{list}}" wx:key="index" data-index="{{index}}" class="item">
+                <text class="{{active===index ? 'active': ''}}">{{item}}</text>
+            </view>
+        </block>
     </view>
 </template>
 <script>
@@ -12,14 +19,29 @@ export default class Select extends wepy.component {
         list: {
             type: Array,
             default: []
+        },
+        multiple: {
+            type: Boolean,
+            default: false
         }
     };
     data = {
-        active: -1
+        active: -1,
+        activeArr: []
     };
+    onLoad() {
+        if (this.multiple) {
+            this.activeArr = new Array(this.list.length).fill(0).map(() => false);
+        }
+    }
     methods = {
         switch(e) {
-            this.active = e.currentTarget.dataset.index;
+            const index = e.currentTarget.dataset.index;
+            if (this.multiple) {
+                this.activeArr[index] = !this.activeArr[index];
+            } else {
+                this.active = index;
+            }
         }
     };
 }

@@ -1,8 +1,22 @@
 <template>
     <view>
-        <scroll-view class="scroll-container" scroll-y scroll-top="{{scrollTop}}">
+        <view wx:if="{{ordered && !payed}}" class="top-container">
+            <view class="left-image-wrapper">
+                <image src="../assets/images/shop.png"></image>
+            </view>
+            <view class="middle-info-wrapper">
+                <view>
+                    <text class="price">￥40</text>
+                    <text class="ps">交易前聊一聊</text>
+                </view>
+            </view>
+            <view class="right-pay-wrapper">
+                <view class="pay-btn" @tap.stop="pay">支付</view>
+            </view>
+        </view>
+        <scroll-view class="scroll-container" scroll-y scroll-top="{{scrollTop}}" style="top: {{ordered && !payed ? '120rpx': '0'}}">
             <view style="padding: 20rpx 0;">
-                <block wx:for="{{msgs}}" wx:key="createTime">
+                <block wx:for="{{msgs}}" wx:key="*this">
                     <block wx:if="{{item.isSelf}}">
                         <view class="msg-wrapper reverse">
                             <view wx:if="{{item.createTime.show}}" class="create-time-wrapper">
@@ -33,7 +47,7 @@
             </view>
         </scroll-view>
         <view class="bottom-container">
-            <input type="text" class="input" value="{{tempText}}" confirm-type="发送" confirm-hold="{{true}}" maxlength="-1" @input="changeText" @confirm="sendMsg"/>
+            <input type="text" class="input" value="{{tempText}}" confirm-type="发送" confirm-hold="{{true}}" maxlength="-1" @input="changeText" @confirm="sendMsg" adjust-position="{{false}}"/>
             <image src="../assets/images/paw.png" class="send" @tap.stop="sendMsg"></image>
         </view>
     </view>
@@ -42,82 +56,26 @@
 <script>
 import wepy from 'wepy';
 import { DateTime } from 'luxon';
+
 export default class Msg extends wepy.page {
     config = {
         navigationBarTitleText: '用户名'
     };
     onLoad() {
         this.scrollTop = this.msgs.length * 100;
+        const res = wepy.getStorageSync('order');
+        if (res) {
+            this.ordered = true;
+        }
     }
     data = {
+        // 已预订
+        ordered: false,
+        // 已付款
+        payed: false,
         scrollTop: 0,
         tempText: '',
-        msgs: [
-            {
-                isSelf: false,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            },
-            {
-                isSelf: true,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            },
-            {
-                isSelf: false,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            },
-            {
-                isSelf: true,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            },
-            {
-                isSelf: false,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            },
-            {
-                isSelf: true,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            },
-            {
-                isSelf: false,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            },
-            {
-                isSelf: true,
-                createTime: {
-                    show: true,
-                    text: '2018年04月11日 01:32'
-                },
-                content: '您好您好您好您好'
-            }
-        ],
+        msgs: [],
         avatar: {
             seller:
                 'https://ss1.baidu.com/-4o3dSag_xI4khGko9WTAnF6hhy/image/pic/item/2f738bd4b31c87011dd2ccea2b7f9e2f0708ff52.jpg',
@@ -141,11 +99,76 @@ export default class Msg extends wepy.page {
             });
             this.tempText = '';
             this.scrollTop += 100;
+        },
+        async pay() {
+            console.log(111);
+            await wepy.showLoading({
+                title: '正在免密支付'
+            });
+            setTimeout(async () => {
+                await wepy.showToast({
+                    title: '支付成功',
+                    icon: 'success'
+                });
+                wepy.redirectTo({
+                    url: 'order-detail?rate=1'
+                });
+            }, 1500);
         }
     };
 }
 </script>
 <style lang="scss" scoped>
+@import '../assets/styles/variable.scss';
+@import '../assets/styles/mixin.scss';
+
+.top-container {
+    width: 750rpx;
+    height: 120rpx;
+    box-shadow: 0 1px 2px 0 rgba(7, 17, 27, 0.1);
+    @include display-flex;
+}
+.left-image-wrapper,
+.right-pay-wrapper {
+    width: 150rpx;
+    height: 100%;
+    @include display-flex;
+}
+.left-image-wrapper > image {
+    width: 80rpx;
+    height: 80rpx;
+}
+.middle-info-wrapper {
+    width: 350rpx;
+    height: 100%;
+    & > view {
+        width: 150rpx;
+        height: 100%;
+        @include display-flex(column, center, flex-start);
+        & > .price {
+            color: $text-color;
+            font-size: $text-medium-size;
+            padding-bottom: 10rpx;
+        }
+        & > .ps {
+            color: $inactive-color;
+            font-size: $text-small-size;
+            padding-top: 10rpx;
+        }
+    }
+}
+.right-pay-wrapper {
+    width: 250rpx;
+}
+.pay-btn {
+    width: 120rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    background-color: $theme-color;
+    color: #fff;
+    font-size: $text-large-size;
+}
 .scroll-container {
     position: absolute;
     top: 0;

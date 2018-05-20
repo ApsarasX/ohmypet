@@ -26,13 +26,13 @@ export default class OrderStatus extends wepy.page {
             {
                 houseImage:
                     'https://ss1.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/image/pic/item/95eef01f3a292df5a158d319b0315c6034a87326.jpg',
-                houseName: '未知的宠物屋',
-                petName: '未知的小宠物',
-                startEndTime: '未知时间~未知时间',
-                timeSpan: 0,
-                price: 0,
+                houseName: '巧克莉与小可爱',
+                petName: '帅气的斯比奈鲁',
+                startEndTime: '2018年3月31日~2018年3月31日',
+                timeSpan: 1,
+                price: 40,
                 discount: false,
-                status: '未知状态'
+                status: '已交付'
             }
         ]
     };

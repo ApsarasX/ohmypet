@@ -52,7 +52,7 @@
             <label for=''>
                 其它标签
             </label>
-            <select-other class="select" :list="other"></select-other>
+            <select-other class="select" :list="other" :multiple="multiple"></select-other>
         </view>
         <view class="form-group">
             <label for=''>寄养屋介绍</label>
@@ -70,7 +70,8 @@ const list = {
     property: ['租客', '房主'],
     balcony: ['没有阳台', '带阳台', '封闭阳台'],
     garden: ['没有花园', '小区花园', '周边公园'],
-    other: ['无补充', '电梯', '空调']
+    other: ['无补充', '电梯', '空调'],
+    multiple: true
 };
 
 export default class AddHouseInfo extends wepy.page {

@@ -57,7 +57,7 @@ export default class EvaluationBox extends wepy.component {
     height: 250rpx;
     background-color: $lite-shadow-color;
     color: $text-color;
-    font-weight: 200;
+    font-weight: 100;
     font-size: $text-large-size;
 }
 .evaluation-info {
@@ -67,7 +67,7 @@ export default class EvaluationBox extends wepy.component {
 }
 .time-text {
     font-size: $text-medium-size;
-    font-weight: 200;
+    font-weight: 100;
     color: $inactive-color;
 }
 </style>

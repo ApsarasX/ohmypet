@@ -43,12 +43,10 @@
     <view class='items-container'>
         <view class='item-title'>相关</view>
         <view class='item-icon-group'>
-            <navigator open-type='navigateTo' hover-class="none">
-                <view class='item-icon'>
-                    <image src='../assets/images/heart.png' mode='aspectFit'></image>
-                    <text>收藏</text>
-                </view>
-            </navigator>
+            <view class='item-icon'>
+                <image src='../assets/images/heart.png' mode='aspectFit'></image>
+                <text>收藏</text>
+            </view>
             <navigator open-type='navigateTo' url='./pets' hover-class="none">
                 <view class='item-icon'>
                     <image src='../assets/images/telephone.png' mode='aspectFit'></image>
@@ -61,12 +59,10 @@
                     <text>我的寄养屋</text>
                 </view>
             </navigator>
-            <navigator open-type='navigateTo' hover-class="none">
-                <view class='item-icon'>
-                    <image src='../assets/images/more.png' mode='aspectFit'></image>
-                    <text>更多</text>
-                </view>
-            </navigator>
+            <view class='item-icon'>
+                <image src='../assets/images/more.png' mode='aspectFit'></image>
+                <text>更多</text>
+            </view>
         </view>
     </view>
 </template>
@@ -75,12 +71,8 @@
 import wepy from 'wepy';
 
 export default class Profile extends wepy.page {
-    config = {
-
-    };
-    components = {
-
-    };
+    config = {};
+    components = {};
 
     data = {};
 
